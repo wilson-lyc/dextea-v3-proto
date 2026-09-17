@@ -457,6 +457,118 @@ func (x *GetStoreByAccountRequest) GetAccount() string {
 	return ""
 }
 
+type AuthenticateStoreRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Account       string                 `protobuf:"bytes,1,opt,name=account,proto3" json:"account,omitempty"`
+	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AuthenticateStoreRequest) Reset() {
+	*x = AuthenticateStoreRequest{}
+	mi := &file_store_v1_store_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AuthenticateStoreRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AuthenticateStoreRequest) ProtoMessage() {}
+
+func (x *AuthenticateStoreRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_store_v1_store_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AuthenticateStoreRequest.ProtoReflect.Descriptor instead.
+func (*AuthenticateStoreRequest) Descriptor() ([]byte, []int) {
+	return file_store_v1_store_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *AuthenticateStoreRequest) GetAccount() string {
+	if x != nil {
+		return x.Account
+	}
+	return ""
+}
+
+func (x *AuthenticateStoreRequest) GetPassword() string {
+	if x != nil {
+		return x.Password
+	}
+	return ""
+}
+
+type StoreAuthInfo struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	StoreId       uint64                 `protobuf:"varint,1,opt,name=store_id,json=storeId,proto3" json:"store_id,omitempty"`
+	Status        int32                  `protobuf:"varint,2,opt,name=status,proto3" json:"status,omitempty"`
+	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StoreAuthInfo) Reset() {
+	*x = StoreAuthInfo{}
+	mi := &file_store_v1_store_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StoreAuthInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StoreAuthInfo) ProtoMessage() {}
+
+func (x *StoreAuthInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_store_v1_store_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StoreAuthInfo.ProtoReflect.Descriptor instead.
+func (*StoreAuthInfo) Descriptor() ([]byte, []int) {
+	return file_store_v1_store_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *StoreAuthInfo) GetStoreId() uint64 {
+	if x != nil {
+		return x.StoreId
+	}
+	return 0
+}
+
+func (x *StoreAuthInfo) GetStatus() int32 {
+	if x != nil {
+		return x.Status
+	}
+	return 0
+}
+
+func (x *StoreAuthInfo) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
 type ListStoresRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Page          int32                  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`
@@ -469,7 +581,7 @@ type ListStoresRequest struct {
 
 func (x *ListStoresRequest) Reset() {
 	*x = ListStoresRequest{}
-	mi := &file_store_v1_store_proto_msgTypes[5]
+	mi := &file_store_v1_store_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -481,7 +593,7 @@ func (x *ListStoresRequest) String() string {
 func (*ListStoresRequest) ProtoMessage() {}
 
 func (x *ListStoresRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_store_v1_store_proto_msgTypes[5]
+	mi := &file_store_v1_store_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -494,7 +606,7 @@ func (x *ListStoresRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListStoresRequest.ProtoReflect.Descriptor instead.
 func (*ListStoresRequest) Descriptor() ([]byte, []int) {
-	return file_store_v1_store_proto_rawDescGZIP(), []int{5}
+	return file_store_v1_store_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *ListStoresRequest) GetPage() int32 {
@@ -537,7 +649,7 @@ type ListStoresResponse struct {
 
 func (x *ListStoresResponse) Reset() {
 	*x = ListStoresResponse{}
-	mi := &file_store_v1_store_proto_msgTypes[6]
+	mi := &file_store_v1_store_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -549,7 +661,7 @@ func (x *ListStoresResponse) String() string {
 func (*ListStoresResponse) ProtoMessage() {}
 
 func (x *ListStoresResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_store_v1_store_proto_msgTypes[6]
+	mi := &file_store_v1_store_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -562,7 +674,7 @@ func (x *ListStoresResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListStoresResponse.ProtoReflect.Descriptor instead.
 func (*ListStoresResponse) Descriptor() ([]byte, []int) {
-	return file_store_v1_store_proto_rawDescGZIP(), []int{6}
+	return file_store_v1_store_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *ListStoresResponse) GetTotal() int64 {
@@ -604,7 +716,7 @@ type SearchStoresRequest struct {
 
 func (x *SearchStoresRequest) Reset() {
 	*x = SearchStoresRequest{}
-	mi := &file_store_v1_store_proto_msgTypes[7]
+	mi := &file_store_v1_store_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -616,7 +728,7 @@ func (x *SearchStoresRequest) String() string {
 func (*SearchStoresRequest) ProtoMessage() {}
 
 func (x *SearchStoresRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_store_v1_store_proto_msgTypes[7]
+	mi := &file_store_v1_store_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -629,7 +741,7 @@ func (x *SearchStoresRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SearchStoresRequest.ProtoReflect.Descriptor instead.
 func (*SearchStoresRequest) Descriptor() ([]byte, []int) {
-	return file_store_v1_store_proto_rawDescGZIP(), []int{7}
+	return file_store_v1_store_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *SearchStoresRequest) GetCity() string {
@@ -662,7 +774,7 @@ type SearchStoresResponse struct {
 
 func (x *SearchStoresResponse) Reset() {
 	*x = SearchStoresResponse{}
-	mi := &file_store_v1_store_proto_msgTypes[8]
+	mi := &file_store_v1_store_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -674,7 +786,7 @@ func (x *SearchStoresResponse) String() string {
 func (*SearchStoresResponse) ProtoMessage() {}
 
 func (x *SearchStoresResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_store_v1_store_proto_msgTypes[8]
+	mi := &file_store_v1_store_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -687,7 +799,7 @@ func (x *SearchStoresResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SearchStoresResponse.ProtoReflect.Descriptor instead.
 func (*SearchStoresResponse) Descriptor() ([]byte, []int) {
-	return file_store_v1_store_proto_rawDescGZIP(), []int{8}
+	return file_store_v1_store_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *SearchStoresResponse) GetStores() []*Store {
@@ -709,7 +821,7 @@ type GetNearbyStoresRequest struct {
 
 func (x *GetNearbyStoresRequest) Reset() {
 	*x = GetNearbyStoresRequest{}
-	mi := &file_store_v1_store_proto_msgTypes[9]
+	mi := &file_store_v1_store_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -721,7 +833,7 @@ func (x *GetNearbyStoresRequest) String() string {
 func (*GetNearbyStoresRequest) ProtoMessage() {}
 
 func (x *GetNearbyStoresRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_store_v1_store_proto_msgTypes[9]
+	mi := &file_store_v1_store_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -734,7 +846,7 @@ func (x *GetNearbyStoresRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetNearbyStoresRequest.ProtoReflect.Descriptor instead.
 func (*GetNearbyStoresRequest) Descriptor() ([]byte, []int) {
-	return file_store_v1_store_proto_rawDescGZIP(), []int{9}
+	return file_store_v1_store_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *GetNearbyStoresRequest) GetLongitude() float64 {
@@ -775,7 +887,7 @@ type NearbyStore struct {
 
 func (x *NearbyStore) Reset() {
 	*x = NearbyStore{}
-	mi := &file_store_v1_store_proto_msgTypes[10]
+	mi := &file_store_v1_store_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -787,7 +899,7 @@ func (x *NearbyStore) String() string {
 func (*NearbyStore) ProtoMessage() {}
 
 func (x *NearbyStore) ProtoReflect() protoreflect.Message {
-	mi := &file_store_v1_store_proto_msgTypes[10]
+	mi := &file_store_v1_store_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -800,7 +912,7 @@ func (x *NearbyStore) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NearbyStore.ProtoReflect.Descriptor instead.
 func (*NearbyStore) Descriptor() ([]byte, []int) {
-	return file_store_v1_store_proto_rawDescGZIP(), []int{10}
+	return file_store_v1_store_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *NearbyStore) GetStore() *Store {
@@ -826,7 +938,7 @@ type GetNearbyStoresResponse struct {
 
 func (x *GetNearbyStoresResponse) Reset() {
 	*x = GetNearbyStoresResponse{}
-	mi := &file_store_v1_store_proto_msgTypes[11]
+	mi := &file_store_v1_store_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -838,7 +950,7 @@ func (x *GetNearbyStoresResponse) String() string {
 func (*GetNearbyStoresResponse) ProtoMessage() {}
 
 func (x *GetNearbyStoresResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_store_v1_store_proto_msgTypes[11]
+	mi := &file_store_v1_store_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -851,7 +963,7 @@ func (x *GetNearbyStoresResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetNearbyStoresResponse.ProtoReflect.Descriptor instead.
 func (*GetNearbyStoresResponse) Descriptor() ([]byte, []int) {
-	return file_store_v1_store_proto_rawDescGZIP(), []int{11}
+	return file_store_v1_store_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *GetNearbyStoresResponse) GetStores() []*NearbyStore {
@@ -874,7 +986,7 @@ type UpdateStoreProfileRequest struct {
 
 func (x *UpdateStoreProfileRequest) Reset() {
 	*x = UpdateStoreProfileRequest{}
-	mi := &file_store_v1_store_proto_msgTypes[12]
+	mi := &file_store_v1_store_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -886,7 +998,7 @@ func (x *UpdateStoreProfileRequest) String() string {
 func (*UpdateStoreProfileRequest) ProtoMessage() {}
 
 func (x *UpdateStoreProfileRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_store_v1_store_proto_msgTypes[12]
+	mi := &file_store_v1_store_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -899,7 +1011,7 @@ func (x *UpdateStoreProfileRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateStoreProfileRequest.ProtoReflect.Descriptor instead.
 func (*UpdateStoreProfileRequest) Descriptor() ([]byte, []int) {
-	return file_store_v1_store_proto_rawDescGZIP(), []int{12}
+	return file_store_v1_store_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *UpdateStoreProfileRequest) GetId() uint64 {
@@ -952,7 +1064,7 @@ type UpdateStoreLocationRequest struct {
 
 func (x *UpdateStoreLocationRequest) Reset() {
 	*x = UpdateStoreLocationRequest{}
-	mi := &file_store_v1_store_proto_msgTypes[13]
+	mi := &file_store_v1_store_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -964,7 +1076,7 @@ func (x *UpdateStoreLocationRequest) String() string {
 func (*UpdateStoreLocationRequest) ProtoMessage() {}
 
 func (x *UpdateStoreLocationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_store_v1_store_proto_msgTypes[13]
+	mi := &file_store_v1_store_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -977,7 +1089,7 @@ func (x *UpdateStoreLocationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateStoreLocationRequest.ProtoReflect.Descriptor instead.
 func (*UpdateStoreLocationRequest) Descriptor() ([]byte, []int) {
-	return file_store_v1_store_proto_rawDescGZIP(), []int{13}
+	return file_store_v1_store_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *UpdateStoreLocationRequest) GetId() uint64 {
@@ -1039,7 +1151,7 @@ type UpdateStoreStatusRequest struct {
 
 func (x *UpdateStoreStatusRequest) Reset() {
 	*x = UpdateStoreStatusRequest{}
-	mi := &file_store_v1_store_proto_msgTypes[14]
+	mi := &file_store_v1_store_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1051,7 +1163,7 @@ func (x *UpdateStoreStatusRequest) String() string {
 func (*UpdateStoreStatusRequest) ProtoMessage() {}
 
 func (x *UpdateStoreStatusRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_store_v1_store_proto_msgTypes[14]
+	mi := &file_store_v1_store_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1064,7 +1176,7 @@ func (x *UpdateStoreStatusRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateStoreStatusRequest.ProtoReflect.Descriptor instead.
 func (*UpdateStoreStatusRequest) Descriptor() ([]byte, []int) {
-	return file_store_v1_store_proto_rawDescGZIP(), []int{14}
+	return file_store_v1_store_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *UpdateStoreStatusRequest) GetId() uint64 {
@@ -1081,18 +1193,121 @@ func (x *UpdateStoreStatusRequest) GetStatus() int32 {
 	return 0
 }
 
-type ResetStorePasswordRequest struct {
+type ChangeStorePasswordRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	OldPassword   string                 `protobuf:"bytes,2,opt,name=old_password,json=oldPassword,proto3" json:"old_password,omitempty"`
-	NewPassword   *string                `protobuf:"bytes,3,opt,name=new_password,json=newPassword,proto3,oneof" json:"new_password,omitempty"`
+	NewPassword   string                 `protobuf:"bytes,3,opt,name=new_password,json=newPassword,proto3" json:"new_password,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ChangeStorePasswordRequest) Reset() {
+	*x = ChangeStorePasswordRequest{}
+	mi := &file_store_v1_store_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ChangeStorePasswordRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ChangeStorePasswordRequest) ProtoMessage() {}
+
+func (x *ChangeStorePasswordRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_store_v1_store_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ChangeStorePasswordRequest.ProtoReflect.Descriptor instead.
+func (*ChangeStorePasswordRequest) Descriptor() ([]byte, []int) {
+	return file_store_v1_store_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *ChangeStorePasswordRequest) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *ChangeStorePasswordRequest) GetOldPassword() string {
+	if x != nil {
+		return x.OldPassword
+	}
+	return ""
+}
+
+func (x *ChangeStorePasswordRequest) GetNewPassword() string {
+	if x != nil {
+		return x.NewPassword
+	}
+	return ""
+}
+
+type PasswordChangedResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Changed       bool                   `protobuf:"varint,1,opt,name=changed,proto3" json:"changed,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PasswordChangedResponse) Reset() {
+	*x = PasswordChangedResponse{}
+	mi := &file_store_v1_store_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PasswordChangedResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PasswordChangedResponse) ProtoMessage() {}
+
+func (x *PasswordChangedResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_store_v1_store_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PasswordChangedResponse.ProtoReflect.Descriptor instead.
+func (*PasswordChangedResponse) Descriptor() ([]byte, []int) {
+	return file_store_v1_store_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *PasswordChangedResponse) GetChanged() bool {
+	if x != nil {
+		return x.Changed
+	}
+	return false
+}
+
+type ResetStorePasswordRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	NewPassword   *string                `protobuf:"bytes,2,opt,name=new_password,json=newPassword,proto3,oneof" json:"new_password,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ResetStorePasswordRequest) Reset() {
 	*x = ResetStorePasswordRequest{}
-	mi := &file_store_v1_store_proto_msgTypes[15]
+	mi := &file_store_v1_store_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1104,7 +1319,7 @@ func (x *ResetStorePasswordRequest) String() string {
 func (*ResetStorePasswordRequest) ProtoMessage() {}
 
 func (x *ResetStorePasswordRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_store_v1_store_proto_msgTypes[15]
+	mi := &file_store_v1_store_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1117,7 +1332,7 @@ func (x *ResetStorePasswordRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResetStorePasswordRequest.ProtoReflect.Descriptor instead.
 func (*ResetStorePasswordRequest) Descriptor() ([]byte, []int) {
-	return file_store_v1_store_proto_rawDescGZIP(), []int{15}
+	return file_store_v1_store_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *ResetStorePasswordRequest) GetId() uint64 {
@@ -1125,13 +1340,6 @@ func (x *ResetStorePasswordRequest) GetId() uint64 {
 		return x.Id
 	}
 	return 0
-}
-
-func (x *ResetStorePasswordRequest) GetOldPassword() string {
-	if x != nil {
-		return x.OldPassword
-	}
-	return ""
 }
 
 func (x *ResetStorePasswordRequest) GetNewPassword() string {
@@ -1150,7 +1358,7 @@ type ResetStorePasswordResponse struct {
 
 func (x *ResetStorePasswordResponse) Reset() {
 	*x = ResetStorePasswordResponse{}
-	mi := &file_store_v1_store_proto_msgTypes[16]
+	mi := &file_store_v1_store_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1162,7 +1370,7 @@ func (x *ResetStorePasswordResponse) String() string {
 func (*ResetStorePasswordResponse) ProtoMessage() {}
 
 func (x *ResetStorePasswordResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_store_v1_store_proto_msgTypes[16]
+	mi := &file_store_v1_store_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1175,7 +1383,7 @@ func (x *ResetStorePasswordResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResetStorePasswordResponse.ProtoReflect.Descriptor instead.
 func (*ResetStorePasswordResponse) Descriptor() ([]byte, []int) {
-	return file_store_v1_store_proto_rawDescGZIP(), []int{16}
+	return file_store_v1_store_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *ResetStorePasswordResponse) GetPassword() string {
@@ -1231,7 +1439,14 @@ const file_store_v1_store_proto_rawDesc = "" +
 	"\x0fGetStoreRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\"4\n" +
 	"\x18GetStoreByAccountRequest\x12\x18\n" +
-	"\aaccount\x18\x01 \x01(\tR\aaccount\"\x86\x01\n" +
+	"\aaccount\x18\x01 \x01(\tR\aaccount\"P\n" +
+	"\x18AuthenticateStoreRequest\x12\x18\n" +
+	"\aaccount\x18\x01 \x01(\tR\aaccount\x12\x1a\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\"V\n" +
+	"\rStoreAuthInfo\x12\x19\n" +
+	"\bstore_id\x18\x01 \x01(\x04R\astoreId\x12\x16\n" +
+	"\x06status\x18\x02 \x01(\x05R\x06status\x12\x12\n" +
+	"\x04name\x18\x03 \x01(\tR\x04name\"\x86\x01\n" +
 	"\x11ListStoresRequest\x12\x12\n" +
 	"\x04page\x18\x01 \x01(\x05R\x04page\x12\x1b\n" +
 	"\tpage_size\x18\x02 \x01(\x05R\bpageSize\x12\x18\n" +
@@ -1286,25 +1501,32 @@ const file_store_v1_store_proto_rawDesc = "" +
 	"\b_address\"B\n" +
 	"\x18UpdateStoreStatusRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x16\n" +
-	"\x06status\x18\x02 \x01(\x05R\x06status\"\x87\x01\n" +
-	"\x19ResetStorePasswordRequest\x12\x0e\n" +
+	"\x06status\x18\x02 \x01(\x05R\x06status\"r\n" +
+	"\x1aChangeStorePasswordRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12!\n" +
-	"\fold_password\x18\x02 \x01(\tR\voldPassword\x12&\n" +
-	"\fnew_password\x18\x03 \x01(\tH\x00R\vnewPassword\x88\x01\x01B\x0f\n" +
+	"\fold_password\x18\x02 \x01(\tR\voldPassword\x12!\n" +
+	"\fnew_password\x18\x03 \x01(\tR\vnewPassword\"3\n" +
+	"\x17PasswordChangedResponse\x12\x18\n" +
+	"\achanged\x18\x01 \x01(\bR\achanged\"d\n" +
+	"\x19ResetStorePasswordRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12&\n" +
+	"\fnew_password\x18\x02 \x01(\tH\x00R\vnewPassword\x88\x01\x01B\x0f\n" +
 	"\r_new_password\"8\n" +
 	"\x1aResetStorePasswordResponse\x12\x1a\n" +
-	"\bpassword\x18\x01 \x01(\tR\bpassword2\x9d\a\n" +
+	"\bpassword\x18\x01 \x01(\tR\bpassword2\xeb\b\n" +
 	"\fStoreService\x12X\n" +
 	"\vCreateStore\x12#.dextea.store.v1.CreateStoreRequest\x1a$.dextea.store.v1.CreateStoreResponse\x12D\n" +
 	"\bGetStore\x12 .dextea.store.v1.GetStoreRequest\x1a\x16.dextea.store.v1.Store\x12V\n" +
-	"\x11GetStoreByAccount\x12).dextea.store.v1.GetStoreByAccountRequest\x1a\x16.dextea.store.v1.Store\x12U\n" +
+	"\x11GetStoreByAccount\x12).dextea.store.v1.GetStoreByAccountRequest\x1a\x16.dextea.store.v1.Store\x12^\n" +
+	"\x11AuthenticateStore\x12).dextea.store.v1.AuthenticateStoreRequest\x1a\x1e.dextea.store.v1.StoreAuthInfo\x12U\n" +
 	"\n" +
 	"ListStores\x12\".dextea.store.v1.ListStoresRequest\x1a#.dextea.store.v1.ListStoresResponse\x12[\n" +
 	"\fSearchStores\x12$.dextea.store.v1.SearchStoresRequest\x1a%.dextea.store.v1.SearchStoresResponse\x12d\n" +
 	"\x0fGetNearbyStores\x12'.dextea.store.v1.GetNearbyStoresRequest\x1a(.dextea.store.v1.GetNearbyStoresResponse\x12X\n" +
 	"\x12UpdateStoreProfile\x12*.dextea.store.v1.UpdateStoreProfileRequest\x1a\x16.dextea.store.v1.Store\x12Z\n" +
 	"\x13UpdateStoreLocation\x12+.dextea.store.v1.UpdateStoreLocationRequest\x1a\x16.dextea.store.v1.Store\x12V\n" +
-	"\x11UpdateStoreStatus\x12).dextea.store.v1.UpdateStoreStatusRequest\x1a\x16.dextea.store.v1.Store\x12m\n" +
+	"\x11UpdateStoreStatus\x12).dextea.store.v1.UpdateStoreStatusRequest\x1a\x16.dextea.store.v1.Store\x12l\n" +
+	"\x13ChangeStorePassword\x12+.dextea.store.v1.ChangeStorePasswordRequest\x1a(.dextea.store.v1.PasswordChangedResponse\x12m\n" +
 	"\x12ResetStorePassword\x12*.dextea.store.v1.ResetStorePasswordRequest\x1a+.dextea.store.v1.ResetStorePasswordResponseB?Z=github.com/wilson-lyc/dextea-v3-proto/gen/go/store/v1;storev1b\x06proto3"
 
 var (
@@ -1319,54 +1541,62 @@ func file_store_v1_store_proto_rawDescGZIP() []byte {
 	return file_store_v1_store_proto_rawDescData
 }
 
-var file_store_v1_store_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
+var file_store_v1_store_proto_msgTypes = make([]protoimpl.MessageInfo, 21)
 var file_store_v1_store_proto_goTypes = []any{
 	(*Store)(nil),                      // 0: dextea.store.v1.Store
 	(*CreateStoreRequest)(nil),         // 1: dextea.store.v1.CreateStoreRequest
 	(*CreateStoreResponse)(nil),        // 2: dextea.store.v1.CreateStoreResponse
 	(*GetStoreRequest)(nil),            // 3: dextea.store.v1.GetStoreRequest
 	(*GetStoreByAccountRequest)(nil),   // 4: dextea.store.v1.GetStoreByAccountRequest
-	(*ListStoresRequest)(nil),          // 5: dextea.store.v1.ListStoresRequest
-	(*ListStoresResponse)(nil),         // 6: dextea.store.v1.ListStoresResponse
-	(*SearchStoresRequest)(nil),        // 7: dextea.store.v1.SearchStoresRequest
-	(*SearchStoresResponse)(nil),       // 8: dextea.store.v1.SearchStoresResponse
-	(*GetNearbyStoresRequest)(nil),     // 9: dextea.store.v1.GetNearbyStoresRequest
-	(*NearbyStore)(nil),                // 10: dextea.store.v1.NearbyStore
-	(*GetNearbyStoresResponse)(nil),    // 11: dextea.store.v1.GetNearbyStoresResponse
-	(*UpdateStoreProfileRequest)(nil),  // 12: dextea.store.v1.UpdateStoreProfileRequest
-	(*UpdateStoreLocationRequest)(nil), // 13: dextea.store.v1.UpdateStoreLocationRequest
-	(*UpdateStoreStatusRequest)(nil),   // 14: dextea.store.v1.UpdateStoreStatusRequest
-	(*ResetStorePasswordRequest)(nil),  // 15: dextea.store.v1.ResetStorePasswordRequest
-	(*ResetStorePasswordResponse)(nil), // 16: dextea.store.v1.ResetStorePasswordResponse
+	(*AuthenticateStoreRequest)(nil),   // 5: dextea.store.v1.AuthenticateStoreRequest
+	(*StoreAuthInfo)(nil),              // 6: dextea.store.v1.StoreAuthInfo
+	(*ListStoresRequest)(nil),          // 7: dextea.store.v1.ListStoresRequest
+	(*ListStoresResponse)(nil),         // 8: dextea.store.v1.ListStoresResponse
+	(*SearchStoresRequest)(nil),        // 9: dextea.store.v1.SearchStoresRequest
+	(*SearchStoresResponse)(nil),       // 10: dextea.store.v1.SearchStoresResponse
+	(*GetNearbyStoresRequest)(nil),     // 11: dextea.store.v1.GetNearbyStoresRequest
+	(*NearbyStore)(nil),                // 12: dextea.store.v1.NearbyStore
+	(*GetNearbyStoresResponse)(nil),    // 13: dextea.store.v1.GetNearbyStoresResponse
+	(*UpdateStoreProfileRequest)(nil),  // 14: dextea.store.v1.UpdateStoreProfileRequest
+	(*UpdateStoreLocationRequest)(nil), // 15: dextea.store.v1.UpdateStoreLocationRequest
+	(*UpdateStoreStatusRequest)(nil),   // 16: dextea.store.v1.UpdateStoreStatusRequest
+	(*ChangeStorePasswordRequest)(nil), // 17: dextea.store.v1.ChangeStorePasswordRequest
+	(*PasswordChangedResponse)(nil),    // 18: dextea.store.v1.PasswordChangedResponse
+	(*ResetStorePasswordRequest)(nil),  // 19: dextea.store.v1.ResetStorePasswordRequest
+	(*ResetStorePasswordResponse)(nil), // 20: dextea.store.v1.ResetStorePasswordResponse
 }
 var file_store_v1_store_proto_depIdxs = []int32{
 	0,  // 0: dextea.store.v1.CreateStoreResponse.store:type_name -> dextea.store.v1.Store
 	0,  // 1: dextea.store.v1.ListStoresResponse.stores:type_name -> dextea.store.v1.Store
 	0,  // 2: dextea.store.v1.SearchStoresResponse.stores:type_name -> dextea.store.v1.Store
 	0,  // 3: dextea.store.v1.NearbyStore.store:type_name -> dextea.store.v1.Store
-	10, // 4: dextea.store.v1.GetNearbyStoresResponse.stores:type_name -> dextea.store.v1.NearbyStore
+	12, // 4: dextea.store.v1.GetNearbyStoresResponse.stores:type_name -> dextea.store.v1.NearbyStore
 	1,  // 5: dextea.store.v1.StoreService.CreateStore:input_type -> dextea.store.v1.CreateStoreRequest
 	3,  // 6: dextea.store.v1.StoreService.GetStore:input_type -> dextea.store.v1.GetStoreRequest
 	4,  // 7: dextea.store.v1.StoreService.GetStoreByAccount:input_type -> dextea.store.v1.GetStoreByAccountRequest
-	5,  // 8: dextea.store.v1.StoreService.ListStores:input_type -> dextea.store.v1.ListStoresRequest
-	7,  // 9: dextea.store.v1.StoreService.SearchStores:input_type -> dextea.store.v1.SearchStoresRequest
-	9,  // 10: dextea.store.v1.StoreService.GetNearbyStores:input_type -> dextea.store.v1.GetNearbyStoresRequest
-	12, // 11: dextea.store.v1.StoreService.UpdateStoreProfile:input_type -> dextea.store.v1.UpdateStoreProfileRequest
-	13, // 12: dextea.store.v1.StoreService.UpdateStoreLocation:input_type -> dextea.store.v1.UpdateStoreLocationRequest
-	14, // 13: dextea.store.v1.StoreService.UpdateStoreStatus:input_type -> dextea.store.v1.UpdateStoreStatusRequest
-	15, // 14: dextea.store.v1.StoreService.ResetStorePassword:input_type -> dextea.store.v1.ResetStorePasswordRequest
-	2,  // 15: dextea.store.v1.StoreService.CreateStore:output_type -> dextea.store.v1.CreateStoreResponse
-	0,  // 16: dextea.store.v1.StoreService.GetStore:output_type -> dextea.store.v1.Store
-	0,  // 17: dextea.store.v1.StoreService.GetStoreByAccount:output_type -> dextea.store.v1.Store
-	6,  // 18: dextea.store.v1.StoreService.ListStores:output_type -> dextea.store.v1.ListStoresResponse
-	8,  // 19: dextea.store.v1.StoreService.SearchStores:output_type -> dextea.store.v1.SearchStoresResponse
-	11, // 20: dextea.store.v1.StoreService.GetNearbyStores:output_type -> dextea.store.v1.GetNearbyStoresResponse
-	0,  // 21: dextea.store.v1.StoreService.UpdateStoreProfile:output_type -> dextea.store.v1.Store
-	0,  // 22: dextea.store.v1.StoreService.UpdateStoreLocation:output_type -> dextea.store.v1.Store
-	0,  // 23: dextea.store.v1.StoreService.UpdateStoreStatus:output_type -> dextea.store.v1.Store
-	16, // 24: dextea.store.v1.StoreService.ResetStorePassword:output_type -> dextea.store.v1.ResetStorePasswordResponse
-	15, // [15:25] is the sub-list for method output_type
-	5,  // [5:15] is the sub-list for method input_type
+	5,  // 8: dextea.store.v1.StoreService.AuthenticateStore:input_type -> dextea.store.v1.AuthenticateStoreRequest
+	7,  // 9: dextea.store.v1.StoreService.ListStores:input_type -> dextea.store.v1.ListStoresRequest
+	9,  // 10: dextea.store.v1.StoreService.SearchStores:input_type -> dextea.store.v1.SearchStoresRequest
+	11, // 11: dextea.store.v1.StoreService.GetNearbyStores:input_type -> dextea.store.v1.GetNearbyStoresRequest
+	14, // 12: dextea.store.v1.StoreService.UpdateStoreProfile:input_type -> dextea.store.v1.UpdateStoreProfileRequest
+	15, // 13: dextea.store.v1.StoreService.UpdateStoreLocation:input_type -> dextea.store.v1.UpdateStoreLocationRequest
+	16, // 14: dextea.store.v1.StoreService.UpdateStoreStatus:input_type -> dextea.store.v1.UpdateStoreStatusRequest
+	17, // 15: dextea.store.v1.StoreService.ChangeStorePassword:input_type -> dextea.store.v1.ChangeStorePasswordRequest
+	19, // 16: dextea.store.v1.StoreService.ResetStorePassword:input_type -> dextea.store.v1.ResetStorePasswordRequest
+	2,  // 17: dextea.store.v1.StoreService.CreateStore:output_type -> dextea.store.v1.CreateStoreResponse
+	0,  // 18: dextea.store.v1.StoreService.GetStore:output_type -> dextea.store.v1.Store
+	0,  // 19: dextea.store.v1.StoreService.GetStoreByAccount:output_type -> dextea.store.v1.Store
+	6,  // 20: dextea.store.v1.StoreService.AuthenticateStore:output_type -> dextea.store.v1.StoreAuthInfo
+	8,  // 21: dextea.store.v1.StoreService.ListStores:output_type -> dextea.store.v1.ListStoresResponse
+	10, // 22: dextea.store.v1.StoreService.SearchStores:output_type -> dextea.store.v1.SearchStoresResponse
+	13, // 23: dextea.store.v1.StoreService.GetNearbyStores:output_type -> dextea.store.v1.GetNearbyStoresResponse
+	0,  // 24: dextea.store.v1.StoreService.UpdateStoreProfile:output_type -> dextea.store.v1.Store
+	0,  // 25: dextea.store.v1.StoreService.UpdateStoreLocation:output_type -> dextea.store.v1.Store
+	0,  // 26: dextea.store.v1.StoreService.UpdateStoreStatus:output_type -> dextea.store.v1.Store
+	18, // 27: dextea.store.v1.StoreService.ChangeStorePassword:output_type -> dextea.store.v1.PasswordChangedResponse
+	20, // 28: dextea.store.v1.StoreService.ResetStorePassword:output_type -> dextea.store.v1.ResetStorePasswordResponse
+	17, // [17:29] is the sub-list for method output_type
+	5,  // [5:17] is the sub-list for method input_type
 	5,  // [5:5] is the sub-list for extension type_name
 	5,  // [5:5] is the sub-list for extension extendee
 	0,  // [0:5] is the sub-list for field type_name
@@ -1378,17 +1608,17 @@ func file_store_v1_store_proto_init() {
 		return
 	}
 	file_store_v1_store_proto_msgTypes[1].OneofWrappers = []any{}
-	file_store_v1_store_proto_msgTypes[5].OneofWrappers = []any{}
-	file_store_v1_store_proto_msgTypes[12].OneofWrappers = []any{}
-	file_store_v1_store_proto_msgTypes[13].OneofWrappers = []any{}
+	file_store_v1_store_proto_msgTypes[7].OneofWrappers = []any{}
+	file_store_v1_store_proto_msgTypes[14].OneofWrappers = []any{}
 	file_store_v1_store_proto_msgTypes[15].OneofWrappers = []any{}
+	file_store_v1_store_proto_msgTypes[19].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_store_v1_store_proto_rawDesc), len(file_store_v1_store_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   17,
+			NumMessages:   21,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

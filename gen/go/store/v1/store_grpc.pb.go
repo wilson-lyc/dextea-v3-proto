@@ -22,12 +22,14 @@ const (
 	StoreService_CreateStore_FullMethodName         = "/dextea.store.v1.StoreService/CreateStore"
 	StoreService_GetStore_FullMethodName            = "/dextea.store.v1.StoreService/GetStore"
 	StoreService_GetStoreByAccount_FullMethodName   = "/dextea.store.v1.StoreService/GetStoreByAccount"
+	StoreService_AuthenticateStore_FullMethodName   = "/dextea.store.v1.StoreService/AuthenticateStore"
 	StoreService_ListStores_FullMethodName          = "/dextea.store.v1.StoreService/ListStores"
 	StoreService_SearchStores_FullMethodName        = "/dextea.store.v1.StoreService/SearchStores"
 	StoreService_GetNearbyStores_FullMethodName     = "/dextea.store.v1.StoreService/GetNearbyStores"
 	StoreService_UpdateStoreProfile_FullMethodName  = "/dextea.store.v1.StoreService/UpdateStoreProfile"
 	StoreService_UpdateStoreLocation_FullMethodName = "/dextea.store.v1.StoreService/UpdateStoreLocation"
 	StoreService_UpdateStoreStatus_FullMethodName   = "/dextea.store.v1.StoreService/UpdateStoreStatus"
+	StoreService_ChangeStorePassword_FullMethodName = "/dextea.store.v1.StoreService/ChangeStorePassword"
 	StoreService_ResetStorePassword_FullMethodName  = "/dextea.store.v1.StoreService/ResetStorePassword"
 )
 
@@ -38,12 +40,14 @@ type StoreServiceClient interface {
 	CreateStore(ctx context.Context, in *CreateStoreRequest, opts ...grpc.CallOption) (*CreateStoreResponse, error)
 	GetStore(ctx context.Context, in *GetStoreRequest, opts ...grpc.CallOption) (*Store, error)
 	GetStoreByAccount(ctx context.Context, in *GetStoreByAccountRequest, opts ...grpc.CallOption) (*Store, error)
+	AuthenticateStore(ctx context.Context, in *AuthenticateStoreRequest, opts ...grpc.CallOption) (*StoreAuthInfo, error)
 	ListStores(ctx context.Context, in *ListStoresRequest, opts ...grpc.CallOption) (*ListStoresResponse, error)
 	SearchStores(ctx context.Context, in *SearchStoresRequest, opts ...grpc.CallOption) (*SearchStoresResponse, error)
 	GetNearbyStores(ctx context.Context, in *GetNearbyStoresRequest, opts ...grpc.CallOption) (*GetNearbyStoresResponse, error)
 	UpdateStoreProfile(ctx context.Context, in *UpdateStoreProfileRequest, opts ...grpc.CallOption) (*Store, error)
 	UpdateStoreLocation(ctx context.Context, in *UpdateStoreLocationRequest, opts ...grpc.CallOption) (*Store, error)
 	UpdateStoreStatus(ctx context.Context, in *UpdateStoreStatusRequest, opts ...grpc.CallOption) (*Store, error)
+	ChangeStorePassword(ctx context.Context, in *ChangeStorePasswordRequest, opts ...grpc.CallOption) (*PasswordChangedResponse, error)
 	ResetStorePassword(ctx context.Context, in *ResetStorePasswordRequest, opts ...grpc.CallOption) (*ResetStorePasswordResponse, error)
 }
 
@@ -79,6 +83,16 @@ func (c *storeServiceClient) GetStoreByAccount(ctx context.Context, in *GetStore
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Store)
 	err := c.cc.Invoke(ctx, StoreService_GetStoreByAccount_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *storeServiceClient) AuthenticateStore(ctx context.Context, in *AuthenticateStoreRequest, opts ...grpc.CallOption) (*StoreAuthInfo, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(StoreAuthInfo)
+	err := c.cc.Invoke(ctx, StoreService_AuthenticateStore_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -145,6 +159,16 @@ func (c *storeServiceClient) UpdateStoreStatus(ctx context.Context, in *UpdateSt
 	return out, nil
 }
 
+func (c *storeServiceClient) ChangeStorePassword(ctx context.Context, in *ChangeStorePasswordRequest, opts ...grpc.CallOption) (*PasswordChangedResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(PasswordChangedResponse)
+	err := c.cc.Invoke(ctx, StoreService_ChangeStorePassword_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *storeServiceClient) ResetStorePassword(ctx context.Context, in *ResetStorePasswordRequest, opts ...grpc.CallOption) (*ResetStorePasswordResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResetStorePasswordResponse)
@@ -162,12 +186,14 @@ type StoreServiceServer interface {
 	CreateStore(context.Context, *CreateStoreRequest) (*CreateStoreResponse, error)
 	GetStore(context.Context, *GetStoreRequest) (*Store, error)
 	GetStoreByAccount(context.Context, *GetStoreByAccountRequest) (*Store, error)
+	AuthenticateStore(context.Context, *AuthenticateStoreRequest) (*StoreAuthInfo, error)
 	ListStores(context.Context, *ListStoresRequest) (*ListStoresResponse, error)
 	SearchStores(context.Context, *SearchStoresRequest) (*SearchStoresResponse, error)
 	GetNearbyStores(context.Context, *GetNearbyStoresRequest) (*GetNearbyStoresResponse, error)
 	UpdateStoreProfile(context.Context, *UpdateStoreProfileRequest) (*Store, error)
 	UpdateStoreLocation(context.Context, *UpdateStoreLocationRequest) (*Store, error)
 	UpdateStoreStatus(context.Context, *UpdateStoreStatusRequest) (*Store, error)
+	ChangeStorePassword(context.Context, *ChangeStorePasswordRequest) (*PasswordChangedResponse, error)
 	ResetStorePassword(context.Context, *ResetStorePasswordRequest) (*ResetStorePasswordResponse, error)
 	mustEmbedUnimplementedStoreServiceServer()
 }
@@ -188,6 +214,9 @@ func (UnimplementedStoreServiceServer) GetStore(context.Context, *GetStoreReques
 func (UnimplementedStoreServiceServer) GetStoreByAccount(context.Context, *GetStoreByAccountRequest) (*Store, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetStoreByAccount not implemented")
 }
+func (UnimplementedStoreServiceServer) AuthenticateStore(context.Context, *AuthenticateStoreRequest) (*StoreAuthInfo, error) {
+	return nil, status.Error(codes.Unimplemented, "method AuthenticateStore not implemented")
+}
 func (UnimplementedStoreServiceServer) ListStores(context.Context, *ListStoresRequest) (*ListStoresResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListStores not implemented")
 }
@@ -205,6 +234,9 @@ func (UnimplementedStoreServiceServer) UpdateStoreLocation(context.Context, *Upd
 }
 func (UnimplementedStoreServiceServer) UpdateStoreStatus(context.Context, *UpdateStoreStatusRequest) (*Store, error) {
 	return nil, status.Error(codes.Unimplemented, "method UpdateStoreStatus not implemented")
+}
+func (UnimplementedStoreServiceServer) ChangeStorePassword(context.Context, *ChangeStorePasswordRequest) (*PasswordChangedResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ChangeStorePassword not implemented")
 }
 func (UnimplementedStoreServiceServer) ResetStorePassword(context.Context, *ResetStorePasswordRequest) (*ResetStorePasswordResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ResetStorePassword not implemented")
@@ -280,6 +312,24 @@ func _StoreService_GetStoreByAccount_Handler(srv interface{}, ctx context.Contex
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(StoreServiceServer).GetStoreByAccount(ctx, req.(*GetStoreByAccountRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StoreService_AuthenticateStore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AuthenticateStoreRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StoreServiceServer).AuthenticateStore(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: StoreService_AuthenticateStore_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StoreServiceServer).AuthenticateStore(ctx, req.(*AuthenticateStoreRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -392,6 +442,24 @@ func _StoreService_UpdateStoreStatus_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _StoreService_ChangeStorePassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ChangeStorePasswordRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StoreServiceServer).ChangeStorePassword(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: StoreService_ChangeStorePassword_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StoreServiceServer).ChangeStorePassword(ctx, req.(*ChangeStorePasswordRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _StoreService_ResetStorePassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ResetStorePasswordRequest)
 	if err := dec(in); err != nil {
@@ -430,6 +498,10 @@ var StoreService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _StoreService_GetStoreByAccount_Handler,
 		},
 		{
+			MethodName: "AuthenticateStore",
+			Handler:    _StoreService_AuthenticateStore_Handler,
+		},
+		{
 			MethodName: "ListStores",
 			Handler:    _StoreService_ListStores_Handler,
 		},
@@ -452,6 +524,10 @@ var StoreService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateStoreStatus",
 			Handler:    _StoreService_UpdateStoreStatus_Handler,
+		},
+		{
+			MethodName: "ChangeStorePassword",
+			Handler:    _StoreService_ChangeStorePassword_Handler,
 		},
 		{
 			MethodName: "ResetStorePassword",

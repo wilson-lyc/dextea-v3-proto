@@ -8,12 +8,14 @@ service StoreService {
   rpc CreateStore(CreateStoreRequest) returns (CreateStoreResponse);
   rpc GetStore(GetStoreRequest) returns (Store);
   rpc GetStoreByAccount(GetStoreByAccountRequest) returns (Store);
+  rpc AuthenticateStore(AuthenticateStoreRequest) returns (StoreAuthInfo);
   rpc ListStores(ListStoresRequest) returns (ListStoresResponse);
   rpc SearchStores(SearchStoresRequest) returns (SearchStoresResponse);
   rpc GetNearbyStores(GetNearbyStoresRequest) returns (GetNearbyStoresResponse);
   rpc UpdateStoreProfile(UpdateStoreProfileRequest) returns (Store);
   rpc UpdateStoreLocation(UpdateStoreLocationRequest) returns (Store);
   rpc UpdateStoreStatus(UpdateStoreStatusRequest) returns (Store);
+  rpc ChangeStorePassword(ChangeStorePasswordRequest) returns (PasswordChangedResponse);
   rpc ResetStorePassword(ResetStorePasswordRequest) returns (ResetStorePasswordResponse);
 }
 
@@ -58,6 +60,8 @@ message CreateStoreResponse {
 
 message GetStoreRequest { uint64 id = 1; }
 message GetStoreByAccountRequest { string account = 1; }
+message AuthenticateStoreRequest { string account = 1; string password = 2; }
+message StoreAuthInfo { uint64 store_id = 1; int32 status = 2; string name = 3; }
 
 message ListStoresRequest {
   int32 page = 1;
@@ -118,10 +122,17 @@ message UpdateStoreStatusRequest {
   int32 status = 2;
 }
 
-message ResetStorePasswordRequest {
+message ChangeStorePasswordRequest {
   uint64 id = 1;
   string old_password = 2;
-  optional string new_password = 3;
+  string new_password = 3;
+}
+
+message PasswordChangedResponse { bool changed = 1; }
+
+message ResetStorePasswordRequest {
+  uint64 id = 1;
+  optional string new_password = 2;
 }
 
 message ResetStorePasswordResponse { string password = 1; }

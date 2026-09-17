@@ -1,0 +1,87 @@
+syntax = "proto3";
+
+package dextea.product.v1;
+
+option go_package = "github.com/wilson-lyc/dextea-v3-proto/gen/go/product/v1;productv1";
+
+service ProductService {
+  rpc CreateProduct(CreateProductRequest) returns (Product);
+  rpc UpdateProduct(UpdateProductRequest) returns (Product);
+  rpc ListProducts(ListProductsRequest) returns (ListProductsResponse);
+  rpc BatchUpdateProductStatus(BatchUpdateStatusRequest) returns (BatchUpdateResponse);
+  rpc BatchSetProductStoreStatus(BatchSetProductStoreStatusRequest) returns (BatchUpdateResponse);
+
+  rpc CreateCustomizationItem(CreateCustomizationItemRequest) returns (CustomizationItem);
+  rpc UpdateCustomizationItem(UpdateCustomizationItemRequest) returns (CustomizationItem);
+  rpc ListCustomizationItems(ListCustomizationItemsRequest) returns (ListCustomizationItemsResponse);
+  rpc BatchUpdateCustomizationItemStatus(BatchUpdateStatusRequest) returns (BatchUpdateResponse);
+
+  rpc CreateCustomizationOption(CreateCustomizationOptionRequest) returns (CustomizationOption);
+  rpc UpdateCustomizationOption(UpdateCustomizationOptionRequest) returns (CustomizationOption);
+  rpc UpdateCustomizationOptionIngredient(UpdateCustomizationOptionIngredientRequest) returns (CustomizationOption);
+  rpc ListCustomizationOptions(ListCustomizationOptionsRequest) returns (ListCustomizationOptionsResponse);
+  rpc BatchUpdateCustomizationOptionStatus(BatchUpdateStatusRequest) returns (BatchUpdateResponse);
+  rpc BatchSetCustomizationOptionStoreStatus(BatchSetOptionStoreStatusRequest) returns (BatchUpdateResponse);
+
+  rpc CreateMenu(CreateMenuRequest) returns (Menu);
+  rpc UpdateMenu(UpdateMenuRequest) returns (Menu);
+  rpc ListMenus(ListMenusRequest) returns (ListMenusResponse);
+  rpc GetMenuTree(GetMenuTreeRequest) returns (MenuTreeResponse);
+  rpc CreateMenuGroup(CreateMenuGroupRequest) returns (MenuGroup);
+  rpc UpdateMenuGroup(UpdateMenuGroupRequest) returns (MenuGroup);
+  rpc ListMenuGroups(ListMenuGroupsRequest) returns (ListMenuGroupsResponse);
+  rpc CreateMenuProduct(CreateMenuProductRequest) returns (MenuProduct);
+  rpc UpdateMenuProduct(UpdateMenuProductRequest) returns (MenuProduct);
+  rpc DeleteMenuProduct(DeleteMenuProductRequest) returns (Empty);
+  rpc ListMenuProducts(ListMenuProductsRequest) returns (ListMenuProductsResponse);
+}
+
+message Empty {}
+message BatchUpdateResponse { int32 updated_count = 1; }
+message BatchUpdateStatusRequest { repeated uint64 ids = 1; int32 status = 2; }
+
+message Product { uint64 id = 1; string name = 2; string brief = 3; string description = 4; int32 status = 5; double price = 6; string created_at = 7; string updated_at = 8; }
+message CreateProductRequest { string name = 1; string brief = 2; string description = 3; double price = 4; }
+message UpdateProductRequest { uint64 id = 1; optional string name = 2; optional string brief = 3; optional string description = 4; optional double price = 5; }
+message ListProductsRequest { int32 page = 1; int32 page_size = 2; optional int32 status = 3; string name = 4; }
+message ListProductsResponse { int64 total = 1; int32 page = 2; int32 page_size = 3; repeated Product products = 4; }
+message BatchSetProductStoreStatusRequest { uint64 store_id = 1; repeated uint64 product_ids = 2; int32 status = 3; }
+
+message CustomizationItem { uint64 id = 1; uint64 product_id = 2; string name = 3; int32 sort = 4; int32 status = 5; string created_at = 6; string updated_at = 7; }
+message CreateCustomizationItemRequest { uint64 product_id = 1; string name = 2; int32 sort = 3; }
+message UpdateCustomizationItemRequest { uint64 id = 1; optional string name = 2; optional int32 sort = 3; }
+message ListCustomizationItemsRequest { uint64 product_id = 1; int32 page = 2; int32 page_size = 3; optional int32 status = 4; string name = 5; }
+message ListCustomizationItemsResponse { int64 total = 1; int32 page = 2; int32 page_size = 3; repeated CustomizationItem items = 4; }
+
+message CustomizationOption { uint64 id = 1; uint64 item_id = 2; string name = 3; double price = 4; int32 sort = 5; int32 status = 6; optional uint64 ingredient_id = 7; optional double ingredient_quantity = 8; string created_at = 9; string updated_at = 10; }
+message CreateCustomizationOptionRequest { uint64 item_id = 1; string name = 2; double price = 3; int32 sort = 4; optional uint64 ingredient_id = 5; optional double ingredient_quantity = 6; }
+message UpdateCustomizationOptionRequest { uint64 id = 1; optional string name = 2; optional double price = 3; optional int32 sort = 4; }
+message UpdateCustomizationOptionIngredientRequest { uint64 id = 1; uint64 ingredient_id = 2; double ingredient_quantity = 3; }
+message ListCustomizationOptionsRequest { uint64 item_id = 1; int32 page = 2; int32 page_size = 3; optional int32 status = 4; string name = 5; }
+message ListCustomizationOptionsResponse { int64 total = 1; int32 page = 2; int32 page_size = 3; repeated CustomizationOption options = 4; }
+message BatchSetOptionStoreStatusRequest { uint64 store_id = 1; repeated uint64 option_ids = 2; int32 status = 3; }
+
+message Menu { uint64 id = 1; string name = 2; string description = 3; string created_at = 4; string updated_at = 5; }
+message CreateMenuRequest { string name = 1; string description = 2; }
+message UpdateMenuRequest { uint64 id = 1; optional string name = 2; optional string description = 3; }
+message ListMenusRequest { int32 page = 1; int32 page_size = 2; string name = 3; }
+message ListMenusResponse { int64 total = 1; int32 page = 2; int32 page_size = 3; repeated Menu menus = 4; }
+
+enum MenuTreeMode { MENU_TREE_MODE_UNSPECIFIED = 0; MENU_TREE_MODE_ADMIN = 1; MENU_TREE_MODE_BUSINESS = 2; }
+message GetMenuTreeRequest { uint64 menu_id = 1; MenuTreeMode mode = 2; optional uint64 store_id = 3; }
+message MenuTreeResponse { uint64 menu_id = 1; string menu_name = 2; optional uint64 store_id = 3; repeated MenuTreeGroup groups = 4; }
+message MenuTreeGroup { uint64 group_id = 1; string name = 2; int32 sort = 3; repeated MenuTreeProduct products = 4; }
+message MenuTreeProduct { uint64 product_id = 1; string name = 2; string brief = 3; double price = 4; int32 global_status = 5; optional int32 store_status = 6; int32 status = 7; }
+
+message MenuGroup { uint64 id = 1; uint64 menu_id = 2; string name = 3; int32 sort = 4; string created_at = 5; string updated_at = 6; }
+message CreateMenuGroupRequest { uint64 menu_id = 1; string name = 2; int32 sort = 3; }
+message UpdateMenuGroupRequest { uint64 id = 1; optional string name = 2; optional int32 sort = 3; }
+message ListMenuGroupsRequest { uint64 menu_id = 1; int32 page = 2; int32 page_size = 3; }
+message ListMenuGroupsResponse { int64 total = 1; int32 page = 2; int32 page_size = 3; repeated MenuGroup groups = 4; }
+
+message MenuProduct { uint64 group_id = 1; uint64 product_id = 2; int32 sort = 3; string created_at = 4; string updated_at = 5; }
+message CreateMenuProductRequest { uint64 group_id = 1; uint64 product_id = 2; int32 sort = 3; }
+message UpdateMenuProductRequest { uint64 group_id = 1; uint64 product_id = 2; int32 sort = 3; }
+message DeleteMenuProductRequest { uint64 group_id = 1; uint64 product_id = 2; }
+message ListMenuProductsRequest { uint64 group_id = 1; int32 page = 2; int32 page_size = 3; }
+message ListMenuProductsResponse { int64 total = 1; int32 page = 2; int32 page_size = 3; repeated MenuProduct menu_products = 4; }

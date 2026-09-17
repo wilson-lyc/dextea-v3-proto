@@ -1,0 +1,127 @@
+syntax = "proto3";
+
+package dextea.store.v1;
+
+option go_package = "github.com/wilson-lyc/dextea-v3-proto/gen/go/store/v1;storev1";
+
+service StoreService {
+  rpc CreateStore(CreateStoreRequest) returns (CreateStoreResponse);
+  rpc GetStore(GetStoreRequest) returns (Store);
+  rpc GetStoreByAccount(GetStoreByAccountRequest) returns (Store);
+  rpc ListStores(ListStoresRequest) returns (ListStoresResponse);
+  rpc SearchStores(SearchStoresRequest) returns (SearchStoresResponse);
+  rpc GetNearbyStores(GetNearbyStoresRequest) returns (GetNearbyStoresResponse);
+  rpc UpdateStoreProfile(UpdateStoreProfileRequest) returns (Store);
+  rpc UpdateStoreLocation(UpdateStoreLocationRequest) returns (Store);
+  rpc UpdateStoreStatus(UpdateStoreStatusRequest) returns (Store);
+  rpc ResetStorePassword(ResetStorePasswordRequest) returns (ResetStorePasswordResponse);
+}
+
+message Store {
+  uint64 id = 1;
+  string name = 2;
+  string province = 3;
+  string city = 4;
+  string district = 5;
+  string address = 6;
+  int32 status = 7;
+  string business_hours = 8;
+  string phone = 9;
+  double longitude = 10;
+  double latitude = 11;
+  string account = 12;
+  string email = 13;
+  string created_at = 14;
+  string updated_at = 15;
+}
+
+message CreateStoreRequest {
+  string name = 1;
+  string province = 2;
+  string city = 3;
+  string district = 4;
+  string address = 5;
+  string business_hours = 6;
+  string phone = 7;
+  string account = 8;
+  string email = 9;
+  double longitude = 10;
+  double latitude = 11;
+  string initial_password = 12;
+  optional int32 status = 13;
+}
+
+message CreateStoreResponse {
+  Store store = 1;
+  string initial_password = 2;
+}
+
+message GetStoreRequest { uint64 id = 1; }
+message GetStoreByAccountRequest { string account = 1; }
+
+message ListStoresRequest {
+  int32 page = 1;
+  int32 page_size = 2;
+  string keyword = 3;
+  optional int32 status = 4;
+}
+
+message ListStoresResponse {
+  int64 total = 1;
+  int32 page = 2;
+  int32 page_size = 3;
+  repeated Store stores = 4;
+}
+
+message SearchStoresRequest {
+  string city = 1;
+  string keyword = 2;
+  bool include_unavailable = 3;
+}
+
+message SearchStoresResponse { repeated Store stores = 1; }
+
+message GetNearbyStoresRequest {
+  double longitude = 1;
+  double latitude = 2;
+  double distance_km = 3;
+  int32 count = 4;
+}
+
+message NearbyStore {
+  Store store = 1;
+  double distance_km = 2;
+}
+
+message GetNearbyStoresResponse { repeated NearbyStore stores = 1; }
+
+message UpdateStoreProfileRequest {
+  uint64 id = 1;
+  optional string name = 2;
+  optional string phone = 3;
+  optional string business_hours = 4;
+  optional string email = 5;
+}
+
+message UpdateStoreLocationRequest {
+  uint64 id = 1;
+  optional string province = 2;
+  optional string city = 3;
+  optional string district = 4;
+  optional string address = 5;
+  double longitude = 6;
+  double latitude = 7;
+}
+
+message UpdateStoreStatusRequest {
+  uint64 id = 1;
+  int32 status = 2;
+}
+
+message ResetStorePasswordRequest {
+  uint64 id = 1;
+  string old_password = 2;
+  optional string new_password = 3;
+}
+
+message ResetStorePasswordResponse { string password = 1; }

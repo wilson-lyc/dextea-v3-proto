@@ -1,0 +1,76 @@
+syntax = "proto3";
+
+package dextea.order.v1;
+
+option go_package = "github.com/wilson-lyc/dextea-v3-proto/gen/go/order/v1;orderv1";
+
+service OrderService {
+  rpc GetStoreWindowOrders(GetStoreWindowOrdersRequest) returns (GetStoreWindowOrdersResponse);
+  rpc GetStoreMakingBoard(GetStoreMakingBoardRequest) returns (GetStoreMakingBoardResponse);
+  rpc GetStoreOrderDetail(GetStoreOrderDetailRequest) returns (StoreOrderDetail);
+  rpc MarkOrderReady(MarkOrderRequest) returns (Empty);
+  rpc MarkOrderCollected(MarkOrderRequest) returns (Empty);
+}
+
+message Empty {}
+message GetStoreWindowOrdersRequest { uint64 store_id = 1; int32 hours = 2; }
+message GetStoreMakingBoardRequest { uint64 store_id = 1; }
+message GetStoreOrderDetailRequest { uint64 store_id = 1; uint64 order_id = 2; }
+message MarkOrderRequest { uint64 store_id = 1; uint64 order_id = 2; }
+
+message GetStoreWindowOrdersResponse {
+  repeated StoreWindowOrderItem items = 1;
+  int64 total = 2;
+}
+message StoreWindowOrderItem {
+  uint64 order_id = 1;
+  string order_no = 2;
+  string pickup_code = 3;
+  double total_price = 4;
+  int32 total_quantity = 5;
+  int32 dining_method = 6;
+  int32 making_status = 7;
+  int32 payment_status = 8;
+  string created_at = 9;
+}
+
+message GetStoreMakingBoardResponse {
+  repeated string preparing_pickup_codes = 1;
+  repeated string ready_pickup_codes = 2;
+  int64 preparing_order_count = 3;
+  int32 preparing_product_quantity = 4;
+}
+
+message StoreOrderDetail {
+  uint64 id = 1;
+  string order_no = 2;
+  string trade_no = 3;
+  uint64 store_id = 4;
+  int32 dining_method = 5;
+  string note = 6;
+  int32 source = 7;
+  string pickup_code = 8;
+  int32 making_status = 9;
+  int32 payment_method = 10;
+  int32 payment_status = 11;
+  string payment_expired_at = 12;
+  string payment_paid_at = 13;
+  string payment_refunded_at = 14;
+  string created_at = 15;
+  string updated_at = 16;
+  double total_price = 17;
+  int32 total_quantity = 18;
+  repeated StoreOrderDetailItem items = 19;
+}
+message StoreOrderDetailItem {
+  uint64 id = 1;
+  uint64 product_id = 2;
+  string product_name = 3;
+  string sku_id = 4;
+  string customization = 5;
+  string cover_url = 6;
+  int32 quantity = 7;
+  double unit_price = 8;
+  double total_price = 9;
+  bool available = 10;
+}

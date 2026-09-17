@@ -10,6 +10,11 @@ service ProductService {
   rpc ListProducts(ListProductsRequest) returns (ListProductsResponse);
   rpc BatchUpdateProductStatus(BatchUpdateStatusRequest) returns (BatchUpdateResponse);
   rpc BatchSetProductStoreStatus(BatchSetProductStoreStatusRequest) returns (BatchUpdateResponse);
+  rpc GetProductDetail(GetProductDetailRequest) returns (ProductDetail);
+  rpc GetProductStoreStatuses(GetProductStoreStatusesRequest) returns (ProductStoreStatusesResponse);
+  rpc GetCustomizationOptionStoreStatuses(GetCustomizationOptionStoreStatusesRequest) returns (CustomizationOptionStoreStatusesResponse);
+  rpc GetProductImages(GetProductImagesRequest) returns (ProductImagesResponse);
+  rpc SetProductImages(SetProductImagesRequest) returns (ProductImagesResponse);
 
   rpc CreateCustomizationItem(CreateCustomizationItemRequest) returns (CustomizationItem);
   rpc UpdateCustomizationItem(UpdateCustomizationItemRequest) returns (CustomizationItem);
@@ -25,6 +30,7 @@ service ProductService {
 
   rpc CreateMenu(CreateMenuRequest) returns (Menu);
   rpc UpdateMenu(UpdateMenuRequest) returns (Menu);
+  rpc GetMenu(GetMenuRequest) returns (Menu);
   rpc ListMenus(ListMenusRequest) returns (ListMenusResponse);
   rpc GetMenuTree(GetMenuTreeRequest) returns (MenuTreeResponse);
   rpc CreateMenuGroup(CreateMenuGroupRequest) returns (MenuGroup);
@@ -47,6 +53,37 @@ message ListProductsRequest { int32 page = 1; int32 page_size = 2; optional int3
 message ListProductsResponse { int64 total = 1; int32 page = 2; int32 page_size = 3; repeated Product products = 4; }
 message BatchSetProductStoreStatusRequest { uint64 store_id = 1; repeated uint64 product_ids = 2; int32 status = 3; }
 
+message GetProductDetailRequest { uint64 product_id = 1; uint64 store_id = 2; }
+message ProductDetailOption {
+  CustomizationOption option = 1;
+  int32 store_status = 2;
+}
+message ProductDetailItem {
+  CustomizationItem item = 1;
+  repeated ProductDetailOption options = 2;
+}
+message ProductDetail {
+  Product product = 1;
+  int32 store_status = 2;
+  ProductImagesResponse images = 3;
+  repeated ProductDetailItem customization_items = 4;
+}
+message GetProductStoreStatusesRequest { uint64 store_id = 1; repeated uint64 product_ids = 2; }
+message ProductStoreStatusView { uint64 product_id = 1; string name = 2; int32 global_status = 3; int32 store_status = 4; }
+message ProductStoreStatusesResponse { repeated ProductStoreStatusView products = 1; }
+message GetCustomizationOptionStoreStatusesRequest { uint64 store_id = 1; repeated uint64 option_ids = 2; }
+message CustomizationOptionStoreStatusView { uint64 option_id = 1; int32 global_status = 2; int32 store_status = 3; }
+message CustomizationOptionStoreStatusesResponse { repeated CustomizationOptionStoreStatusView options = 1; }
+
+message GetProductImagesRequest { uint64 product_id = 1; }
+message SetProductImagesRequest {
+  uint64 product_id = 1;
+  optional uint64 cover_image_id = 2;
+  repeated uint64 gallery_image_ids = 3;
+}
+message ProductImage { uint64 id = 1; string url = 2; string created_at = 3; }
+message ProductImagesResponse { optional ProductImage cover = 1; repeated ProductImage gallery = 2; }
+
 message CustomizationItem { uint64 id = 1; uint64 product_id = 2; string name = 3; int32 sort = 4; int32 status = 5; string created_at = 6; string updated_at = 7; }
 message CreateCustomizationItemRequest { uint64 product_id = 1; string name = 2; int32 sort = 3; }
 message UpdateCustomizationItemRequest { uint64 id = 1; optional string name = 2; optional int32 sort = 3; }
@@ -64,6 +101,7 @@ message BatchSetOptionStoreStatusRequest { uint64 store_id = 1; repeated uint64 
 message Menu { uint64 id = 1; string name = 2; string description = 3; string created_at = 4; string updated_at = 5; }
 message CreateMenuRequest { string name = 1; string description = 2; }
 message UpdateMenuRequest { uint64 id = 1; optional string name = 2; optional string description = 3; }
+message GetMenuRequest { uint64 id = 1; }
 message ListMenusRequest { int32 page = 1; int32 page_size = 2; string name = 3; }
 message ListMenusResponse { int64 total = 1; int32 page = 2; int32 page_size = 3; repeated Menu menus = 4; }
 

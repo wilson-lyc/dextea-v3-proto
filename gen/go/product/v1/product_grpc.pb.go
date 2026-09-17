@@ -24,6 +24,11 @@ const (
 	ProductService_ListProducts_FullMethodName                           = "/dextea.product.v1.ProductService/ListProducts"
 	ProductService_BatchUpdateProductStatus_FullMethodName               = "/dextea.product.v1.ProductService/BatchUpdateProductStatus"
 	ProductService_BatchSetProductStoreStatus_FullMethodName             = "/dextea.product.v1.ProductService/BatchSetProductStoreStatus"
+	ProductService_GetProductDetail_FullMethodName                       = "/dextea.product.v1.ProductService/GetProductDetail"
+	ProductService_GetProductStoreStatuses_FullMethodName                = "/dextea.product.v1.ProductService/GetProductStoreStatuses"
+	ProductService_GetCustomizationOptionStoreStatuses_FullMethodName    = "/dextea.product.v1.ProductService/GetCustomizationOptionStoreStatuses"
+	ProductService_GetProductImages_FullMethodName                       = "/dextea.product.v1.ProductService/GetProductImages"
+	ProductService_SetProductImages_FullMethodName                       = "/dextea.product.v1.ProductService/SetProductImages"
 	ProductService_CreateCustomizationItem_FullMethodName                = "/dextea.product.v1.ProductService/CreateCustomizationItem"
 	ProductService_UpdateCustomizationItem_FullMethodName                = "/dextea.product.v1.ProductService/UpdateCustomizationItem"
 	ProductService_ListCustomizationItems_FullMethodName                 = "/dextea.product.v1.ProductService/ListCustomizationItems"
@@ -36,6 +41,7 @@ const (
 	ProductService_BatchSetCustomizationOptionStoreStatus_FullMethodName = "/dextea.product.v1.ProductService/BatchSetCustomizationOptionStoreStatus"
 	ProductService_CreateMenu_FullMethodName                             = "/dextea.product.v1.ProductService/CreateMenu"
 	ProductService_UpdateMenu_FullMethodName                             = "/dextea.product.v1.ProductService/UpdateMenu"
+	ProductService_GetMenu_FullMethodName                                = "/dextea.product.v1.ProductService/GetMenu"
 	ProductService_ListMenus_FullMethodName                              = "/dextea.product.v1.ProductService/ListMenus"
 	ProductService_GetMenuTree_FullMethodName                            = "/dextea.product.v1.ProductService/GetMenuTree"
 	ProductService_CreateMenuGroup_FullMethodName                        = "/dextea.product.v1.ProductService/CreateMenuGroup"
@@ -56,6 +62,11 @@ type ProductServiceClient interface {
 	ListProducts(ctx context.Context, in *ListProductsRequest, opts ...grpc.CallOption) (*ListProductsResponse, error)
 	BatchUpdateProductStatus(ctx context.Context, in *BatchUpdateStatusRequest, opts ...grpc.CallOption) (*BatchUpdateResponse, error)
 	BatchSetProductStoreStatus(ctx context.Context, in *BatchSetProductStoreStatusRequest, opts ...grpc.CallOption) (*BatchUpdateResponse, error)
+	GetProductDetail(ctx context.Context, in *GetProductDetailRequest, opts ...grpc.CallOption) (*ProductDetail, error)
+	GetProductStoreStatuses(ctx context.Context, in *GetProductStoreStatusesRequest, opts ...grpc.CallOption) (*ProductStoreStatusesResponse, error)
+	GetCustomizationOptionStoreStatuses(ctx context.Context, in *GetCustomizationOptionStoreStatusesRequest, opts ...grpc.CallOption) (*CustomizationOptionStoreStatusesResponse, error)
+	GetProductImages(ctx context.Context, in *GetProductImagesRequest, opts ...grpc.CallOption) (*ProductImagesResponse, error)
+	SetProductImages(ctx context.Context, in *SetProductImagesRequest, opts ...grpc.CallOption) (*ProductImagesResponse, error)
 	CreateCustomizationItem(ctx context.Context, in *CreateCustomizationItemRequest, opts ...grpc.CallOption) (*CustomizationItem, error)
 	UpdateCustomizationItem(ctx context.Context, in *UpdateCustomizationItemRequest, opts ...grpc.CallOption) (*CustomizationItem, error)
 	ListCustomizationItems(ctx context.Context, in *ListCustomizationItemsRequest, opts ...grpc.CallOption) (*ListCustomizationItemsResponse, error)
@@ -68,6 +79,7 @@ type ProductServiceClient interface {
 	BatchSetCustomizationOptionStoreStatus(ctx context.Context, in *BatchSetOptionStoreStatusRequest, opts ...grpc.CallOption) (*BatchUpdateResponse, error)
 	CreateMenu(ctx context.Context, in *CreateMenuRequest, opts ...grpc.CallOption) (*Menu, error)
 	UpdateMenu(ctx context.Context, in *UpdateMenuRequest, opts ...grpc.CallOption) (*Menu, error)
+	GetMenu(ctx context.Context, in *GetMenuRequest, opts ...grpc.CallOption) (*Menu, error)
 	ListMenus(ctx context.Context, in *ListMenusRequest, opts ...grpc.CallOption) (*ListMenusResponse, error)
 	GetMenuTree(ctx context.Context, in *GetMenuTreeRequest, opts ...grpc.CallOption) (*MenuTreeResponse, error)
 	CreateMenuGroup(ctx context.Context, in *CreateMenuGroupRequest, opts ...grpc.CallOption) (*MenuGroup, error)
@@ -131,6 +143,56 @@ func (c *productServiceClient) BatchSetProductStoreStatus(ctx context.Context, i
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(BatchUpdateResponse)
 	err := c.cc.Invoke(ctx, ProductService_BatchSetProductStoreStatus_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *productServiceClient) GetProductDetail(ctx context.Context, in *GetProductDetailRequest, opts ...grpc.CallOption) (*ProductDetail, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ProductDetail)
+	err := c.cc.Invoke(ctx, ProductService_GetProductDetail_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *productServiceClient) GetProductStoreStatuses(ctx context.Context, in *GetProductStoreStatusesRequest, opts ...grpc.CallOption) (*ProductStoreStatusesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ProductStoreStatusesResponse)
+	err := c.cc.Invoke(ctx, ProductService_GetProductStoreStatuses_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *productServiceClient) GetCustomizationOptionStoreStatuses(ctx context.Context, in *GetCustomizationOptionStoreStatusesRequest, opts ...grpc.CallOption) (*CustomizationOptionStoreStatusesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CustomizationOptionStoreStatusesResponse)
+	err := c.cc.Invoke(ctx, ProductService_GetCustomizationOptionStoreStatuses_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *productServiceClient) GetProductImages(ctx context.Context, in *GetProductImagesRequest, opts ...grpc.CallOption) (*ProductImagesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ProductImagesResponse)
+	err := c.cc.Invoke(ctx, ProductService_GetProductImages_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *productServiceClient) SetProductImages(ctx context.Context, in *SetProductImagesRequest, opts ...grpc.CallOption) (*ProductImagesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ProductImagesResponse)
+	err := c.cc.Invoke(ctx, ProductService_SetProductImages_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -257,6 +319,16 @@ func (c *productServiceClient) UpdateMenu(ctx context.Context, in *UpdateMenuReq
 	return out, nil
 }
 
+func (c *productServiceClient) GetMenu(ctx context.Context, in *GetMenuRequest, opts ...grpc.CallOption) (*Menu, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Menu)
+	err := c.cc.Invoke(ctx, ProductService_GetMenu_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *productServiceClient) ListMenus(ctx context.Context, in *ListMenusRequest, opts ...grpc.CallOption) (*ListMenusResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListMenusResponse)
@@ -356,6 +428,11 @@ type ProductServiceServer interface {
 	ListProducts(context.Context, *ListProductsRequest) (*ListProductsResponse, error)
 	BatchUpdateProductStatus(context.Context, *BatchUpdateStatusRequest) (*BatchUpdateResponse, error)
 	BatchSetProductStoreStatus(context.Context, *BatchSetProductStoreStatusRequest) (*BatchUpdateResponse, error)
+	GetProductDetail(context.Context, *GetProductDetailRequest) (*ProductDetail, error)
+	GetProductStoreStatuses(context.Context, *GetProductStoreStatusesRequest) (*ProductStoreStatusesResponse, error)
+	GetCustomizationOptionStoreStatuses(context.Context, *GetCustomizationOptionStoreStatusesRequest) (*CustomizationOptionStoreStatusesResponse, error)
+	GetProductImages(context.Context, *GetProductImagesRequest) (*ProductImagesResponse, error)
+	SetProductImages(context.Context, *SetProductImagesRequest) (*ProductImagesResponse, error)
 	CreateCustomizationItem(context.Context, *CreateCustomizationItemRequest) (*CustomizationItem, error)
 	UpdateCustomizationItem(context.Context, *UpdateCustomizationItemRequest) (*CustomizationItem, error)
 	ListCustomizationItems(context.Context, *ListCustomizationItemsRequest) (*ListCustomizationItemsResponse, error)
@@ -368,6 +445,7 @@ type ProductServiceServer interface {
 	BatchSetCustomizationOptionStoreStatus(context.Context, *BatchSetOptionStoreStatusRequest) (*BatchUpdateResponse, error)
 	CreateMenu(context.Context, *CreateMenuRequest) (*Menu, error)
 	UpdateMenu(context.Context, *UpdateMenuRequest) (*Menu, error)
+	GetMenu(context.Context, *GetMenuRequest) (*Menu, error)
 	ListMenus(context.Context, *ListMenusRequest) (*ListMenusResponse, error)
 	GetMenuTree(context.Context, *GetMenuTreeRequest) (*MenuTreeResponse, error)
 	CreateMenuGroup(context.Context, *CreateMenuGroupRequest) (*MenuGroup, error)
@@ -401,6 +479,21 @@ func (UnimplementedProductServiceServer) BatchUpdateProductStatus(context.Contex
 }
 func (UnimplementedProductServiceServer) BatchSetProductStoreStatus(context.Context, *BatchSetProductStoreStatusRequest) (*BatchUpdateResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method BatchSetProductStoreStatus not implemented")
+}
+func (UnimplementedProductServiceServer) GetProductDetail(context.Context, *GetProductDetailRequest) (*ProductDetail, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetProductDetail not implemented")
+}
+func (UnimplementedProductServiceServer) GetProductStoreStatuses(context.Context, *GetProductStoreStatusesRequest) (*ProductStoreStatusesResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetProductStoreStatuses not implemented")
+}
+func (UnimplementedProductServiceServer) GetCustomizationOptionStoreStatuses(context.Context, *GetCustomizationOptionStoreStatusesRequest) (*CustomizationOptionStoreStatusesResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetCustomizationOptionStoreStatuses not implemented")
+}
+func (UnimplementedProductServiceServer) GetProductImages(context.Context, *GetProductImagesRequest) (*ProductImagesResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetProductImages not implemented")
+}
+func (UnimplementedProductServiceServer) SetProductImages(context.Context, *SetProductImagesRequest) (*ProductImagesResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SetProductImages not implemented")
 }
 func (UnimplementedProductServiceServer) CreateCustomizationItem(context.Context, *CreateCustomizationItemRequest) (*CustomizationItem, error) {
 	return nil, status.Error(codes.Unimplemented, "method CreateCustomizationItem not implemented")
@@ -437,6 +530,9 @@ func (UnimplementedProductServiceServer) CreateMenu(context.Context, *CreateMenu
 }
 func (UnimplementedProductServiceServer) UpdateMenu(context.Context, *UpdateMenuRequest) (*Menu, error) {
 	return nil, status.Error(codes.Unimplemented, "method UpdateMenu not implemented")
+}
+func (UnimplementedProductServiceServer) GetMenu(context.Context, *GetMenuRequest) (*Menu, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetMenu not implemented")
 }
 func (UnimplementedProductServiceServer) ListMenus(context.Context, *ListMenusRequest) (*ListMenusResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListMenus not implemented")
@@ -572,6 +668,96 @@ func _ProductService_BatchSetProductStoreStatus_Handler(srv interface{}, ctx con
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ProductServiceServer).BatchSetProductStoreStatus(ctx, req.(*BatchSetProductStoreStatusRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ProductService_GetProductDetail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetProductDetailRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProductServiceServer).GetProductDetail(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProductService_GetProductDetail_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProductServiceServer).GetProductDetail(ctx, req.(*GetProductDetailRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ProductService_GetProductStoreStatuses_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetProductStoreStatusesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProductServiceServer).GetProductStoreStatuses(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProductService_GetProductStoreStatuses_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProductServiceServer).GetProductStoreStatuses(ctx, req.(*GetProductStoreStatusesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ProductService_GetCustomizationOptionStoreStatuses_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCustomizationOptionStoreStatusesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProductServiceServer).GetCustomizationOptionStoreStatuses(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProductService_GetCustomizationOptionStoreStatuses_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProductServiceServer).GetCustomizationOptionStoreStatuses(ctx, req.(*GetCustomizationOptionStoreStatusesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ProductService_GetProductImages_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetProductImagesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProductServiceServer).GetProductImages(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProductService_GetProductImages_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProductServiceServer).GetProductImages(ctx, req.(*GetProductImagesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ProductService_SetProductImages_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetProductImagesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProductServiceServer).SetProductImages(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProductService_SetProductImages_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProductServiceServer).SetProductImages(ctx, req.(*SetProductImagesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -792,6 +978,24 @@ func _ProductService_UpdateMenu_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ProductService_GetMenu_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetMenuRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProductServiceServer).GetMenu(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProductService_GetMenu_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProductServiceServer).GetMenu(ctx, req.(*GetMenuRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _ProductService_ListMenus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListMenusRequest)
 	if err := dec(in); err != nil {
@@ -982,6 +1186,26 @@ var ProductService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _ProductService_BatchSetProductStoreStatus_Handler,
 		},
 		{
+			MethodName: "GetProductDetail",
+			Handler:    _ProductService_GetProductDetail_Handler,
+		},
+		{
+			MethodName: "GetProductStoreStatuses",
+			Handler:    _ProductService_GetProductStoreStatuses_Handler,
+		},
+		{
+			MethodName: "GetCustomizationOptionStoreStatuses",
+			Handler:    _ProductService_GetCustomizationOptionStoreStatuses_Handler,
+		},
+		{
+			MethodName: "GetProductImages",
+			Handler:    _ProductService_GetProductImages_Handler,
+		},
+		{
+			MethodName: "SetProductImages",
+			Handler:    _ProductService_SetProductImages_Handler,
+		},
+		{
 			MethodName: "CreateCustomizationItem",
 			Handler:    _ProductService_CreateCustomizationItem_Handler,
 		},
@@ -1028,6 +1252,10 @@ var ProductService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateMenu",
 			Handler:    _ProductService_UpdateMenu_Handler,
+		},
+		{
+			MethodName: "GetMenu",
+			Handler:    _ProductService_GetMenu_Handler,
 		},
 		{
 			MethodName: "ListMenus",

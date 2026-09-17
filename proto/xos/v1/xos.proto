@@ -1,0 +1,33 @@
+syntax = "proto3";
+package xos.v1;
+option go_package = "github.com/wilson-lyc/dextea-v3-proto/gen/go/xos/v1;xosv1";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+service XOSService {
+  rpc Upload(UploadRequest) returns (UploadResponse);
+  rpc ListPage(ListPageRequest) returns (ListPageResponse);
+  rpc Delete(IDRequest) returns (google.protobuf.Empty);
+  rpc ValidateID(IDRequest) returns (ValidateIDResponse);
+  rpc GetURLs(GetURLsRequest) returns (GetURLsResponse);
+}
+message UploadRequest {
+  string source = 1;
+  string bucket = 2;
+  string object_key = 3;
+  string file_name = 4;
+  bytes content = 5;
+}
+message UploadResponse { string bucket = 1; string object_key = 2; int64 size = 3; string etag = 4; }
+message ListPageRequest { int32 page = 1; int32 page_size = 2; }
+message Gallery {
+  int64 id = 1; string source = 2; string url = 3; string object_key = 4;
+  string name = 5; google.protobuf.Timestamp created_at = 6;
+}
+message ListPageResponse {
+  repeated Gallery list = 1; int64 total = 2; int32 page = 3;
+  int32 page_size = 4; int64 total_pages = 5;
+}
+message IDRequest { int64 id = 1; }
+message ValidateIDResponse { int64 id = 1; bool valid = 2; }
+message GetURLsRequest { repeated int64 ids = 1; }
+message GetURLsResponse { map<int64, string> urls = 1; }

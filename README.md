@@ -19,3 +19,7 @@ make test
 需要安装 `protoc`、`protoc-gen-go` 和 `protoc-gen-go-grpc`。其他语言的项目应直接基于 `proto/` 生成各自客户端代码。
 
 协议发布后，各服务通过仓库版本或 Git tag 固定依赖。对现有字段应保持向后兼容：不要修改已发布字段编号，不要复用已删除字段编号。
+
+## XOS 图片服务
+
+`proto/xos/v1/xos.proto` 定义上传、图库分页、删除、存在性校验和批量 URL 查询。生成的 Go 包为 `gen/go/xos/v1`。上传使用 bytes 字段传递原始图片内容，调用方需匹配服务配置的消息大小限制。

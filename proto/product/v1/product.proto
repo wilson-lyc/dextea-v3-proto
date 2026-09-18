@@ -8,6 +8,7 @@ service ProductService {
   rpc CreateProduct(CreateProductRequest) returns (Product);
   rpc UpdateProduct(UpdateProductRequest) returns (Product);
   rpc ListProducts(ListProductsRequest) returns (ListProductsResponse);
+  rpc GetProductStats(GetProductStatsRequest) returns (ProductStats);
   rpc BatchUpdateProductStatus(BatchUpdateStatusRequest) returns (BatchUpdateResponse);
   rpc BatchSetProductStoreStatus(BatchSetProductStoreStatusRequest) returns (BatchUpdateResponse);
   rpc GetProductDetail(GetProductDetailRequest) returns (ProductDetail);
@@ -40,6 +41,35 @@ service ProductService {
   rpc UpdateMenuProduct(UpdateMenuProductRequest) returns (MenuProduct);
   rpc DeleteMenuProduct(DeleteMenuProductRequest) returns (Empty);
   rpc ListMenuProducts(ListMenuProductsRequest) returns (ListMenuProductsResponse);
+  rpc DeleteMenu(DeleteMenuRequest) returns (Empty);
+  rpc DeleteMenuGroup(DeleteMenuGroupRequest) returns (Empty);
+  rpc ListTags(ListTagsRequest) returns (ListTagsResponse);
+  rpc CreateTag(CreateTagRequest) returns (Tag);
+  rpc UpdateTag(UpdateTagRequest) returns (Tag);
+  rpc DeleteTag(DeleteTagRequest) returns (Empty);
+  rpc ListProductTags(ListProductTagsRequest) returns (ListProductTagsResponse);
+  rpc BindProductTags(BindProductTagsRequest) returns (BatchUpdateResponse);
+  rpc UnbindProductTags(BindProductTagsRequest) returns (BatchUpdateResponse);
+  rpc ListTagProducts(ListTagProductsRequest) returns (ListTagProductsResponse);
+  rpc BindTagProducts(BindTagProductsRequest) returns (BatchUpdateResponse);
+  rpc UnbindTagProducts(BindTagProductsRequest) returns (BatchUpdateResponse);
+  rpc CreateIngredient(CreateIngredientRequest) returns (Ingredient);
+  rpc GetIngredient(GetIngredientRequest) returns (Ingredient);
+  rpc UpdateIngredient(UpdateIngredientRequest) returns (Ingredient);
+  rpc ListIngredients(ListIngredientsRequest) returns (ListIngredientsResponse);
+  rpc ListIngredientSelect(ListIngredientSelectRequest) returns (ListIngredientSelectResponse);
+  rpc ListProductIngredients(ListProductIngredientsRequest) returns (ListProductIngredientsResponse);
+  rpc BindProductIngredient(BindProductIngredientRequest) returns (ProductIngredient);
+  rpc UpdateProductIngredient(UpdateProductIngredientRequest) returns (ProductIngredient);
+  rpc DeleteProductIngredient(DeleteProductIngredientRequest) returns (Empty);
+  rpc ListIngredientProducts(ListIngredientRelationsRequest) returns (ListIngredientProductsResponse);
+  rpc ListIngredientOptions(ListIngredientRelationsRequest) returns (ListIngredientOptionsResponse);
+  rpc ListStoreIngredients(ListStoreIngredientsRequest) returns (ListStoreIngredientsResponse);
+  rpc ExportCustomization(ExportCustomizationRequest) returns (ExportCustomizationResponse);
+  rpc ImportCustomization(ImportCustomizationRequest) returns (ImportCustomizationResponse);
+  rpc ListMenuStores(ListMenuStoresRequest) returns (ListMenuStoresResponse);
+  rpc DispatchMenuByStores(DispatchMenuByStoresRequest) returns (BatchUpdateResponse);
+  rpc DispatchMenuByArea(DispatchMenuByAreaRequest) returns (BatchUpdateResponse);
 }
 
 message Empty {}
@@ -49,8 +79,16 @@ message BatchUpdateStatusRequest { repeated uint64 ids = 1; int32 status = 2; }
 message Product { uint64 id = 1; string name = 2; string brief = 3; string description = 4; int32 status = 5; double price = 6; string created_at = 7; string updated_at = 8; }
 message CreateProductRequest { string name = 1; string brief = 2; string description = 3; double price = 4; }
 message UpdateProductRequest { uint64 id = 1; optional string name = 2; optional string brief = 3; optional string description = 4; optional double price = 5; }
-message ListProductsRequest { int32 page = 1; int32 page_size = 2; optional int32 status = 3; string name = 4; }
+message ListProductsRequest { int32 page = 1; int32 page_size = 2; optional int32 status = 3; string name = 4; repeated uint64 tag_ids = 5; }
 message ListProductsResponse { int64 total = 1; int32 page = 2; int32 page_size = 3; repeated Product products = 4; }
+message GetProductStatsRequest {}
+message ProductStats {
+  int64 product_count = 1;
+  int64 menu_count = 2;
+  int64 ingredient_count = 3;
+  int64 tag_count = 4;
+  int64 customization_count = 5;
+}
 message BatchSetProductStoreStatusRequest { uint64 store_id = 1; repeated uint64 product_ids = 2; int32 status = 3; }
 
 message GetProductDetailRequest { uint64 product_id = 1; uint64 store_id = 2; }
@@ -83,17 +121,16 @@ message SetProductImagesRequest {
 }
 message ProductImage { uint64 id = 1; string url = 2; string created_at = 3; }
 message ProductImagesResponse { optional ProductImage cover = 1; repeated ProductImage gallery = 2; }
-
 message CustomizationItem { uint64 id = 1; uint64 product_id = 2; string name = 3; int32 sort = 4; int32 status = 5; string created_at = 6; string updated_at = 7; }
 message CreateCustomizationItemRequest { uint64 product_id = 1; string name = 2; int32 sort = 3; }
 message UpdateCustomizationItemRequest { uint64 id = 1; optional string name = 2; optional int32 sort = 3; }
-message ListCustomizationItemsRequest { uint64 product_id = 1; int32 page = 2; int32 page_size = 3; optional int32 status = 4; string name = 5; }
+message ListCustomizationItemsRequest { optional uint64 product_id = 1; int32 page = 2; int32 page_size = 3; optional int32 status = 4; string name = 5; }
 message ListCustomizationItemsResponse { int64 total = 1; int32 page = 2; int32 page_size = 3; repeated CustomizationItem items = 4; }
 
 message CustomizationOption { uint64 id = 1; uint64 item_id = 2; string name = 3; double price = 4; int32 sort = 5; int32 status = 6; optional uint64 ingredient_id = 7; optional double ingredient_quantity = 8; string created_at = 9; string updated_at = 10; }
 message CreateCustomizationOptionRequest { uint64 item_id = 1; string name = 2; double price = 3; int32 sort = 4; optional uint64 ingredient_id = 5; optional double ingredient_quantity = 6; }
 message UpdateCustomizationOptionRequest { uint64 id = 1; optional string name = 2; optional double price = 3; optional int32 sort = 4; }
-message UpdateCustomizationOptionIngredientRequest { uint64 id = 1; uint64 ingredient_id = 2; double ingredient_quantity = 3; }
+message UpdateCustomizationOptionIngredientRequest { uint64 id = 1; optional uint64 ingredient_id = 2; optional double ingredient_quantity = 3; }
 message ListCustomizationOptionsRequest { uint64 item_id = 1; int32 page = 2; int32 page_size = 3; optional int32 status = 4; string name = 5; }
 message ListCustomizationOptionsResponse { int64 total = 1; int32 page = 2; int32 page_size = 3; repeated CustomizationOption options = 4; }
 message BatchSetOptionStoreStatusRequest { uint64 store_id = 1; repeated uint64 option_ids = 2; int32 status = 3; }
@@ -123,3 +160,57 @@ message UpdateMenuProductRequest { uint64 group_id = 1; uint64 product_id = 2; i
 message DeleteMenuProductRequest { uint64 group_id = 1; uint64 product_id = 2; }
 message ListMenuProductsRequest { uint64 group_id = 1; int32 page = 2; int32 page_size = 3; }
 message ListMenuProductsResponse { int64 total = 1; int32 page = 2; int32 page_size = 3; repeated MenuProduct menu_products = 4; }
+
+message DeleteMenuRequest { uint64 id = 1; }
+message DeleteMenuGroupRequest { uint64 id = 1; }
+message Tag { uint64 id = 1; string name = 2; string created_at = 3; string updated_at = 4; }
+message ListTagsRequest { int32 page = 1; int32 page_size = 2; string name = 3; }
+message ListTagsResponse { int64 total = 1; int32 page = 2; int32 page_size = 3; repeated Tag tags = 4; }
+message CreateTagRequest { string name = 1; }
+message UpdateTagRequest { uint64 id = 1; string name = 2; }
+message DeleteTagRequest { uint64 id = 1; }
+message ListProductTagsRequest { uint64 product_id = 1; int32 page = 2; int32 page_size = 3; }
+message ProductTag { uint64 id = 1; string name = 2; }
+message ListProductTagsResponse { int64 total = 1; int32 page = 2; int32 page_size = 3; repeated ProductTag tags = 4; }
+message BindProductTagsRequest { uint64 product_id = 1; repeated uint64 tag_ids = 2; }
+message ListTagProductsRequest { uint64 tag_id = 1; int32 page = 2; int32 page_size = 3; }
+message TagProduct { uint64 product_id = 1; string product_name = 2; }
+message ListTagProductsResponse { int64 total = 1; int32 page = 2; int32 page_size = 3; repeated TagProduct products = 4; }
+message BindTagProductsRequest { uint64 tag_id = 1; repeated uint64 product_ids = 2; }
+
+message Ingredient { uint64 id = 1; string name = 2; string unit = 3; int32 status = 4; string created_at = 5; string updated_at = 6; }
+message CreateIngredientRequest { string name = 1; string unit = 2; int32 status = 3; }
+message GetIngredientRequest { uint64 id = 1; }
+message UpdateIngredientRequest { uint64 id = 1; optional string name = 2; optional string unit = 3; optional int32 status = 4; }
+message ListIngredientsRequest { int32 page = 1; int32 page_size = 2; string name = 3; optional int32 status = 4; }
+message ListIngredientsResponse { int64 total = 1; int32 page = 2; int32 page_size = 3; repeated Ingredient ingredients = 4; }
+message ListIngredientSelectRequest {}
+message IngredientSelect { string label = 1; string value = 2; string unit = 3; }
+message ListIngredientSelectResponse { repeated IngredientSelect ingredients = 1; }
+message ProductIngredient { uint64 product_id = 1; uint64 ingredient_id = 2; string ingredient_name = 3; string unit = 4; double quantity = 5; int32 sort = 6; }
+message ListProductIngredientsRequest { uint64 product_id = 1; int32 page = 2; int32 page_size = 3; }
+message ListProductIngredientsResponse { int64 total = 1; int32 page = 2; int32 page_size = 3; repeated ProductIngredient ingredients = 4; }
+message BindProductIngredientRequest { uint64 product_id = 1; uint64 ingredient_id = 2; double quantity = 3; int32 sort = 4; }
+message UpdateProductIngredientRequest { uint64 product_id = 1; uint64 ingredient_id = 2; optional double quantity = 3; optional int32 sort = 4; }
+message DeleteProductIngredientRequest { uint64 product_id = 1; uint64 ingredient_id = 2; }
+message ListIngredientRelationsRequest { uint64 ingredient_id = 1; int32 page = 2; int32 page_size = 3; }
+message IngredientProduct { uint64 product_id = 1; string product_name = 2; double quantity = 3; int32 sort = 4; }
+message ListIngredientProductsResponse { int64 total = 1; int32 page = 2; int32 page_size = 3; repeated IngredientProduct products = 4; }
+message IngredientOption { uint64 option_id = 1; string option_name = 2; string customization_name = 3; double quantity = 4; }
+message ListIngredientOptionsResponse { int64 total = 1; int32 page = 2; int32 page_size = 3; repeated IngredientOption options = 4; }
+message ListStoreIngredientsRequest { uint64 store_id = 1; int32 page = 2; int32 page_size = 3; }
+message StoreIngredient { uint64 id = 1; string name = 2; string unit = 3; double quantity = 4; }
+message ListStoreIngredientsResponse { int64 total = 1; int32 page = 2; int32 page_size = 3; repeated StoreIngredient ingredients = 4; }
+message ExportCustomizationRequest { uint64 product_id = 1; repeated uint64 item_ids = 2; }
+message ExportCustomizationOption { string name = 1; double price = 2; int32 sort = 3; }
+message ExportCustomizationItem { string name = 1; repeated ExportCustomizationOption options = 2; }
+message ExportCustomizationResponse { uint64 product_id = 1; repeated ExportCustomizationItem items = 2; }
+message ImportCustomizationOption { string name = 1; double price = 2; int32 sort = 3; }
+message ImportCustomizationItem { string name = 1; int32 sort = 2; repeated ImportCustomizationOption options = 3; }
+message ImportCustomizationRequest { uint64 product_id = 1; repeated ImportCustomizationItem items = 2; }
+message ImportCustomizationResponse { int32 imported_item_count = 1; int32 imported_option_count = 2; }
+message ListMenuStoresRequest { uint64 menu_id = 1; int32 page = 2; int32 page_size = 3; }
+message MenuStore { uint64 id = 1; string name = 2; string province = 3; string city = 4; string district = 5; int32 status = 6; bool bound = 7; }
+message ListMenuStoresResponse { int64 total = 1; int32 page = 2; int32 page_size = 3; repeated MenuStore stores = 4; }
+message DispatchMenuByStoresRequest { uint64 menu_id = 1; repeated uint64 store_ids = 2; }
+message DispatchMenuByAreaRequest { uint64 menu_id = 1; string province = 2; string city = 3; string district = 4; }

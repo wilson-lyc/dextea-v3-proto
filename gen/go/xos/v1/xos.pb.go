@@ -105,6 +105,9 @@ type UploadResponse struct {
 	ObjectKey     string                 `protobuf:"bytes,2,opt,name=object_key,json=objectKey,proto3" json:"object_key,omitempty"`
 	Size          int64                  `protobuf:"varint,3,opt,name=size,proto3" json:"size,omitempty"`
 	Etag          string                 `protobuf:"bytes,4,opt,name=etag,proto3" json:"etag,omitempty"`
+	GalleryId     int64                  `protobuf:"varint,5,opt,name=gallery_id,json=galleryId,proto3" json:"gallery_id,omitempty"`
+	Url           string                 `protobuf:"bytes,6,opt,name=url,proto3" json:"url,omitempty"`
+	Name          string                 `protobuf:"bytes,7,opt,name=name,proto3" json:"name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -163,6 +166,27 @@ func (x *UploadResponse) GetSize() int64 {
 func (x *UploadResponse) GetEtag() string {
 	if x != nil {
 		return x.Etag
+	}
+	return ""
+}
+
+func (x *UploadResponse) GetGalleryId() int64 {
+	if x != nil {
+		return x.GalleryId
+	}
+	return 0
+}
+
+func (x *UploadResponse) GetUrl() string {
+	if x != nil {
+		return x.Url
+	}
+	return ""
+}
+
+func (x *UploadResponse) GetName() string {
+	if x != nil {
+		return x.Name
 	}
 	return ""
 }
@@ -563,6 +587,58 @@ func (x *GetURLsResponse) GetUrls() map[int64]string {
 	return nil
 }
 
+type UpdateNameRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateNameRequest) Reset() {
+	*x = UpdateNameRequest{}
+	mi := &file_xos_v1_xos_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateNameRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateNameRequest) ProtoMessage() {}
+
+func (x *UpdateNameRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_xos_v1_xos_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateNameRequest.ProtoReflect.Descriptor instead.
+func (*UpdateNameRequest) Descriptor() ([]byte, []int) {
+	return file_xos_v1_xos_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *UpdateNameRequest) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *UpdateNameRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
 var File_xos_v1_xos_proto protoreflect.FileDescriptor
 
 const file_xos_v1_xos_proto_rawDesc = "" +
@@ -574,13 +650,17 @@ const file_xos_v1_xos_proto_rawDesc = "" +
 	"\n" +
 	"object_key\x18\x03 \x01(\tR\tobjectKey\x12\x1b\n" +
 	"\tfile_name\x18\x04 \x01(\tR\bfileName\x12\x18\n" +
-	"\acontent\x18\x05 \x01(\fR\acontent\"o\n" +
+	"\acontent\x18\x05 \x01(\fR\acontent\"\xb4\x01\n" +
 	"\x0eUploadResponse\x12\x16\n" +
 	"\x06bucket\x18\x01 \x01(\tR\x06bucket\x12\x1d\n" +
 	"\n" +
 	"object_key\x18\x02 \x01(\tR\tobjectKey\x12\x12\n" +
 	"\x04size\x18\x03 \x01(\x03R\x04size\x12\x12\n" +
-	"\x04etag\x18\x04 \x01(\tR\x04etag\"B\n" +
+	"\x04etag\x18\x04 \x01(\tR\x04etag\x12\x1d\n" +
+	"\n" +
+	"gallery_id\x18\x05 \x01(\x03R\tgalleryId\x12\x10\n" +
+	"\x03url\x18\x06 \x01(\tR\x03url\x12\x12\n" +
+	"\x04name\x18\a \x01(\tR\x04name\"B\n" +
 	"\x0fListPageRequest\x12\x12\n" +
 	"\x04page\x18\x01 \x01(\x05R\x04page\x12\x1b\n" +
 	"\tpage_size\x18\x02 \x01(\x05R\bpageSize\"\xb1\x01\n" +
@@ -611,7 +691,10 @@ const file_xos_v1_xos_proto_rawDesc = "" +
 	"\x04urls\x18\x01 \x03(\v2!.xos.v1.GetURLsResponse.UrlsEntryR\x04urls\x1a7\n" +
 	"\tUrlsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x03R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x012\xb2\x02\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"7\n" +
+	"\x11UpdateNameRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name2\xec\x02\n" +
 	"\n" +
 	"XOSService\x127\n" +
 	"\x06Upload\x12\x15.xos.v1.UploadRequest\x1a\x16.xos.v1.UploadResponse\x12=\n" +
@@ -619,7 +702,9 @@ const file_xos_v1_xos_proto_rawDesc = "" +
 	"\x06Delete\x12\x11.xos.v1.IDRequest\x1a\x16.google.protobuf.Empty\x12;\n" +
 	"\n" +
 	"ValidateID\x12\x11.xos.v1.IDRequest\x1a\x1a.xos.v1.ValidateIDResponse\x12:\n" +
-	"\aGetURLs\x12\x16.xos.v1.GetURLsRequest\x1a\x17.xos.v1.GetURLsResponseB;Z9github.com/wilson-lyc/dextea-v3-proto/gen/go/xos/v1;xosv1b\x06proto3"
+	"\aGetURLs\x12\x16.xos.v1.GetURLsRequest\x1a\x17.xos.v1.GetURLsResponse\x128\n" +
+	"\n" +
+	"UpdateName\x12\x19.xos.v1.UpdateNameRequest\x1a\x0f.xos.v1.GalleryB;Z9github.com/wilson-lyc/dextea-v3-proto/gen/go/xos/v1;xosv1b\x06proto3"
 
 var (
 	file_xos_v1_xos_proto_rawDescOnce sync.Once
@@ -633,7 +718,7 @@ func file_xos_v1_xos_proto_rawDescGZIP() []byte {
 	return file_xos_v1_xos_proto_rawDescData
 }
 
-var file_xos_v1_xos_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_xos_v1_xos_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_xos_v1_xos_proto_goTypes = []any{
 	(*UploadRequest)(nil),         // 0: xos.v1.UploadRequest
 	(*UploadResponse)(nil),        // 1: xos.v1.UploadResponse
@@ -644,26 +729,29 @@ var file_xos_v1_xos_proto_goTypes = []any{
 	(*ValidateIDResponse)(nil),    // 6: xos.v1.ValidateIDResponse
 	(*GetURLsRequest)(nil),        // 7: xos.v1.GetURLsRequest
 	(*GetURLsResponse)(nil),       // 8: xos.v1.GetURLsResponse
-	nil,                           // 9: xos.v1.GetURLsResponse.UrlsEntry
-	(*timestamppb.Timestamp)(nil), // 10: google.protobuf.Timestamp
-	(*emptypb.Empty)(nil),         // 11: google.protobuf.Empty
+	(*UpdateNameRequest)(nil),     // 9: xos.v1.UpdateNameRequest
+	nil,                           // 10: xos.v1.GetURLsResponse.UrlsEntry
+	(*timestamppb.Timestamp)(nil), // 11: google.protobuf.Timestamp
+	(*emptypb.Empty)(nil),         // 12: google.protobuf.Empty
 }
 var file_xos_v1_xos_proto_depIdxs = []int32{
-	10, // 0: xos.v1.Gallery.created_at:type_name -> google.protobuf.Timestamp
+	11, // 0: xos.v1.Gallery.created_at:type_name -> google.protobuf.Timestamp
 	3,  // 1: xos.v1.ListPageResponse.list:type_name -> xos.v1.Gallery
-	9,  // 2: xos.v1.GetURLsResponse.urls:type_name -> xos.v1.GetURLsResponse.UrlsEntry
+	10, // 2: xos.v1.GetURLsResponse.urls:type_name -> xos.v1.GetURLsResponse.UrlsEntry
 	0,  // 3: xos.v1.XOSService.Upload:input_type -> xos.v1.UploadRequest
 	2,  // 4: xos.v1.XOSService.ListPage:input_type -> xos.v1.ListPageRequest
 	5,  // 5: xos.v1.XOSService.Delete:input_type -> xos.v1.IDRequest
 	5,  // 6: xos.v1.XOSService.ValidateID:input_type -> xos.v1.IDRequest
 	7,  // 7: xos.v1.XOSService.GetURLs:input_type -> xos.v1.GetURLsRequest
-	1,  // 8: xos.v1.XOSService.Upload:output_type -> xos.v1.UploadResponse
-	4,  // 9: xos.v1.XOSService.ListPage:output_type -> xos.v1.ListPageResponse
-	11, // 10: xos.v1.XOSService.Delete:output_type -> google.protobuf.Empty
-	6,  // 11: xos.v1.XOSService.ValidateID:output_type -> xos.v1.ValidateIDResponse
-	8,  // 12: xos.v1.XOSService.GetURLs:output_type -> xos.v1.GetURLsResponse
-	8,  // [8:13] is the sub-list for method output_type
-	3,  // [3:8] is the sub-list for method input_type
+	9,  // 8: xos.v1.XOSService.UpdateName:input_type -> xos.v1.UpdateNameRequest
+	1,  // 9: xos.v1.XOSService.Upload:output_type -> xos.v1.UploadResponse
+	4,  // 10: xos.v1.XOSService.ListPage:output_type -> xos.v1.ListPageResponse
+	12, // 11: xos.v1.XOSService.Delete:output_type -> google.protobuf.Empty
+	6,  // 12: xos.v1.XOSService.ValidateID:output_type -> xos.v1.ValidateIDResponse
+	8,  // 13: xos.v1.XOSService.GetURLs:output_type -> xos.v1.GetURLsResponse
+	3,  // 14: xos.v1.XOSService.UpdateName:output_type -> xos.v1.Gallery
+	9,  // [9:15] is the sub-list for method output_type
+	3,  // [3:9] is the sub-list for method input_type
 	3,  // [3:3] is the sub-list for extension type_name
 	3,  // [3:3] is the sub-list for extension extendee
 	0,  // [0:3] is the sub-list for field type_name
@@ -680,7 +768,7 @@ func file_xos_v1_xos_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_xos_v1_xos_proto_rawDesc), len(file_xos_v1_xos_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   10,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

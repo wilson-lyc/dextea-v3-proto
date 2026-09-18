@@ -9,6 +9,7 @@ service XOSService {
   rpc Delete(IDRequest) returns (google.protobuf.Empty);
   rpc ValidateID(IDRequest) returns (ValidateIDResponse);
   rpc GetURLs(GetURLsRequest) returns (GetURLsResponse);
+  rpc UpdateName(UpdateNameRequest) returns (Gallery);
 }
 message UploadRequest {
   string source = 1;
@@ -17,7 +18,7 @@ message UploadRequest {
   string file_name = 4;
   bytes content = 5;
 }
-message UploadResponse { string bucket = 1; string object_key = 2; int64 size = 3; string etag = 4; }
+message UploadResponse { string bucket = 1; string object_key = 2; int64 size = 3; string etag = 4; int64 gallery_id = 5; string url = 6; string name = 7; }
 message ListPageRequest { int32 page = 1; int32 page_size = 2; }
 message Gallery {
   int64 id = 1; string source = 2; string url = 3; string object_key = 4;
@@ -31,3 +32,4 @@ message IDRequest { int64 id = 1; }
 message ValidateIDResponse { int64 id = 1; bool valid = 2; }
 message GetURLsRequest { repeated int64 ids = 1; }
 message GetURLsResponse { map<int64, string> urls = 1; }
+message UpdateNameRequest { int64 id = 1; string name = 2; }

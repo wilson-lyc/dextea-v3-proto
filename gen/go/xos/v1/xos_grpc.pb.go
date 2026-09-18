@@ -25,6 +25,7 @@ const (
 	XOSService_Delete_FullMethodName     = "/xos.v1.XOSService/Delete"
 	XOSService_ValidateID_FullMethodName = "/xos.v1.XOSService/ValidateID"
 	XOSService_GetURLs_FullMethodName    = "/xos.v1.XOSService/GetURLs"
+	XOSService_UpdateName_FullMethodName = "/xos.v1.XOSService/UpdateName"
 )
 
 // XOSServiceClient is the client API for XOSService service.
@@ -36,6 +37,7 @@ type XOSServiceClient interface {
 	Delete(ctx context.Context, in *IDRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	ValidateID(ctx context.Context, in *IDRequest, opts ...grpc.CallOption) (*ValidateIDResponse, error)
 	GetURLs(ctx context.Context, in *GetURLsRequest, opts ...grpc.CallOption) (*GetURLsResponse, error)
+	UpdateName(ctx context.Context, in *UpdateNameRequest, opts ...grpc.CallOption) (*Gallery, error)
 }
 
 type xOSServiceClient struct {
@@ -96,6 +98,16 @@ func (c *xOSServiceClient) GetURLs(ctx context.Context, in *GetURLsRequest, opts
 	return out, nil
 }
 
+func (c *xOSServiceClient) UpdateName(ctx context.Context, in *UpdateNameRequest, opts ...grpc.CallOption) (*Gallery, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Gallery)
+	err := c.cc.Invoke(ctx, XOSService_UpdateName_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // XOSServiceServer is the server API for XOSService service.
 // All implementations must embed UnimplementedXOSServiceServer
 // for forward compatibility.
@@ -105,6 +117,7 @@ type XOSServiceServer interface {
 	Delete(context.Context, *IDRequest) (*emptypb.Empty, error)
 	ValidateID(context.Context, *IDRequest) (*ValidateIDResponse, error)
 	GetURLs(context.Context, *GetURLsRequest) (*GetURLsResponse, error)
+	UpdateName(context.Context, *UpdateNameRequest) (*Gallery, error)
 	mustEmbedUnimplementedXOSServiceServer()
 }
 
@@ -129,6 +142,9 @@ func (UnimplementedXOSServiceServer) ValidateID(context.Context, *IDRequest) (*V
 }
 func (UnimplementedXOSServiceServer) GetURLs(context.Context, *GetURLsRequest) (*GetURLsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetURLs not implemented")
+}
+func (UnimplementedXOSServiceServer) UpdateName(context.Context, *UpdateNameRequest) (*Gallery, error) {
+	return nil, status.Error(codes.Unimplemented, "method UpdateName not implemented")
 }
 func (UnimplementedXOSServiceServer) mustEmbedUnimplementedXOSServiceServer() {}
 func (UnimplementedXOSServiceServer) testEmbeddedByValue()                    {}
@@ -241,6 +257,24 @@ func _XOSService_GetURLs_Handler(srv interface{}, ctx context.Context, dec func(
 	return interceptor(ctx, in, info, handler)
 }
 
+func _XOSService_UpdateName_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateNameRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(XOSServiceServer).UpdateName(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: XOSService_UpdateName_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(XOSServiceServer).UpdateName(ctx, req.(*UpdateNameRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // XOSService_ServiceDesc is the grpc.ServiceDesc for XOSService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -267,6 +301,10 @@ var XOSService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetURLs",
 			Handler:    _XOSService_GetURLs_Handler,
+		},
+		{
+			MethodName: "UpdateName",
+			Handler:    _XOSService_UpdateName_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

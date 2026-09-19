@@ -19,17 +19,21 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	OrderService_GetStoreWindowOrders_FullMethodName = "/dextea.order.v1.OrderService/GetStoreWindowOrders"
-	OrderService_GetStoreMakingBoard_FullMethodName  = "/dextea.order.v1.OrderService/GetStoreMakingBoard"
-	OrderService_GetStoreOrderDetail_FullMethodName  = "/dextea.order.v1.OrderService/GetStoreOrderDetail"
-	OrderService_MarkOrderReady_FullMethodName       = "/dextea.order.v1.OrderService/MarkOrderReady"
-	OrderService_MarkOrderCollected_FullMethodName   = "/dextea.order.v1.OrderService/MarkOrderCollected"
+	OrderAdminService_GetStoreWindowOrders_FullMethodName = "/dextea.order.v1.OrderAdminService/GetStoreWindowOrders"
+	OrderAdminService_GetStoreMakingBoard_FullMethodName  = "/dextea.order.v1.OrderAdminService/GetStoreMakingBoard"
+	OrderAdminService_GetStoreOrderDetail_FullMethodName  = "/dextea.order.v1.OrderAdminService/GetStoreOrderDetail"
+	OrderAdminService_MarkOrderReady_FullMethodName       = "/dextea.order.v1.OrderAdminService/MarkOrderReady"
+	OrderAdminService_MarkOrderCollected_FullMethodName   = "/dextea.order.v1.OrderAdminService/MarkOrderCollected"
 )
 
-// OrderServiceClient is the client API for OrderService service.
+// OrderAdminServiceClient is the client API for OrderAdminService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type OrderServiceClient interface {
+//
+// OrderAdminService exposes store-operation and order-management capabilities.
+// Customer-facing order capabilities remain on the HTTP interface until their
+// business RPC contract and callers are migrated together.
+type OrderAdminServiceClient interface {
 	GetStoreWindowOrders(ctx context.Context, in *GetStoreWindowOrdersRequest, opts ...grpc.CallOption) (*GetStoreWindowOrdersResponse, error)
 	GetStoreMakingBoard(ctx context.Context, in *GetStoreMakingBoardRequest, opts ...grpc.CallOption) (*GetStoreMakingBoardResponse, error)
 	GetStoreOrderDetail(ctx context.Context, in *GetStoreOrderDetailRequest, opts ...grpc.CallOption) (*StoreOrderDetail, error)
@@ -37,235 +41,239 @@ type OrderServiceClient interface {
 	MarkOrderCollected(ctx context.Context, in *MarkOrderRequest, opts ...grpc.CallOption) (*Empty, error)
 }
 
-type orderServiceClient struct {
+type orderAdminServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewOrderServiceClient(cc grpc.ClientConnInterface) OrderServiceClient {
-	return &orderServiceClient{cc}
+func NewOrderAdminServiceClient(cc grpc.ClientConnInterface) OrderAdminServiceClient {
+	return &orderAdminServiceClient{cc}
 }
 
-func (c *orderServiceClient) GetStoreWindowOrders(ctx context.Context, in *GetStoreWindowOrdersRequest, opts ...grpc.CallOption) (*GetStoreWindowOrdersResponse, error) {
+func (c *orderAdminServiceClient) GetStoreWindowOrders(ctx context.Context, in *GetStoreWindowOrdersRequest, opts ...grpc.CallOption) (*GetStoreWindowOrdersResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetStoreWindowOrdersResponse)
-	err := c.cc.Invoke(ctx, OrderService_GetStoreWindowOrders_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, OrderAdminService_GetStoreWindowOrders_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *orderServiceClient) GetStoreMakingBoard(ctx context.Context, in *GetStoreMakingBoardRequest, opts ...grpc.CallOption) (*GetStoreMakingBoardResponse, error) {
+func (c *orderAdminServiceClient) GetStoreMakingBoard(ctx context.Context, in *GetStoreMakingBoardRequest, opts ...grpc.CallOption) (*GetStoreMakingBoardResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetStoreMakingBoardResponse)
-	err := c.cc.Invoke(ctx, OrderService_GetStoreMakingBoard_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, OrderAdminService_GetStoreMakingBoard_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *orderServiceClient) GetStoreOrderDetail(ctx context.Context, in *GetStoreOrderDetailRequest, opts ...grpc.CallOption) (*StoreOrderDetail, error) {
+func (c *orderAdminServiceClient) GetStoreOrderDetail(ctx context.Context, in *GetStoreOrderDetailRequest, opts ...grpc.CallOption) (*StoreOrderDetail, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(StoreOrderDetail)
-	err := c.cc.Invoke(ctx, OrderService_GetStoreOrderDetail_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, OrderAdminService_GetStoreOrderDetail_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *orderServiceClient) MarkOrderReady(ctx context.Context, in *MarkOrderRequest, opts ...grpc.CallOption) (*Empty, error) {
+func (c *orderAdminServiceClient) MarkOrderReady(ctx context.Context, in *MarkOrderRequest, opts ...grpc.CallOption) (*Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Empty)
-	err := c.cc.Invoke(ctx, OrderService_MarkOrderReady_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, OrderAdminService_MarkOrderReady_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *orderServiceClient) MarkOrderCollected(ctx context.Context, in *MarkOrderRequest, opts ...grpc.CallOption) (*Empty, error) {
+func (c *orderAdminServiceClient) MarkOrderCollected(ctx context.Context, in *MarkOrderRequest, opts ...grpc.CallOption) (*Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Empty)
-	err := c.cc.Invoke(ctx, OrderService_MarkOrderCollected_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, OrderAdminService_MarkOrderCollected_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// OrderServiceServer is the server API for OrderService service.
-// All implementations must embed UnimplementedOrderServiceServer
+// OrderAdminServiceServer is the server API for OrderAdminService service.
+// All implementations must embed UnimplementedOrderAdminServiceServer
 // for forward compatibility.
-type OrderServiceServer interface {
+//
+// OrderAdminService exposes store-operation and order-management capabilities.
+// Customer-facing order capabilities remain on the HTTP interface until their
+// business RPC contract and callers are migrated together.
+type OrderAdminServiceServer interface {
 	GetStoreWindowOrders(context.Context, *GetStoreWindowOrdersRequest) (*GetStoreWindowOrdersResponse, error)
 	GetStoreMakingBoard(context.Context, *GetStoreMakingBoardRequest) (*GetStoreMakingBoardResponse, error)
 	GetStoreOrderDetail(context.Context, *GetStoreOrderDetailRequest) (*StoreOrderDetail, error)
 	MarkOrderReady(context.Context, *MarkOrderRequest) (*Empty, error)
 	MarkOrderCollected(context.Context, *MarkOrderRequest) (*Empty, error)
-	mustEmbedUnimplementedOrderServiceServer()
+	mustEmbedUnimplementedOrderAdminServiceServer()
 }
 
-// UnimplementedOrderServiceServer must be embedded to have
+// UnimplementedOrderAdminServiceServer must be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
 // pointer dereference when methods are called.
-type UnimplementedOrderServiceServer struct{}
+type UnimplementedOrderAdminServiceServer struct{}
 
-func (UnimplementedOrderServiceServer) GetStoreWindowOrders(context.Context, *GetStoreWindowOrdersRequest) (*GetStoreWindowOrdersResponse, error) {
+func (UnimplementedOrderAdminServiceServer) GetStoreWindowOrders(context.Context, *GetStoreWindowOrdersRequest) (*GetStoreWindowOrdersResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetStoreWindowOrders not implemented")
 }
-func (UnimplementedOrderServiceServer) GetStoreMakingBoard(context.Context, *GetStoreMakingBoardRequest) (*GetStoreMakingBoardResponse, error) {
+func (UnimplementedOrderAdminServiceServer) GetStoreMakingBoard(context.Context, *GetStoreMakingBoardRequest) (*GetStoreMakingBoardResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetStoreMakingBoard not implemented")
 }
-func (UnimplementedOrderServiceServer) GetStoreOrderDetail(context.Context, *GetStoreOrderDetailRequest) (*StoreOrderDetail, error) {
+func (UnimplementedOrderAdminServiceServer) GetStoreOrderDetail(context.Context, *GetStoreOrderDetailRequest) (*StoreOrderDetail, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetStoreOrderDetail not implemented")
 }
-func (UnimplementedOrderServiceServer) MarkOrderReady(context.Context, *MarkOrderRequest) (*Empty, error) {
+func (UnimplementedOrderAdminServiceServer) MarkOrderReady(context.Context, *MarkOrderRequest) (*Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method MarkOrderReady not implemented")
 }
-func (UnimplementedOrderServiceServer) MarkOrderCollected(context.Context, *MarkOrderRequest) (*Empty, error) {
+func (UnimplementedOrderAdminServiceServer) MarkOrderCollected(context.Context, *MarkOrderRequest) (*Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method MarkOrderCollected not implemented")
 }
-func (UnimplementedOrderServiceServer) mustEmbedUnimplementedOrderServiceServer() {}
-func (UnimplementedOrderServiceServer) testEmbeddedByValue()                      {}
+func (UnimplementedOrderAdminServiceServer) mustEmbedUnimplementedOrderAdminServiceServer() {}
+func (UnimplementedOrderAdminServiceServer) testEmbeddedByValue()                           {}
 
-// UnsafeOrderServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to OrderServiceServer will
+// UnsafeOrderAdminServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to OrderAdminServiceServer will
 // result in compilation errors.
-type UnsafeOrderServiceServer interface {
-	mustEmbedUnimplementedOrderServiceServer()
+type UnsafeOrderAdminServiceServer interface {
+	mustEmbedUnimplementedOrderAdminServiceServer()
 }
 
-func RegisterOrderServiceServer(s grpc.ServiceRegistrar, srv OrderServiceServer) {
-	// If the following call panics, it indicates UnimplementedOrderServiceServer was
+func RegisterOrderAdminServiceServer(s grpc.ServiceRegistrar, srv OrderAdminServiceServer) {
+	// If the following call panics, it indicates UnimplementedOrderAdminServiceServer was
 	// embedded by pointer and is nil.  This will cause panics if an
 	// unimplemented method is ever invoked, so we test this at initialization
 	// time to prevent it from happening at runtime later due to I/O.
 	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
 		t.testEmbeddedByValue()
 	}
-	s.RegisterService(&OrderService_ServiceDesc, srv)
+	s.RegisterService(&OrderAdminService_ServiceDesc, srv)
 }
 
-func _OrderService_GetStoreWindowOrders_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _OrderAdminService_GetStoreWindowOrders_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetStoreWindowOrdersRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(OrderServiceServer).GetStoreWindowOrders(ctx, in)
+		return srv.(OrderAdminServiceServer).GetStoreWindowOrders(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: OrderService_GetStoreWindowOrders_FullMethodName,
+		FullMethod: OrderAdminService_GetStoreWindowOrders_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OrderServiceServer).GetStoreWindowOrders(ctx, req.(*GetStoreWindowOrdersRequest))
+		return srv.(OrderAdminServiceServer).GetStoreWindowOrders(ctx, req.(*GetStoreWindowOrdersRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _OrderService_GetStoreMakingBoard_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _OrderAdminService_GetStoreMakingBoard_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetStoreMakingBoardRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(OrderServiceServer).GetStoreMakingBoard(ctx, in)
+		return srv.(OrderAdminServiceServer).GetStoreMakingBoard(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: OrderService_GetStoreMakingBoard_FullMethodName,
+		FullMethod: OrderAdminService_GetStoreMakingBoard_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OrderServiceServer).GetStoreMakingBoard(ctx, req.(*GetStoreMakingBoardRequest))
+		return srv.(OrderAdminServiceServer).GetStoreMakingBoard(ctx, req.(*GetStoreMakingBoardRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _OrderService_GetStoreOrderDetail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _OrderAdminService_GetStoreOrderDetail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetStoreOrderDetailRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(OrderServiceServer).GetStoreOrderDetail(ctx, in)
+		return srv.(OrderAdminServiceServer).GetStoreOrderDetail(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: OrderService_GetStoreOrderDetail_FullMethodName,
+		FullMethod: OrderAdminService_GetStoreOrderDetail_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OrderServiceServer).GetStoreOrderDetail(ctx, req.(*GetStoreOrderDetailRequest))
+		return srv.(OrderAdminServiceServer).GetStoreOrderDetail(ctx, req.(*GetStoreOrderDetailRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _OrderService_MarkOrderReady_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _OrderAdminService_MarkOrderReady_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(MarkOrderRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(OrderServiceServer).MarkOrderReady(ctx, in)
+		return srv.(OrderAdminServiceServer).MarkOrderReady(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: OrderService_MarkOrderReady_FullMethodName,
+		FullMethod: OrderAdminService_MarkOrderReady_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OrderServiceServer).MarkOrderReady(ctx, req.(*MarkOrderRequest))
+		return srv.(OrderAdminServiceServer).MarkOrderReady(ctx, req.(*MarkOrderRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _OrderService_MarkOrderCollected_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _OrderAdminService_MarkOrderCollected_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(MarkOrderRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(OrderServiceServer).MarkOrderCollected(ctx, in)
+		return srv.(OrderAdminServiceServer).MarkOrderCollected(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: OrderService_MarkOrderCollected_FullMethodName,
+		FullMethod: OrderAdminService_MarkOrderCollected_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OrderServiceServer).MarkOrderCollected(ctx, req.(*MarkOrderRequest))
+		return srv.(OrderAdminServiceServer).MarkOrderCollected(ctx, req.(*MarkOrderRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// OrderService_ServiceDesc is the grpc.ServiceDesc for OrderService service.
+// OrderAdminService_ServiceDesc is the grpc.ServiceDesc for OrderAdminService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var OrderService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "dextea.order.v1.OrderService",
-	HandlerType: (*OrderServiceServer)(nil),
+var OrderAdminService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "dextea.order.v1.OrderAdminService",
+	HandlerType: (*OrderAdminServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "GetStoreWindowOrders",
-			Handler:    _OrderService_GetStoreWindowOrders_Handler,
+			Handler:    _OrderAdminService_GetStoreWindowOrders_Handler,
 		},
 		{
 			MethodName: "GetStoreMakingBoard",
-			Handler:    _OrderService_GetStoreMakingBoard_Handler,
+			Handler:    _OrderAdminService_GetStoreMakingBoard_Handler,
 		},
 		{
 			MethodName: "GetStoreOrderDetail",
-			Handler:    _OrderService_GetStoreOrderDetail_Handler,
+			Handler:    _OrderAdminService_GetStoreOrderDetail_Handler,
 		},
 		{
 			MethodName: "MarkOrderReady",
-			Handler:    _OrderService_MarkOrderReady_Handler,
+			Handler:    _OrderAdminService_MarkOrderReady_Handler,
 		},
 		{
 			MethodName: "MarkOrderCollected",
-			Handler:    _OrderService_MarkOrderCollected_Handler,
+			Handler:    _OrderAdminService_MarkOrderCollected_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

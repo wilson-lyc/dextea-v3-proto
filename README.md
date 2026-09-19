@@ -39,6 +39,11 @@ Product 服务端内部仍可共享领域 service，但调用方应分别生成�
 这是 service 名称和部分 message 类型的契约变更。其他模块接入时应以本仓库的
 `proto/` 重新生成客户端，不要继续引用旧的 `ProductService` 或 `StoreService`。
 
+Trade 订单 RPC 当前按调用面收敛为 `OrderAdminService`，承载门店订单窗口、制作看板、
+订单详情和门店状态操作。顾客下单、顾客订单查询等业务接口目前仍是 Trade 的 HTTP
+接口，待业务 RPC 契约和调用方一起审计迁移后再加入 `OrderBusinessService`；调用方不得
+继续引用旧的 `OrderService`。
+
 ## XOS 图片服务
 
 `proto/xos/v1/xos.proto` 定义上传、图库分页、删除、存在性校验和批量 URL 查询。生成的 Go 包为 `gen/go/xos/v1`。上传使用 bytes 字段传递原始图片内容，调用方需匹配服务配置的消息大小限制。

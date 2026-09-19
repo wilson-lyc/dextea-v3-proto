@@ -866,8 +866,8 @@ const file_order_v1_order_proto_rawDesc = "" +
 	"\vtotal_price\x18\t \x01(\x01R\n" +
 	"totalPrice\x12\x1c\n" +
 	"\tavailable\x18\n" +
-	" \x01(\bR\tavailable2\xfa\x03\n" +
-	"\fOrderService\x12s\n" +
+	" \x01(\bR\tavailable2\xff\x03\n" +
+	"\x11OrderAdminService\x12s\n" +
 	"\x14GetStoreWindowOrders\x12,.dextea.order.v1.GetStoreWindowOrdersRequest\x1a-.dextea.order.v1.GetStoreWindowOrdersResponse\x12p\n" +
 	"\x13GetStoreMakingBoard\x12+.dextea.order.v1.GetStoreMakingBoardRequest\x1a,.dextea.order.v1.GetStoreMakingBoardResponse\x12e\n" +
 	"\x13GetStoreOrderDetail\x12+.dextea.order.v1.GetStoreOrderDetailRequest\x1a!.dextea.order.v1.StoreOrderDetail\x12K\n" +
@@ -902,16 +902,16 @@ var file_order_v1_order_proto_goTypes = []any{
 var file_order_v1_order_proto_depIdxs = []int32{
 	6, // 0: dextea.order.v1.GetStoreWindowOrdersResponse.items:type_name -> dextea.order.v1.StoreWindowOrderItem
 	9, // 1: dextea.order.v1.StoreOrderDetail.items:type_name -> dextea.order.v1.StoreOrderDetailItem
-	1, // 2: dextea.order.v1.OrderService.GetStoreWindowOrders:input_type -> dextea.order.v1.GetStoreWindowOrdersRequest
-	2, // 3: dextea.order.v1.OrderService.GetStoreMakingBoard:input_type -> dextea.order.v1.GetStoreMakingBoardRequest
-	3, // 4: dextea.order.v1.OrderService.GetStoreOrderDetail:input_type -> dextea.order.v1.GetStoreOrderDetailRequest
-	4, // 5: dextea.order.v1.OrderService.MarkOrderReady:input_type -> dextea.order.v1.MarkOrderRequest
-	4, // 6: dextea.order.v1.OrderService.MarkOrderCollected:input_type -> dextea.order.v1.MarkOrderRequest
-	5, // 7: dextea.order.v1.OrderService.GetStoreWindowOrders:output_type -> dextea.order.v1.GetStoreWindowOrdersResponse
-	7, // 8: dextea.order.v1.OrderService.GetStoreMakingBoard:output_type -> dextea.order.v1.GetStoreMakingBoardResponse
-	8, // 9: dextea.order.v1.OrderService.GetStoreOrderDetail:output_type -> dextea.order.v1.StoreOrderDetail
-	0, // 10: dextea.order.v1.OrderService.MarkOrderReady:output_type -> dextea.order.v1.Empty
-	0, // 11: dextea.order.v1.OrderService.MarkOrderCollected:output_type -> dextea.order.v1.Empty
+	1, // 2: dextea.order.v1.OrderAdminService.GetStoreWindowOrders:input_type -> dextea.order.v1.GetStoreWindowOrdersRequest
+	2, // 3: dextea.order.v1.OrderAdminService.GetStoreMakingBoard:input_type -> dextea.order.v1.GetStoreMakingBoardRequest
+	3, // 4: dextea.order.v1.OrderAdminService.GetStoreOrderDetail:input_type -> dextea.order.v1.GetStoreOrderDetailRequest
+	4, // 5: dextea.order.v1.OrderAdminService.MarkOrderReady:input_type -> dextea.order.v1.MarkOrderRequest
+	4, // 6: dextea.order.v1.OrderAdminService.MarkOrderCollected:input_type -> dextea.order.v1.MarkOrderRequest
+	5, // 7: dextea.order.v1.OrderAdminService.GetStoreWindowOrders:output_type -> dextea.order.v1.GetStoreWindowOrdersResponse
+	7, // 8: dextea.order.v1.OrderAdminService.GetStoreMakingBoard:output_type -> dextea.order.v1.GetStoreMakingBoardResponse
+	8, // 9: dextea.order.v1.OrderAdminService.GetStoreOrderDetail:output_type -> dextea.order.v1.StoreOrderDetail
+	0, // 10: dextea.order.v1.OrderAdminService.MarkOrderReady:output_type -> dextea.order.v1.Empty
+	0, // 11: dextea.order.v1.OrderAdminService.MarkOrderCollected:output_type -> dextea.order.v1.Empty
 	7, // [7:12] is the sub-list for method output_type
 	2, // [2:7] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name

@@ -4,7 +4,10 @@ package dextea.order.v1;
 
 option go_package = "github.com/wilson-lyc/dextea-v3-proto/gen/go/order/v1;orderv1";
 
-service OrderService {
+// OrderAdminService exposes store-operation and order-management capabilities.
+// Customer-facing order capabilities remain on the HTTP interface until their
+// business RPC contract and callers are migrated together.
+service OrderAdminService {
   rpc GetStoreWindowOrders(GetStoreWindowOrdersRequest) returns (GetStoreWindowOrdersResponse);
   rpc GetStoreMakingBoard(GetStoreMakingBoardRequest) returns (GetStoreMakingBoardResponse);
   rpc GetStoreOrderDetail(GetStoreOrderDetailRequest) returns (StoreOrderDetail);

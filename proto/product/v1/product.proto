@@ -4,16 +4,15 @@ package dextea.product.v1;
 
 option go_package = "github.com/wilson-lyc/dextea-v3-proto/gen/go/product/v1;productv1";
 
-service ProductService {
+// ProductAdminService is the management-plane API. It owns product,
+// customization, menu, tag, ingredient, image, and menu-dispatch operations.
+service ProductAdminService {
   rpc CreateProduct(CreateProductRequest) returns (Product);
   rpc UpdateProduct(UpdateProductRequest) returns (Product);
   rpc ListProducts(ListProductsRequest) returns (ListProductsResponse);
   rpc GetProductStats(GetProductStatsRequest) returns (ProductStats);
   rpc BatchUpdateProductStatus(BatchUpdateStatusRequest) returns (BatchUpdateResponse);
   rpc BatchSetProductStoreStatus(BatchSetProductStoreStatusRequest) returns (BatchUpdateResponse);
-  rpc GetProductDetail(GetProductDetailRequest) returns (ProductDetail);
-  rpc GetProductStoreStatuses(GetProductStoreStatusesRequest) returns (ProductStoreStatusesResponse);
-  rpc GetCustomizationOptionStoreStatuses(GetCustomizationOptionStoreStatusesRequest) returns (CustomizationOptionStoreStatusesResponse);
   rpc GetProductImages(GetProductImagesRequest) returns (ProductImagesResponse);
   rpc SetProductImages(SetProductImagesRequest) returns (ProductImagesResponse);
 
@@ -21,7 +20,6 @@ service ProductService {
   rpc UpdateCustomizationItem(UpdateCustomizationItemRequest) returns (CustomizationItem);
   rpc ListCustomizationItems(ListCustomizationItemsRequest) returns (ListCustomizationItemsResponse);
   rpc BatchUpdateCustomizationItemStatus(BatchUpdateStatusRequest) returns (BatchUpdateResponse);
-
   rpc CreateCustomizationOption(CreateCustomizationOptionRequest) returns (CustomizationOption);
   rpc UpdateCustomizationOption(UpdateCustomizationOptionRequest) returns (CustomizationOption);
   rpc UpdateCustomizationOptionIngredient(UpdateCustomizationOptionIngredientRequest) returns (CustomizationOption);
@@ -34,6 +32,7 @@ service ProductService {
   rpc GetMenu(GetMenuRequest) returns (Menu);
   rpc ListMenus(ListMenusRequest) returns (ListMenusResponse);
   rpc GetMenuTree(GetMenuTreeRequest) returns (MenuTreeResponse);
+  rpc GetAdminStoreMenu(GetStoreMenuRequest) returns (StoreMenuResponse);
   rpc CreateMenuGroup(CreateMenuGroupRequest) returns (MenuGroup);
   rpc UpdateMenuGroup(UpdateMenuGroupRequest) returns (MenuGroup);
   rpc ListMenuGroups(ListMenuGroupsRequest) returns (ListMenuGroupsResponse);
@@ -43,6 +42,7 @@ service ProductService {
   rpc ListMenuProducts(ListMenuProductsRequest) returns (ListMenuProductsResponse);
   rpc DeleteMenu(DeleteMenuRequest) returns (Empty);
   rpc DeleteMenuGroup(DeleteMenuGroupRequest) returns (Empty);
+
   rpc ListTags(ListTagsRequest) returns (ListTagsResponse);
   rpc CreateTag(CreateTagRequest) returns (Tag);
   rpc UpdateTag(UpdateTagRequest) returns (Tag);
@@ -53,6 +53,7 @@ service ProductService {
   rpc ListTagProducts(ListTagProductsRequest) returns (ListTagProductsResponse);
   rpc BindTagProducts(BindTagProductsRequest) returns (BatchUpdateResponse);
   rpc UnbindTagProducts(BindTagProductsRequest) returns (BatchUpdateResponse);
+
   rpc CreateIngredient(CreateIngredientRequest) returns (Ingredient);
   rpc GetIngredient(GetIngredientRequest) returns (Ingredient);
   rpc UpdateIngredient(UpdateIngredientRequest) returns (Ingredient);
@@ -70,6 +71,16 @@ service ProductService {
   rpc ListMenuStores(ListMenuStoresRequest) returns (ListMenuStoresResponse);
   rpc DispatchMenuByStores(DispatchMenuByStoresRequest) returns (BatchUpdateResponse);
   rpc DispatchMenuByArea(DispatchMenuByAreaRequest) returns (BatchUpdateResponse);
+}
+
+// ProductBusinessService is the customer/order-facing read plane. It only
+// exposes business-visible product and menu reads.
+service ProductBusinessService {
+  rpc GetProductDetail(GetProductDetailRequest) returns (ProductDetail);
+  rpc GetProductStoreStatuses(GetProductStoreStatusesRequest) returns (ProductStoreStatusesResponse);
+  rpc GetCustomizationOptionStoreStatuses(GetCustomizationOptionStoreStatusesRequest) returns (CustomizationOptionStoreStatusesResponse);
+  rpc GetStoreMenu(GetStoreMenuRequest) returns (StoreMenuResponse);
+  rpc GetMenuTree(GetMenuTreeRequest) returns (MenuTreeResponse);
 }
 
 message Empty {}
@@ -139,6 +150,8 @@ message Menu { uint64 id = 1; string name = 2; string description = 3; string cr
 message CreateMenuRequest { string name = 1; string description = 2; }
 message UpdateMenuRequest { uint64 id = 1; optional string name = 2; optional string description = 3; }
 message GetMenuRequest { uint64 id = 1; }
+message GetStoreMenuRequest { uint64 store_id = 1; }
+message StoreMenuResponse { Menu menu = 1; MenuTreeResponse tree = 2; }
 message ListMenusRequest { int32 page = 1; int32 page_size = 2; string name = 3; }
 message ListMenusResponse { int64 total = 1; int32 page = 2; int32 page_size = 3; repeated Menu menus = 4; }
 

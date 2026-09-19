@@ -457,6 +457,230 @@ func (x *GetStoreByAccountRequest) GetAccount() string {
 	return ""
 }
 
+type GetAdminStoresRequest struct {
+	state              protoimpl.MessageState `protogen:"open.v1"`
+	Ids                []uint64               `protobuf:"varint,1,rep,packed,name=ids,proto3" json:"ids,omitempty"`
+	IncludeUnavailable bool                   `protobuf:"varint,2,opt,name=include_unavailable,json=includeUnavailable,proto3" json:"include_unavailable,omitempty"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
+}
+
+func (x *GetAdminStoresRequest) Reset() {
+	*x = GetAdminStoresRequest{}
+	mi := &file_store_v1_store_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAdminStoresRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAdminStoresRequest) ProtoMessage() {}
+
+func (x *GetAdminStoresRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_store_v1_store_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAdminStoresRequest.ProtoReflect.Descriptor instead.
+func (*GetAdminStoresRequest) Descriptor() ([]byte, []int) {
+	return file_store_v1_store_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *GetAdminStoresRequest) GetIds() []uint64 {
+	if x != nil {
+		return x.Ids
+	}
+	return nil
+}
+
+func (x *GetAdminStoresRequest) GetIncludeUnavailable() bool {
+	if x != nil {
+		return x.IncludeUnavailable
+	}
+	return false
+}
+
+type GetAdminStoresResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Stores        []*Store               `protobuf:"bytes,1,rep,name=stores,proto3" json:"stores,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAdminStoresResponse) Reset() {
+	*x = GetAdminStoresResponse{}
+	mi := &file_store_v1_store_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAdminStoresResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAdminStoresResponse) ProtoMessage() {}
+
+func (x *GetAdminStoresResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_store_v1_store_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAdminStoresResponse.ProtoReflect.Descriptor instead.
+func (*GetAdminStoresResponse) Descriptor() ([]byte, []int) {
+	return file_store_v1_store_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *GetAdminStoresResponse) GetStores() []*Store {
+	if x != nil {
+		return x.Stores
+	}
+	return nil
+}
+
+type SearchAdminStoresRequest struct {
+	state              protoimpl.MessageState `protogen:"open.v1"`
+	Province           string                 `protobuf:"bytes,1,opt,name=province,proto3" json:"province,omitempty"`
+	City               string                 `protobuf:"bytes,2,opt,name=city,proto3" json:"city,omitempty"`
+	District           string                 `protobuf:"bytes,3,opt,name=district,proto3" json:"district,omitempty"`
+	Keyword            string                 `protobuf:"bytes,4,opt,name=keyword,proto3" json:"keyword,omitempty"`
+	IncludeUnavailable bool                   `protobuf:"varint,5,opt,name=include_unavailable,json=includeUnavailable,proto3" json:"include_unavailable,omitempty"`
+	Status             *int32                 `protobuf:"varint,6,opt,name=status,proto3,oneof" json:"status,omitempty"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
+}
+
+func (x *SearchAdminStoresRequest) Reset() {
+	*x = SearchAdminStoresRequest{}
+	mi := &file_store_v1_store_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SearchAdminStoresRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SearchAdminStoresRequest) ProtoMessage() {}
+
+func (x *SearchAdminStoresRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_store_v1_store_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SearchAdminStoresRequest.ProtoReflect.Descriptor instead.
+func (*SearchAdminStoresRequest) Descriptor() ([]byte, []int) {
+	return file_store_v1_store_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *SearchAdminStoresRequest) GetProvince() string {
+	if x != nil {
+		return x.Province
+	}
+	return ""
+}
+
+func (x *SearchAdminStoresRequest) GetCity() string {
+	if x != nil {
+		return x.City
+	}
+	return ""
+}
+
+func (x *SearchAdminStoresRequest) GetDistrict() string {
+	if x != nil {
+		return x.District
+	}
+	return ""
+}
+
+func (x *SearchAdminStoresRequest) GetKeyword() string {
+	if x != nil {
+		return x.Keyword
+	}
+	return ""
+}
+
+func (x *SearchAdminStoresRequest) GetIncludeUnavailable() bool {
+	if x != nil {
+		return x.IncludeUnavailable
+	}
+	return false
+}
+
+func (x *SearchAdminStoresRequest) GetStatus() int32 {
+	if x != nil && x.Status != nil {
+		return *x.Status
+	}
+	return 0
+}
+
+type SearchAdminStoresResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Stores        []*Store               `protobuf:"bytes,1,rep,name=stores,proto3" json:"stores,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SearchAdminStoresResponse) Reset() {
+	*x = SearchAdminStoresResponse{}
+	mi := &file_store_v1_store_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SearchAdminStoresResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SearchAdminStoresResponse) ProtoMessage() {}
+
+func (x *SearchAdminStoresResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_store_v1_store_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SearchAdminStoresResponse.ProtoReflect.Descriptor instead.
+func (*SearchAdminStoresResponse) Descriptor() ([]byte, []int) {
+	return file_store_v1_store_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *SearchAdminStoresResponse) GetStores() []*Store {
+	if x != nil {
+		return x.Stores
+	}
+	return nil
+}
+
 type AuthenticateStoreRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Account       string                 `protobuf:"bytes,1,opt,name=account,proto3" json:"account,omitempty"`
@@ -467,7 +691,7 @@ type AuthenticateStoreRequest struct {
 
 func (x *AuthenticateStoreRequest) Reset() {
 	*x = AuthenticateStoreRequest{}
-	mi := &file_store_v1_store_proto_msgTypes[5]
+	mi := &file_store_v1_store_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -479,7 +703,7 @@ func (x *AuthenticateStoreRequest) String() string {
 func (*AuthenticateStoreRequest) ProtoMessage() {}
 
 func (x *AuthenticateStoreRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_store_v1_store_proto_msgTypes[5]
+	mi := &file_store_v1_store_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -492,7 +716,7 @@ func (x *AuthenticateStoreRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AuthenticateStoreRequest.ProtoReflect.Descriptor instead.
 func (*AuthenticateStoreRequest) Descriptor() ([]byte, []int) {
-	return file_store_v1_store_proto_rawDescGZIP(), []int{5}
+	return file_store_v1_store_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *AuthenticateStoreRequest) GetAccount() string {
@@ -520,7 +744,7 @@ type StoreAuthInfo struct {
 
 func (x *StoreAuthInfo) Reset() {
 	*x = StoreAuthInfo{}
-	mi := &file_store_v1_store_proto_msgTypes[6]
+	mi := &file_store_v1_store_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -532,7 +756,7 @@ func (x *StoreAuthInfo) String() string {
 func (*StoreAuthInfo) ProtoMessage() {}
 
 func (x *StoreAuthInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_store_v1_store_proto_msgTypes[6]
+	mi := &file_store_v1_store_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -545,7 +769,7 @@ func (x *StoreAuthInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoreAuthInfo.ProtoReflect.Descriptor instead.
 func (*StoreAuthInfo) Descriptor() ([]byte, []int) {
-	return file_store_v1_store_proto_rawDescGZIP(), []int{6}
+	return file_store_v1_store_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *StoreAuthInfo) GetStoreId() uint64 {
@@ -575,13 +799,16 @@ type ListStoresRequest struct {
 	PageSize      int32                  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	Keyword       string                 `protobuf:"bytes,3,opt,name=keyword,proto3" json:"keyword,omitempty"`
 	Status        *int32                 `protobuf:"varint,4,opt,name=status,proto3,oneof" json:"status,omitempty"`
+	Province      *string                `protobuf:"bytes,5,opt,name=province,proto3,oneof" json:"province,omitempty"`
+	City          *string                `protobuf:"bytes,6,opt,name=city,proto3,oneof" json:"city,omitempty"`
+	District      *string                `protobuf:"bytes,7,opt,name=district,proto3,oneof" json:"district,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ListStoresRequest) Reset() {
 	*x = ListStoresRequest{}
-	mi := &file_store_v1_store_proto_msgTypes[7]
+	mi := &file_store_v1_store_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -593,7 +820,7 @@ func (x *ListStoresRequest) String() string {
 func (*ListStoresRequest) ProtoMessage() {}
 
 func (x *ListStoresRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_store_v1_store_proto_msgTypes[7]
+	mi := &file_store_v1_store_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -606,7 +833,7 @@ func (x *ListStoresRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListStoresRequest.ProtoReflect.Descriptor instead.
 func (*ListStoresRequest) Descriptor() ([]byte, []int) {
-	return file_store_v1_store_proto_rawDescGZIP(), []int{7}
+	return file_store_v1_store_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *ListStoresRequest) GetPage() int32 {
@@ -637,6 +864,27 @@ func (x *ListStoresRequest) GetStatus() int32 {
 	return 0
 }
 
+func (x *ListStoresRequest) GetProvince() string {
+	if x != nil && x.Province != nil {
+		return *x.Province
+	}
+	return ""
+}
+
+func (x *ListStoresRequest) GetCity() string {
+	if x != nil && x.City != nil {
+		return *x.City
+	}
+	return ""
+}
+
+func (x *ListStoresRequest) GetDistrict() string {
+	if x != nil && x.District != nil {
+		return *x.District
+	}
+	return ""
+}
+
 type ListStoresResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Total         int64                  `protobuf:"varint,1,opt,name=total,proto3" json:"total,omitempty"`
@@ -649,7 +897,7 @@ type ListStoresResponse struct {
 
 func (x *ListStoresResponse) Reset() {
 	*x = ListStoresResponse{}
-	mi := &file_store_v1_store_proto_msgTypes[8]
+	mi := &file_store_v1_store_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -661,7 +909,7 @@ func (x *ListStoresResponse) String() string {
 func (*ListStoresResponse) ProtoMessage() {}
 
 func (x *ListStoresResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_store_v1_store_proto_msgTypes[8]
+	mi := &file_store_v1_store_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -674,7 +922,7 @@ func (x *ListStoresResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListStoresResponse.ProtoReflect.Descriptor instead.
 func (*ListStoresResponse) Descriptor() ([]byte, []int) {
-	return file_store_v1_store_proto_rawDescGZIP(), []int{8}
+	return file_store_v1_store_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *ListStoresResponse) GetTotal() int64 {
@@ -705,88 +953,27 @@ func (x *ListStoresResponse) GetStores() []*Store {
 	return nil
 }
 
-type SearchStoresRequest struct {
-	state              protoimpl.MessageState `protogen:"open.v1"`
-	City               string                 `protobuf:"bytes,1,opt,name=city,proto3" json:"city,omitempty"`
-	Keyword            string                 `protobuf:"bytes,2,opt,name=keyword,proto3" json:"keyword,omitempty"`
-	IncludeUnavailable bool                   `protobuf:"varint,3,opt,name=include_unavailable,json=includeUnavailable,proto3" json:"include_unavailable,omitempty"`
-	unknownFields      protoimpl.UnknownFields
-	sizeCache          protoimpl.SizeCache
-}
-
-func (x *SearchStoresRequest) Reset() {
-	*x = SearchStoresRequest{}
-	mi := &file_store_v1_store_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *SearchStoresRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SearchStoresRequest) ProtoMessage() {}
-
-func (x *SearchStoresRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_store_v1_store_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SearchStoresRequest.ProtoReflect.Descriptor instead.
-func (*SearchStoresRequest) Descriptor() ([]byte, []int) {
-	return file_store_v1_store_proto_rawDescGZIP(), []int{9}
-}
-
-func (x *SearchStoresRequest) GetCity() string {
-	if x != nil {
-		return x.City
-	}
-	return ""
-}
-
-func (x *SearchStoresRequest) GetKeyword() string {
-	if x != nil {
-		return x.Keyword
-	}
-	return ""
-}
-
-func (x *SearchStoresRequest) GetIncludeUnavailable() bool {
-	if x != nil {
-		return x.IncludeUnavailable
-	}
-	return false
-}
-
-type SearchStoresResponse struct {
+type GetStoreStatisticsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Stores        []*Store               `protobuf:"bytes,1,rep,name=stores,proto3" json:"stores,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *SearchStoresResponse) Reset() {
-	*x = SearchStoresResponse{}
-	mi := &file_store_v1_store_proto_msgTypes[10]
+func (x *GetStoreStatisticsRequest) Reset() {
+	*x = GetStoreStatisticsRequest{}
+	mi := &file_store_v1_store_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *SearchStoresResponse) String() string {
+func (x *GetStoreStatisticsRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*SearchStoresResponse) ProtoMessage() {}
+func (*GetStoreStatisticsRequest) ProtoMessage() {}
 
-func (x *SearchStoresResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_store_v1_store_proto_msgTypes[10]
+func (x *GetStoreStatisticsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_store_v1_store_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -797,43 +984,34 @@ func (x *SearchStoresResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use SearchStoresResponse.ProtoReflect.Descriptor instead.
-func (*SearchStoresResponse) Descriptor() ([]byte, []int) {
-	return file_store_v1_store_proto_rawDescGZIP(), []int{10}
+// Deprecated: Use GetStoreStatisticsRequest.ProtoReflect.Descriptor instead.
+func (*GetStoreStatisticsRequest) Descriptor() ([]byte, []int) {
+	return file_store_v1_store_proto_rawDescGZIP(), []int{13}
 }
 
-func (x *SearchStoresResponse) GetStores() []*Store {
-	if x != nil {
-		return x.Stores
-	}
-	return nil
-}
-
-type GetNearbyStoresRequest struct {
+type StoreStatusCount struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Longitude     float64                `protobuf:"fixed64,1,opt,name=longitude,proto3" json:"longitude,omitempty"`
-	Latitude      float64                `protobuf:"fixed64,2,opt,name=latitude,proto3" json:"latitude,omitempty"`
-	DistanceKm    float64                `protobuf:"fixed64,3,opt,name=distance_km,json=distanceKm,proto3" json:"distance_km,omitempty"`
-	Count         int32                  `protobuf:"varint,4,opt,name=count,proto3" json:"count,omitempty"`
+	Status        int32                  `protobuf:"varint,1,opt,name=status,proto3" json:"status,omitempty"`
+	Count         int64                  `protobuf:"varint,2,opt,name=count,proto3" json:"count,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetNearbyStoresRequest) Reset() {
-	*x = GetNearbyStoresRequest{}
-	mi := &file_store_v1_store_proto_msgTypes[11]
+func (x *StoreStatusCount) Reset() {
+	*x = StoreStatusCount{}
+	mi := &file_store_v1_store_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetNearbyStoresRequest) String() string {
+func (x *StoreStatusCount) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetNearbyStoresRequest) ProtoMessage() {}
+func (*StoreStatusCount) ProtoMessage() {}
 
-func (x *GetNearbyStoresRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_store_v1_store_proto_msgTypes[11]
+func (x *StoreStatusCount) ProtoReflect() protoreflect.Message {
+	mi := &file_store_v1_store_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -844,62 +1022,47 @@ func (x *GetNearbyStoresRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetNearbyStoresRequest.ProtoReflect.Descriptor instead.
-func (*GetNearbyStoresRequest) Descriptor() ([]byte, []int) {
-	return file_store_v1_store_proto_rawDescGZIP(), []int{11}
+// Deprecated: Use StoreStatusCount.ProtoReflect.Descriptor instead.
+func (*StoreStatusCount) Descriptor() ([]byte, []int) {
+	return file_store_v1_store_proto_rawDescGZIP(), []int{14}
 }
 
-func (x *GetNearbyStoresRequest) GetLongitude() float64 {
+func (x *StoreStatusCount) GetStatus() int32 {
 	if x != nil {
-		return x.Longitude
+		return x.Status
 	}
 	return 0
 }
 
-func (x *GetNearbyStoresRequest) GetLatitude() float64 {
-	if x != nil {
-		return x.Latitude
-	}
-	return 0
-}
-
-func (x *GetNearbyStoresRequest) GetDistanceKm() float64 {
-	if x != nil {
-		return x.DistanceKm
-	}
-	return 0
-}
-
-func (x *GetNearbyStoresRequest) GetCount() int32 {
+func (x *StoreStatusCount) GetCount() int64 {
 	if x != nil {
 		return x.Count
 	}
 	return 0
 }
 
-type NearbyStore struct {
+type GetStoreStatisticsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Store         *Store                 `protobuf:"bytes,1,opt,name=store,proto3" json:"store,omitempty"`
-	DistanceKm    float64                `protobuf:"fixed64,2,opt,name=distance_km,json=distanceKm,proto3" json:"distance_km,omitempty"`
+	Statuses      []*StoreStatusCount    `protobuf:"bytes,1,rep,name=statuses,proto3" json:"statuses,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *NearbyStore) Reset() {
-	*x = NearbyStore{}
-	mi := &file_store_v1_store_proto_msgTypes[12]
+func (x *GetStoreStatisticsResponse) Reset() {
+	*x = GetStoreStatisticsResponse{}
+	mi := &file_store_v1_store_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *NearbyStore) String() string {
+func (x *GetStoreStatisticsResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*NearbyStore) ProtoMessage() {}
+func (*GetStoreStatisticsResponse) ProtoMessage() {}
 
-func (x *NearbyStore) ProtoReflect() protoreflect.Message {
-	mi := &file_store_v1_store_proto_msgTypes[12]
+func (x *GetStoreStatisticsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_store_v1_store_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -910,65 +1073,14 @@ func (x *NearbyStore) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use NearbyStore.ProtoReflect.Descriptor instead.
-func (*NearbyStore) Descriptor() ([]byte, []int) {
-	return file_store_v1_store_proto_rawDescGZIP(), []int{12}
+// Deprecated: Use GetStoreStatisticsResponse.ProtoReflect.Descriptor instead.
+func (*GetStoreStatisticsResponse) Descriptor() ([]byte, []int) {
+	return file_store_v1_store_proto_rawDescGZIP(), []int{15}
 }
 
-func (x *NearbyStore) GetStore() *Store {
+func (x *GetStoreStatisticsResponse) GetStatuses() []*StoreStatusCount {
 	if x != nil {
-		return x.Store
-	}
-	return nil
-}
-
-func (x *NearbyStore) GetDistanceKm() float64 {
-	if x != nil {
-		return x.DistanceKm
-	}
-	return 0
-}
-
-type GetNearbyStoresResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Stores        []*NearbyStore         `protobuf:"bytes,1,rep,name=stores,proto3" json:"stores,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetNearbyStoresResponse) Reset() {
-	*x = GetNearbyStoresResponse{}
-	mi := &file_store_v1_store_proto_msgTypes[13]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetNearbyStoresResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetNearbyStoresResponse) ProtoMessage() {}
-
-func (x *GetNearbyStoresResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_store_v1_store_proto_msgTypes[13]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetNearbyStoresResponse.ProtoReflect.Descriptor instead.
-func (*GetNearbyStoresResponse) Descriptor() ([]byte, []int) {
-	return file_store_v1_store_proto_rawDescGZIP(), []int{13}
-}
-
-func (x *GetNearbyStoresResponse) GetStores() []*NearbyStore {
-	if x != nil {
-		return x.Stores
+		return x.Statuses
 	}
 	return nil
 }
@@ -986,7 +1098,7 @@ type UpdateStoreProfileRequest struct {
 
 func (x *UpdateStoreProfileRequest) Reset() {
 	*x = UpdateStoreProfileRequest{}
-	mi := &file_store_v1_store_proto_msgTypes[14]
+	mi := &file_store_v1_store_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -998,7 +1110,7 @@ func (x *UpdateStoreProfileRequest) String() string {
 func (*UpdateStoreProfileRequest) ProtoMessage() {}
 
 func (x *UpdateStoreProfileRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_store_v1_store_proto_msgTypes[14]
+	mi := &file_store_v1_store_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1011,7 +1123,7 @@ func (x *UpdateStoreProfileRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateStoreProfileRequest.ProtoReflect.Descriptor instead.
 func (*UpdateStoreProfileRequest) Descriptor() ([]byte, []int) {
-	return file_store_v1_store_proto_rawDescGZIP(), []int{14}
+	return file_store_v1_store_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *UpdateStoreProfileRequest) GetId() uint64 {
@@ -1056,15 +1168,15 @@ type UpdateStoreLocationRequest struct {
 	City          *string                `protobuf:"bytes,3,opt,name=city,proto3,oneof" json:"city,omitempty"`
 	District      *string                `protobuf:"bytes,4,opt,name=district,proto3,oneof" json:"district,omitempty"`
 	Address       *string                `protobuf:"bytes,5,opt,name=address,proto3,oneof" json:"address,omitempty"`
-	Longitude     float64                `protobuf:"fixed64,6,opt,name=longitude,proto3" json:"longitude,omitempty"`
-	Latitude      float64                `protobuf:"fixed64,7,opt,name=latitude,proto3" json:"latitude,omitempty"`
+	Longitude     *float64               `protobuf:"fixed64,6,opt,name=longitude,proto3,oneof" json:"longitude,omitempty"`
+	Latitude      *float64               `protobuf:"fixed64,7,opt,name=latitude,proto3,oneof" json:"latitude,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *UpdateStoreLocationRequest) Reset() {
 	*x = UpdateStoreLocationRequest{}
-	mi := &file_store_v1_store_proto_msgTypes[15]
+	mi := &file_store_v1_store_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1076,7 +1188,7 @@ func (x *UpdateStoreLocationRequest) String() string {
 func (*UpdateStoreLocationRequest) ProtoMessage() {}
 
 func (x *UpdateStoreLocationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_store_v1_store_proto_msgTypes[15]
+	mi := &file_store_v1_store_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1089,7 +1201,7 @@ func (x *UpdateStoreLocationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateStoreLocationRequest.ProtoReflect.Descriptor instead.
 func (*UpdateStoreLocationRequest) Descriptor() ([]byte, []int) {
-	return file_store_v1_store_proto_rawDescGZIP(), []int{15}
+	return file_store_v1_store_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *UpdateStoreLocationRequest) GetId() uint64 {
@@ -1128,15 +1240,15 @@ func (x *UpdateStoreLocationRequest) GetAddress() string {
 }
 
 func (x *UpdateStoreLocationRequest) GetLongitude() float64 {
-	if x != nil {
-		return x.Longitude
+	if x != nil && x.Longitude != nil {
+		return *x.Longitude
 	}
 	return 0
 }
 
 func (x *UpdateStoreLocationRequest) GetLatitude() float64 {
-	if x != nil {
-		return x.Latitude
+	if x != nil && x.Latitude != nil {
+		return *x.Latitude
 	}
 	return 0
 }
@@ -1151,7 +1263,7 @@ type UpdateStoreStatusRequest struct {
 
 func (x *UpdateStoreStatusRequest) Reset() {
 	*x = UpdateStoreStatusRequest{}
-	mi := &file_store_v1_store_proto_msgTypes[16]
+	mi := &file_store_v1_store_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1163,7 +1275,7 @@ func (x *UpdateStoreStatusRequest) String() string {
 func (*UpdateStoreStatusRequest) ProtoMessage() {}
 
 func (x *UpdateStoreStatusRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_store_v1_store_proto_msgTypes[16]
+	mi := &file_store_v1_store_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1176,7 +1288,7 @@ func (x *UpdateStoreStatusRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateStoreStatusRequest.ProtoReflect.Descriptor instead.
 func (*UpdateStoreStatusRequest) Descriptor() ([]byte, []int) {
-	return file_store_v1_store_proto_rawDescGZIP(), []int{16}
+	return file_store_v1_store_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *UpdateStoreStatusRequest) GetId() uint64 {
@@ -1204,7 +1316,7 @@ type ChangeStorePasswordRequest struct {
 
 func (x *ChangeStorePasswordRequest) Reset() {
 	*x = ChangeStorePasswordRequest{}
-	mi := &file_store_v1_store_proto_msgTypes[17]
+	mi := &file_store_v1_store_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1216,7 +1328,7 @@ func (x *ChangeStorePasswordRequest) String() string {
 func (*ChangeStorePasswordRequest) ProtoMessage() {}
 
 func (x *ChangeStorePasswordRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_store_v1_store_proto_msgTypes[17]
+	mi := &file_store_v1_store_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1229,7 +1341,7 @@ func (x *ChangeStorePasswordRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeStorePasswordRequest.ProtoReflect.Descriptor instead.
 func (*ChangeStorePasswordRequest) Descriptor() ([]byte, []int) {
-	return file_store_v1_store_proto_rawDescGZIP(), []int{17}
+	return file_store_v1_store_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *ChangeStorePasswordRequest) GetId() uint64 {
@@ -1262,7 +1374,7 @@ type PasswordChangedResponse struct {
 
 func (x *PasswordChangedResponse) Reset() {
 	*x = PasswordChangedResponse{}
-	mi := &file_store_v1_store_proto_msgTypes[18]
+	mi := &file_store_v1_store_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1274,7 +1386,7 @@ func (x *PasswordChangedResponse) String() string {
 func (*PasswordChangedResponse) ProtoMessage() {}
 
 func (x *PasswordChangedResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_store_v1_store_proto_msgTypes[18]
+	mi := &file_store_v1_store_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1287,7 +1399,7 @@ func (x *PasswordChangedResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PasswordChangedResponse.ProtoReflect.Descriptor instead.
 func (*PasswordChangedResponse) Descriptor() ([]byte, []int) {
-	return file_store_v1_store_proto_rawDescGZIP(), []int{18}
+	return file_store_v1_store_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *PasswordChangedResponse) GetChanged() bool {
@@ -1307,7 +1419,7 @@ type ResetStorePasswordRequest struct {
 
 func (x *ResetStorePasswordRequest) Reset() {
 	*x = ResetStorePasswordRequest{}
-	mi := &file_store_v1_store_proto_msgTypes[19]
+	mi := &file_store_v1_store_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1319,7 +1431,7 @@ func (x *ResetStorePasswordRequest) String() string {
 func (*ResetStorePasswordRequest) ProtoMessage() {}
 
 func (x *ResetStorePasswordRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_store_v1_store_proto_msgTypes[19]
+	mi := &file_store_v1_store_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1332,7 +1444,7 @@ func (x *ResetStorePasswordRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResetStorePasswordRequest.ProtoReflect.Descriptor instead.
 func (*ResetStorePasswordRequest) Descriptor() ([]byte, []int) {
-	return file_store_v1_store_proto_rawDescGZIP(), []int{19}
+	return file_store_v1_store_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *ResetStorePasswordRequest) GetId() uint64 {
@@ -1358,7 +1470,7 @@ type ResetStorePasswordResponse struct {
 
 func (x *ResetStorePasswordResponse) Reset() {
 	*x = ResetStorePasswordResponse{}
-	mi := &file_store_v1_store_proto_msgTypes[20]
+	mi := &file_store_v1_store_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1370,7 +1482,7 @@ func (x *ResetStorePasswordResponse) String() string {
 func (*ResetStorePasswordResponse) ProtoMessage() {}
 
 func (x *ResetStorePasswordResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_store_v1_store_proto_msgTypes[20]
+	mi := &file_store_v1_store_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1383,7 +1495,7 @@ func (x *ResetStorePasswordResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResetStorePasswordResponse.ProtoReflect.Descriptor instead.
 func (*ResetStorePasswordResponse) Descriptor() ([]byte, []int) {
-	return file_store_v1_store_proto_rawDescGZIP(), []int{20}
+	return file_store_v1_store_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *ResetStorePasswordResponse) GetPassword() string {
@@ -1391,6 +1503,650 @@ func (x *ResetStorePasswordResponse) GetPassword() string {
 		return x.Password
 	}
 	return ""
+}
+
+type BusinessStore struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Province      string                 `protobuf:"bytes,3,opt,name=province,proto3" json:"province,omitempty"`
+	City          string                 `protobuf:"bytes,4,opt,name=city,proto3" json:"city,omitempty"`
+	District      string                 `protobuf:"bytes,5,opt,name=district,proto3" json:"district,omitempty"`
+	Address       string                 `protobuf:"bytes,6,opt,name=address,proto3" json:"address,omitempty"`
+	Status        int32                  `protobuf:"varint,7,opt,name=status,proto3" json:"status,omitempty"`
+	BusinessHours string                 `protobuf:"bytes,8,opt,name=business_hours,json=businessHours,proto3" json:"business_hours,omitempty"`
+	Phone         string                 `protobuf:"bytes,9,opt,name=phone,proto3" json:"phone,omitempty"`
+	Longitude     float64                `protobuf:"fixed64,10,opt,name=longitude,proto3" json:"longitude,omitempty"`
+	Latitude      float64                `protobuf:"fixed64,11,opt,name=latitude,proto3" json:"latitude,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BusinessStore) Reset() {
+	*x = BusinessStore{}
+	mi := &file_store_v1_store_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BusinessStore) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BusinessStore) ProtoMessage() {}
+
+func (x *BusinessStore) ProtoReflect() protoreflect.Message {
+	mi := &file_store_v1_store_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BusinessStore.ProtoReflect.Descriptor instead.
+func (*BusinessStore) Descriptor() ([]byte, []int) {
+	return file_store_v1_store_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *BusinessStore) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *BusinessStore) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *BusinessStore) GetProvince() string {
+	if x != nil {
+		return x.Province
+	}
+	return ""
+}
+
+func (x *BusinessStore) GetCity() string {
+	if x != nil {
+		return x.City
+	}
+	return ""
+}
+
+func (x *BusinessStore) GetDistrict() string {
+	if x != nil {
+		return x.District
+	}
+	return ""
+}
+
+func (x *BusinessStore) GetAddress() string {
+	if x != nil {
+		return x.Address
+	}
+	return ""
+}
+
+func (x *BusinessStore) GetStatus() int32 {
+	if x != nil {
+		return x.Status
+	}
+	return 0
+}
+
+func (x *BusinessStore) GetBusinessHours() string {
+	if x != nil {
+		return x.BusinessHours
+	}
+	return ""
+}
+
+func (x *BusinessStore) GetPhone() string {
+	if x != nil {
+		return x.Phone
+	}
+	return ""
+}
+
+func (x *BusinessStore) GetLongitude() float64 {
+	if x != nil {
+		return x.Longitude
+	}
+	return 0
+}
+
+func (x *BusinessStore) GetLatitude() float64 {
+	if x != nil {
+		return x.Latitude
+	}
+	return 0
+}
+
+type BusinessStoreDistance struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Store         *BusinessStore         `protobuf:"bytes,1,opt,name=store,proto3" json:"store,omitempty"`
+	DistanceKm    float64                `protobuf:"fixed64,2,opt,name=distance_km,json=distanceKm,proto3" json:"distance_km,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BusinessStoreDistance) Reset() {
+	*x = BusinessStoreDistance{}
+	mi := &file_store_v1_store_proto_msgTypes[24]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BusinessStoreDistance) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BusinessStoreDistance) ProtoMessage() {}
+
+func (x *BusinessStoreDistance) ProtoReflect() protoreflect.Message {
+	mi := &file_store_v1_store_proto_msgTypes[24]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BusinessStoreDistance.ProtoReflect.Descriptor instead.
+func (*BusinessStoreDistance) Descriptor() ([]byte, []int) {
+	return file_store_v1_store_proto_rawDescGZIP(), []int{24}
+}
+
+func (x *BusinessStoreDistance) GetStore() *BusinessStore {
+	if x != nil {
+		return x.Store
+	}
+	return nil
+}
+
+func (x *BusinessStoreDistance) GetDistanceKm() float64 {
+	if x != nil {
+		return x.DistanceKm
+	}
+	return 0
+}
+
+type GetBusinessStoreRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Longitude     float64                `protobuf:"fixed64,2,opt,name=longitude,proto3" json:"longitude,omitempty"`
+	Latitude      float64                `protobuf:"fixed64,3,opt,name=latitude,proto3" json:"latitude,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetBusinessStoreRequest) Reset() {
+	*x = GetBusinessStoreRequest{}
+	mi := &file_store_v1_store_proto_msgTypes[25]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetBusinessStoreRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetBusinessStoreRequest) ProtoMessage() {}
+
+func (x *GetBusinessStoreRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_store_v1_store_proto_msgTypes[25]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetBusinessStoreRequest.ProtoReflect.Descriptor instead.
+func (*GetBusinessStoreRequest) Descriptor() ([]byte, []int) {
+	return file_store_v1_store_proto_rawDescGZIP(), []int{25}
+}
+
+func (x *GetBusinessStoreRequest) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *GetBusinessStoreRequest) GetLongitude() float64 {
+	if x != nil {
+		return x.Longitude
+	}
+	return 0
+}
+
+func (x *GetBusinessStoreRequest) GetLatitude() float64 {
+	if x != nil {
+		return x.Latitude
+	}
+	return 0
+}
+
+type GetBusinessStoresRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Ids           []uint64               `protobuf:"varint,1,rep,packed,name=ids,proto3" json:"ids,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetBusinessStoresRequest) Reset() {
+	*x = GetBusinessStoresRequest{}
+	mi := &file_store_v1_store_proto_msgTypes[26]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetBusinessStoresRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetBusinessStoresRequest) ProtoMessage() {}
+
+func (x *GetBusinessStoresRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_store_v1_store_proto_msgTypes[26]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetBusinessStoresRequest.ProtoReflect.Descriptor instead.
+func (*GetBusinessStoresRequest) Descriptor() ([]byte, []int) {
+	return file_store_v1_store_proto_rawDescGZIP(), []int{26}
+}
+
+func (x *GetBusinessStoresRequest) GetIds() []uint64 {
+	if x != nil {
+		return x.Ids
+	}
+	return nil
+}
+
+type GetBusinessStoresResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Stores        []*BusinessStore       `protobuf:"bytes,1,rep,name=stores,proto3" json:"stores,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetBusinessStoresResponse) Reset() {
+	*x = GetBusinessStoresResponse{}
+	mi := &file_store_v1_store_proto_msgTypes[27]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetBusinessStoresResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetBusinessStoresResponse) ProtoMessage() {}
+
+func (x *GetBusinessStoresResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_store_v1_store_proto_msgTypes[27]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetBusinessStoresResponse.ProtoReflect.Descriptor instead.
+func (*GetBusinessStoresResponse) Descriptor() ([]byte, []int) {
+	return file_store_v1_store_proto_rawDescGZIP(), []int{27}
+}
+
+func (x *GetBusinessStoresResponse) GetStores() []*BusinessStore {
+	if x != nil {
+		return x.Stores
+	}
+	return nil
+}
+
+type SearchBusinessStoresRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Province      string                 `protobuf:"bytes,1,opt,name=province,proto3" json:"province,omitempty"`
+	City          string                 `protobuf:"bytes,2,opt,name=city,proto3" json:"city,omitempty"`
+	District      string                 `protobuf:"bytes,3,opt,name=district,proto3" json:"district,omitempty"`
+	Keyword       string                 `protobuf:"bytes,4,opt,name=keyword,proto3" json:"keyword,omitempty"`
+	Longitude     float64                `protobuf:"fixed64,5,opt,name=longitude,proto3" json:"longitude,omitempty"`
+	Latitude      float64                `protobuf:"fixed64,6,opt,name=latitude,proto3" json:"latitude,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SearchBusinessStoresRequest) Reset() {
+	*x = SearchBusinessStoresRequest{}
+	mi := &file_store_v1_store_proto_msgTypes[28]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SearchBusinessStoresRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SearchBusinessStoresRequest) ProtoMessage() {}
+
+func (x *SearchBusinessStoresRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_store_v1_store_proto_msgTypes[28]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SearchBusinessStoresRequest.ProtoReflect.Descriptor instead.
+func (*SearchBusinessStoresRequest) Descriptor() ([]byte, []int) {
+	return file_store_v1_store_proto_rawDescGZIP(), []int{28}
+}
+
+func (x *SearchBusinessStoresRequest) GetProvince() string {
+	if x != nil {
+		return x.Province
+	}
+	return ""
+}
+
+func (x *SearchBusinessStoresRequest) GetCity() string {
+	if x != nil {
+		return x.City
+	}
+	return ""
+}
+
+func (x *SearchBusinessStoresRequest) GetDistrict() string {
+	if x != nil {
+		return x.District
+	}
+	return ""
+}
+
+func (x *SearchBusinessStoresRequest) GetKeyword() string {
+	if x != nil {
+		return x.Keyword
+	}
+	return ""
+}
+
+func (x *SearchBusinessStoresRequest) GetLongitude() float64 {
+	if x != nil {
+		return x.Longitude
+	}
+	return 0
+}
+
+func (x *SearchBusinessStoresRequest) GetLatitude() float64 {
+	if x != nil {
+		return x.Latitude
+	}
+	return 0
+}
+
+type SearchBusinessStoresResponse struct {
+	state         protoimpl.MessageState   `protogen:"open.v1"`
+	Stores        []*BusinessStoreDistance `protobuf:"bytes,1,rep,name=stores,proto3" json:"stores,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SearchBusinessStoresResponse) Reset() {
+	*x = SearchBusinessStoresResponse{}
+	mi := &file_store_v1_store_proto_msgTypes[29]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SearchBusinessStoresResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SearchBusinessStoresResponse) ProtoMessage() {}
+
+func (x *SearchBusinessStoresResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_store_v1_store_proto_msgTypes[29]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SearchBusinessStoresResponse.ProtoReflect.Descriptor instead.
+func (*SearchBusinessStoresResponse) Descriptor() ([]byte, []int) {
+	return file_store_v1_store_proto_rawDescGZIP(), []int{29}
+}
+
+func (x *SearchBusinessStoresResponse) GetStores() []*BusinessStoreDistance {
+	if x != nil {
+		return x.Stores
+	}
+	return nil
+}
+
+type ListStoreCitiesRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListStoreCitiesRequest) Reset() {
+	*x = ListStoreCitiesRequest{}
+	mi := &file_store_v1_store_proto_msgTypes[30]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListStoreCitiesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListStoreCitiesRequest) ProtoMessage() {}
+
+func (x *ListStoreCitiesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_store_v1_store_proto_msgTypes[30]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListStoreCitiesRequest.ProtoReflect.Descriptor instead.
+func (*ListStoreCitiesRequest) Descriptor() ([]byte, []int) {
+	return file_store_v1_store_proto_rawDescGZIP(), []int{30}
+}
+
+type ListStoreCitiesResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Cities        []string               `protobuf:"bytes,1,rep,name=cities,proto3" json:"cities,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListStoreCitiesResponse) Reset() {
+	*x = ListStoreCitiesResponse{}
+	mi := &file_store_v1_store_proto_msgTypes[31]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListStoreCitiesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListStoreCitiesResponse) ProtoMessage() {}
+
+func (x *ListStoreCitiesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_store_v1_store_proto_msgTypes[31]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListStoreCitiesResponse.ProtoReflect.Descriptor instead.
+func (*ListStoreCitiesResponse) Descriptor() ([]byte, []int) {
+	return file_store_v1_store_proto_rawDescGZIP(), []int{31}
+}
+
+func (x *ListStoreCitiesResponse) GetCities() []string {
+	if x != nil {
+		return x.Cities
+	}
+	return nil
+}
+
+type GetBusinessNearbyStoresRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Longitude     float64                `protobuf:"fixed64,1,opt,name=longitude,proto3" json:"longitude,omitempty"`
+	Latitude      float64                `protobuf:"fixed64,2,opt,name=latitude,proto3" json:"latitude,omitempty"`
+	DistanceKm    float64                `protobuf:"fixed64,3,opt,name=distance_km,json=distanceKm,proto3" json:"distance_km,omitempty"`
+	Count         int32                  `protobuf:"varint,4,opt,name=count,proto3" json:"count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetBusinessNearbyStoresRequest) Reset() {
+	*x = GetBusinessNearbyStoresRequest{}
+	mi := &file_store_v1_store_proto_msgTypes[32]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetBusinessNearbyStoresRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetBusinessNearbyStoresRequest) ProtoMessage() {}
+
+func (x *GetBusinessNearbyStoresRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_store_v1_store_proto_msgTypes[32]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetBusinessNearbyStoresRequest.ProtoReflect.Descriptor instead.
+func (*GetBusinessNearbyStoresRequest) Descriptor() ([]byte, []int) {
+	return file_store_v1_store_proto_rawDescGZIP(), []int{32}
+}
+
+func (x *GetBusinessNearbyStoresRequest) GetLongitude() float64 {
+	if x != nil {
+		return x.Longitude
+	}
+	return 0
+}
+
+func (x *GetBusinessNearbyStoresRequest) GetLatitude() float64 {
+	if x != nil {
+		return x.Latitude
+	}
+	return 0
+}
+
+func (x *GetBusinessNearbyStoresRequest) GetDistanceKm() float64 {
+	if x != nil {
+		return x.DistanceKm
+	}
+	return 0
+}
+
+func (x *GetBusinessNearbyStoresRequest) GetCount() int32 {
+	if x != nil {
+		return x.Count
+	}
+	return 0
+}
+
+type GetBusinessNearbyStoresResponse struct {
+	state         protoimpl.MessageState   `protogen:"open.v1"`
+	Stores        []*BusinessStoreDistance `protobuf:"bytes,1,rep,name=stores,proto3" json:"stores,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetBusinessNearbyStoresResponse) Reset() {
+	*x = GetBusinessNearbyStoresResponse{}
+	mi := &file_store_v1_store_proto_msgTypes[33]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetBusinessNearbyStoresResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetBusinessNearbyStoresResponse) ProtoMessage() {}
+
+func (x *GetBusinessNearbyStoresResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_store_v1_store_proto_msgTypes[33]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetBusinessNearbyStoresResponse.ProtoReflect.Descriptor instead.
+func (*GetBusinessNearbyStoresResponse) Descriptor() ([]byte, []int) {
+	return file_store_v1_store_proto_rawDescGZIP(), []int{33}
+}
+
+func (x *GetBusinessNearbyStoresResponse) GetStores() []*BusinessStoreDistance {
+	if x != nil {
+		return x.Stores
+	}
+	return nil
 }
 
 var File_store_v1_store_proto protoreflect.FileDescriptor
@@ -1439,43 +2195,52 @@ const file_store_v1_store_proto_rawDesc = "" +
 	"\x0fGetStoreRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\"4\n" +
 	"\x18GetStoreByAccountRequest\x12\x18\n" +
-	"\aaccount\x18\x01 \x01(\tR\aaccount\"P\n" +
+	"\aaccount\x18\x01 \x01(\tR\aaccount\"Z\n" +
+	"\x15GetAdminStoresRequest\x12\x10\n" +
+	"\x03ids\x18\x01 \x03(\x04R\x03ids\x12/\n" +
+	"\x13include_unavailable\x18\x02 \x01(\bR\x12includeUnavailable\"H\n" +
+	"\x16GetAdminStoresResponse\x12.\n" +
+	"\x06stores\x18\x01 \x03(\v2\x16.dextea.store.v1.StoreR\x06stores\"\xd9\x01\n" +
+	"\x18SearchAdminStoresRequest\x12\x1a\n" +
+	"\bprovince\x18\x01 \x01(\tR\bprovince\x12\x12\n" +
+	"\x04city\x18\x02 \x01(\tR\x04city\x12\x1a\n" +
+	"\bdistrict\x18\x03 \x01(\tR\bdistrict\x12\x18\n" +
+	"\akeyword\x18\x04 \x01(\tR\akeyword\x12/\n" +
+	"\x13include_unavailable\x18\x05 \x01(\bR\x12includeUnavailable\x12\x1b\n" +
+	"\x06status\x18\x06 \x01(\x05H\x00R\x06status\x88\x01\x01B\t\n" +
+	"\a_status\"K\n" +
+	"\x19SearchAdminStoresResponse\x12.\n" +
+	"\x06stores\x18\x01 \x03(\v2\x16.dextea.store.v1.StoreR\x06stores\"P\n" +
 	"\x18AuthenticateStoreRequest\x12\x18\n" +
 	"\aaccount\x18\x01 \x01(\tR\aaccount\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\"V\n" +
 	"\rStoreAuthInfo\x12\x19\n" +
 	"\bstore_id\x18\x01 \x01(\x04R\astoreId\x12\x16\n" +
 	"\x06status\x18\x02 \x01(\x05R\x06status\x12\x12\n" +
-	"\x04name\x18\x03 \x01(\tR\x04name\"\x86\x01\n" +
+	"\x04name\x18\x03 \x01(\tR\x04name\"\x84\x02\n" +
 	"\x11ListStoresRequest\x12\x12\n" +
 	"\x04page\x18\x01 \x01(\x05R\x04page\x12\x1b\n" +
 	"\tpage_size\x18\x02 \x01(\x05R\bpageSize\x12\x18\n" +
 	"\akeyword\x18\x03 \x01(\tR\akeyword\x12\x1b\n" +
-	"\x06status\x18\x04 \x01(\x05H\x00R\x06status\x88\x01\x01B\t\n" +
-	"\a_status\"\x8b\x01\n" +
+	"\x06status\x18\x04 \x01(\x05H\x00R\x06status\x88\x01\x01\x12\x1f\n" +
+	"\bprovince\x18\x05 \x01(\tH\x01R\bprovince\x88\x01\x01\x12\x17\n" +
+	"\x04city\x18\x06 \x01(\tH\x02R\x04city\x88\x01\x01\x12\x1f\n" +
+	"\bdistrict\x18\a \x01(\tH\x03R\bdistrict\x88\x01\x01B\t\n" +
+	"\a_statusB\v\n" +
+	"\t_provinceB\a\n" +
+	"\x05_cityB\v\n" +
+	"\t_district\"\x8b\x01\n" +
 	"\x12ListStoresResponse\x12\x14\n" +
 	"\x05total\x18\x01 \x01(\x03R\x05total\x12\x12\n" +
 	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x1b\n" +
 	"\tpage_size\x18\x03 \x01(\x05R\bpageSize\x12.\n" +
-	"\x06stores\x18\x04 \x03(\v2\x16.dextea.store.v1.StoreR\x06stores\"t\n" +
-	"\x13SearchStoresRequest\x12\x12\n" +
-	"\x04city\x18\x01 \x01(\tR\x04city\x12\x18\n" +
-	"\akeyword\x18\x02 \x01(\tR\akeyword\x12/\n" +
-	"\x13include_unavailable\x18\x03 \x01(\bR\x12includeUnavailable\"F\n" +
-	"\x14SearchStoresResponse\x12.\n" +
-	"\x06stores\x18\x01 \x03(\v2\x16.dextea.store.v1.StoreR\x06stores\"\x89\x01\n" +
-	"\x16GetNearbyStoresRequest\x12\x1c\n" +
-	"\tlongitude\x18\x01 \x01(\x01R\tlongitude\x12\x1a\n" +
-	"\blatitude\x18\x02 \x01(\x01R\blatitude\x12\x1f\n" +
-	"\vdistance_km\x18\x03 \x01(\x01R\n" +
-	"distanceKm\x12\x14\n" +
-	"\x05count\x18\x04 \x01(\x05R\x05count\"\\\n" +
-	"\vNearbyStore\x12,\n" +
-	"\x05store\x18\x01 \x01(\v2\x16.dextea.store.v1.StoreR\x05store\x12\x1f\n" +
-	"\vdistance_km\x18\x02 \x01(\x01R\n" +
-	"distanceKm\"O\n" +
-	"\x17GetNearbyStoresResponse\x124\n" +
-	"\x06stores\x18\x01 \x03(\v2\x1c.dextea.store.v1.NearbyStoreR\x06stores\"\xd6\x01\n" +
+	"\x06stores\x18\x04 \x03(\v2\x16.dextea.store.v1.StoreR\x06stores\"\x1b\n" +
+	"\x19GetStoreStatisticsRequest\"@\n" +
+	"\x10StoreStatusCount\x12\x16\n" +
+	"\x06status\x18\x01 \x01(\x05R\x06status\x12\x14\n" +
+	"\x05count\x18\x02 \x01(\x03R\x05count\"[\n" +
+	"\x1aGetStoreStatisticsResponse\x12=\n" +
+	"\bstatuses\x18\x01 \x03(\v2!.dextea.store.v1.StoreStatusCountR\bstatuses\"\xd6\x01\n" +
 	"\x19UpdateStoreProfileRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x17\n" +
 	"\x04name\x18\x02 \x01(\tH\x00R\x04name\x88\x01\x01\x12\x19\n" +
@@ -1485,20 +2250,23 @@ const file_store_v1_store_proto_rawDesc = "" +
 	"\x05_nameB\b\n" +
 	"\x06_phoneB\x11\n" +
 	"\x0f_business_hoursB\b\n" +
-	"\x06_email\"\x8f\x02\n" +
+	"\x06_email\"\xb4\x02\n" +
 	"\x1aUpdateStoreLocationRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x1f\n" +
 	"\bprovince\x18\x02 \x01(\tH\x00R\bprovince\x88\x01\x01\x12\x17\n" +
 	"\x04city\x18\x03 \x01(\tH\x01R\x04city\x88\x01\x01\x12\x1f\n" +
 	"\bdistrict\x18\x04 \x01(\tH\x02R\bdistrict\x88\x01\x01\x12\x1d\n" +
-	"\aaddress\x18\x05 \x01(\tH\x03R\aaddress\x88\x01\x01\x12\x1c\n" +
-	"\tlongitude\x18\x06 \x01(\x01R\tlongitude\x12\x1a\n" +
-	"\blatitude\x18\a \x01(\x01R\blatitudeB\v\n" +
+	"\aaddress\x18\x05 \x01(\tH\x03R\aaddress\x88\x01\x01\x12!\n" +
+	"\tlongitude\x18\x06 \x01(\x01H\x04R\tlongitude\x88\x01\x01\x12\x1f\n" +
+	"\blatitude\x18\a \x01(\x01H\x05R\blatitude\x88\x01\x01B\v\n" +
 	"\t_provinceB\a\n" +
 	"\x05_cityB\v\n" +
 	"\t_districtB\n" +
 	"\n" +
-	"\b_address\"B\n" +
+	"\b_addressB\f\n" +
+	"\n" +
+	"_longitudeB\v\n" +
+	"\t_latitude\"B\n" +
 	"\x18UpdateStoreStatusRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x16\n" +
 	"\x06status\x18\x02 \x01(\x05R\x06status\"r\n" +
@@ -1513,21 +2281,74 @@ const file_store_v1_store_proto_rawDesc = "" +
 	"\fnew_password\x18\x02 \x01(\tH\x00R\vnewPassword\x88\x01\x01B\x0f\n" +
 	"\r_new_password\"8\n" +
 	"\x1aResetStorePasswordResponse\x12\x1a\n" +
-	"\bpassword\x18\x01 \x01(\tR\bpassword2\xeb\b\n" +
-	"\fStoreService\x12X\n" +
+	"\bpassword\x18\x01 \x01(\tR\bpassword\"\xa8\x02\n" +
+	"\rBusinessStore\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1a\n" +
+	"\bprovince\x18\x03 \x01(\tR\bprovince\x12\x12\n" +
+	"\x04city\x18\x04 \x01(\tR\x04city\x12\x1a\n" +
+	"\bdistrict\x18\x05 \x01(\tR\bdistrict\x12\x18\n" +
+	"\aaddress\x18\x06 \x01(\tR\aaddress\x12\x16\n" +
+	"\x06status\x18\a \x01(\x05R\x06status\x12%\n" +
+	"\x0ebusiness_hours\x18\b \x01(\tR\rbusinessHours\x12\x14\n" +
+	"\x05phone\x18\t \x01(\tR\x05phone\x12\x1c\n" +
+	"\tlongitude\x18\n" +
+	" \x01(\x01R\tlongitude\x12\x1a\n" +
+	"\blatitude\x18\v \x01(\x01R\blatitude\"n\n" +
+	"\x15BusinessStoreDistance\x124\n" +
+	"\x05store\x18\x01 \x01(\v2\x1e.dextea.store.v1.BusinessStoreR\x05store\x12\x1f\n" +
+	"\vdistance_km\x18\x02 \x01(\x01R\n" +
+	"distanceKm\"c\n" +
+	"\x17GetBusinessStoreRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x1c\n" +
+	"\tlongitude\x18\x02 \x01(\x01R\tlongitude\x12\x1a\n" +
+	"\blatitude\x18\x03 \x01(\x01R\blatitude\",\n" +
+	"\x18GetBusinessStoresRequest\x12\x10\n" +
+	"\x03ids\x18\x01 \x03(\x04R\x03ids\"S\n" +
+	"\x19GetBusinessStoresResponse\x126\n" +
+	"\x06stores\x18\x01 \x03(\v2\x1e.dextea.store.v1.BusinessStoreR\x06stores\"\xbd\x01\n" +
+	"\x1bSearchBusinessStoresRequest\x12\x1a\n" +
+	"\bprovince\x18\x01 \x01(\tR\bprovince\x12\x12\n" +
+	"\x04city\x18\x02 \x01(\tR\x04city\x12\x1a\n" +
+	"\bdistrict\x18\x03 \x01(\tR\bdistrict\x12\x18\n" +
+	"\akeyword\x18\x04 \x01(\tR\akeyword\x12\x1c\n" +
+	"\tlongitude\x18\x05 \x01(\x01R\tlongitude\x12\x1a\n" +
+	"\blatitude\x18\x06 \x01(\x01R\blatitude\"^\n" +
+	"\x1cSearchBusinessStoresResponse\x12>\n" +
+	"\x06stores\x18\x01 \x03(\v2&.dextea.store.v1.BusinessStoreDistanceR\x06stores\"\x18\n" +
+	"\x16ListStoreCitiesRequest\"1\n" +
+	"\x17ListStoreCitiesResponse\x12\x16\n" +
+	"\x06cities\x18\x01 \x03(\tR\x06cities\"\x91\x01\n" +
+	"\x1eGetBusinessNearbyStoresRequest\x12\x1c\n" +
+	"\tlongitude\x18\x01 \x01(\x01R\tlongitude\x12\x1a\n" +
+	"\blatitude\x18\x02 \x01(\x01R\blatitude\x12\x1f\n" +
+	"\vdistance_km\x18\x03 \x01(\x01R\n" +
+	"distanceKm\x12\x14\n" +
+	"\x05count\x18\x04 \x01(\x05R\x05count\"a\n" +
+	"\x1fGetBusinessNearbyStoresResponse\x12>\n" +
+	"\x06stores\x18\x01 \x03(\v2&.dextea.store.v1.BusinessStoreDistanceR\x06stores2\x93\b\n" +
+	"\x11StoreAdminService\x12X\n" +
 	"\vCreateStore\x12#.dextea.store.v1.CreateStoreRequest\x1a$.dextea.store.v1.CreateStoreResponse\x12D\n" +
 	"\bGetStore\x12 .dextea.store.v1.GetStoreRequest\x1a\x16.dextea.store.v1.Store\x12V\n" +
-	"\x11GetStoreByAccount\x12).dextea.store.v1.GetStoreByAccountRequest\x1a\x16.dextea.store.v1.Store\x12^\n" +
-	"\x11AuthenticateStore\x12).dextea.store.v1.AuthenticateStoreRequest\x1a\x1e.dextea.store.v1.StoreAuthInfo\x12U\n" +
+	"\x11GetStoreByAccount\x12).dextea.store.v1.GetStoreByAccountRequest\x1a\x16.dextea.store.v1.Store\x12\\\n" +
+	"\tGetStores\x12&.dextea.store.v1.GetAdminStoresRequest\x1a'.dextea.store.v1.GetAdminStoresResponse\x12e\n" +
+	"\fSearchStores\x12).dextea.store.v1.SearchAdminStoresRequest\x1a*.dextea.store.v1.SearchAdminStoresResponse\x12U\n" +
 	"\n" +
-	"ListStores\x12\".dextea.store.v1.ListStoresRequest\x1a#.dextea.store.v1.ListStoresResponse\x12[\n" +
-	"\fSearchStores\x12$.dextea.store.v1.SearchStoresRequest\x1a%.dextea.store.v1.SearchStoresResponse\x12d\n" +
-	"\x0fGetNearbyStores\x12'.dextea.store.v1.GetNearbyStoresRequest\x1a(.dextea.store.v1.GetNearbyStoresResponse\x12X\n" +
+	"ListStores\x12\".dextea.store.v1.ListStoresRequest\x1a#.dextea.store.v1.ListStoresResponse\x12m\n" +
+	"\x12GetStoreStatistics\x12*.dextea.store.v1.GetStoreStatisticsRequest\x1a+.dextea.store.v1.GetStoreStatisticsResponse\x12X\n" +
 	"\x12UpdateStoreProfile\x12*.dextea.store.v1.UpdateStoreProfileRequest\x1a\x16.dextea.store.v1.Store\x12Z\n" +
 	"\x13UpdateStoreLocation\x12+.dextea.store.v1.UpdateStoreLocationRequest\x1a\x16.dextea.store.v1.Store\x12V\n" +
-	"\x11UpdateStoreStatus\x12).dextea.store.v1.UpdateStoreStatusRequest\x1a\x16.dextea.store.v1.Store\x12l\n" +
-	"\x13ChangeStorePassword\x12+.dextea.store.v1.ChangeStorePasswordRequest\x1a(.dextea.store.v1.PasswordChangedResponse\x12m\n" +
-	"\x12ResetStorePassword\x12*.dextea.store.v1.ResetStorePasswordRequest\x1a+.dextea.store.v1.ResetStorePasswordResponseB?Z=github.com/wilson-lyc/dextea-v3-proto/gen/go/store/v1;storev1b\x06proto3"
+	"\x11UpdateStoreStatus\x12).dextea.store.v1.UpdateStoreStatusRequest\x1a\x16.dextea.store.v1.Store\x12m\n" +
+	"\x12ResetStorePassword\x12*.dextea.store.v1.ResetStorePasswordRequest\x1a+.dextea.store.v1.ResetStorePasswordResponse2\xa1\x04\n" +
+	"\x14StoreBusinessService\x12\\\n" +
+	"\bGetStore\x12(.dextea.store.v1.GetBusinessStoreRequest\x1a&.dextea.store.v1.BusinessStoreDistance\x12b\n" +
+	"\tGetStores\x12).dextea.store.v1.GetBusinessStoresRequest\x1a*.dextea.store.v1.GetBusinessStoresResponse\x12k\n" +
+	"\fSearchStores\x12,.dextea.store.v1.SearchBusinessStoresRequest\x1a-.dextea.store.v1.SearchBusinessStoresResponse\x12d\n" +
+	"\x0fListStoreCities\x12'.dextea.store.v1.ListStoreCitiesRequest\x1a(.dextea.store.v1.ListStoreCitiesResponse\x12t\n" +
+	"\x0fGetNearbyStores\x12/.dextea.store.v1.GetBusinessNearbyStoresRequest\x1a0.dextea.store.v1.GetBusinessNearbyStoresResponse2\xe6\x01\n" +
+	"\x16StoreCredentialService\x12^\n" +
+	"\x11AuthenticateStore\x12).dextea.store.v1.AuthenticateStoreRequest\x1a\x1e.dextea.store.v1.StoreAuthInfo\x12l\n" +
+	"\x13ChangeStorePassword\x12+.dextea.store.v1.ChangeStorePasswordRequest\x1a(.dextea.store.v1.PasswordChangedResponseB?Z=github.com/wilson-lyc/dextea-v3-proto/gen/go/store/v1;storev1b\x06proto3"
 
 var (
 	file_store_v1_store_proto_rawDescOnce sync.Once
@@ -1541,65 +2362,94 @@ func file_store_v1_store_proto_rawDescGZIP() []byte {
 	return file_store_v1_store_proto_rawDescData
 }
 
-var file_store_v1_store_proto_msgTypes = make([]protoimpl.MessageInfo, 21)
+var file_store_v1_store_proto_msgTypes = make([]protoimpl.MessageInfo, 34)
 var file_store_v1_store_proto_goTypes = []any{
-	(*Store)(nil),                      // 0: dextea.store.v1.Store
-	(*CreateStoreRequest)(nil),         // 1: dextea.store.v1.CreateStoreRequest
-	(*CreateStoreResponse)(nil),        // 2: dextea.store.v1.CreateStoreResponse
-	(*GetStoreRequest)(nil),            // 3: dextea.store.v1.GetStoreRequest
-	(*GetStoreByAccountRequest)(nil),   // 4: dextea.store.v1.GetStoreByAccountRequest
-	(*AuthenticateStoreRequest)(nil),   // 5: dextea.store.v1.AuthenticateStoreRequest
-	(*StoreAuthInfo)(nil),              // 6: dextea.store.v1.StoreAuthInfo
-	(*ListStoresRequest)(nil),          // 7: dextea.store.v1.ListStoresRequest
-	(*ListStoresResponse)(nil),         // 8: dextea.store.v1.ListStoresResponse
-	(*SearchStoresRequest)(nil),        // 9: dextea.store.v1.SearchStoresRequest
-	(*SearchStoresResponse)(nil),       // 10: dextea.store.v1.SearchStoresResponse
-	(*GetNearbyStoresRequest)(nil),     // 11: dextea.store.v1.GetNearbyStoresRequest
-	(*NearbyStore)(nil),                // 12: dextea.store.v1.NearbyStore
-	(*GetNearbyStoresResponse)(nil),    // 13: dextea.store.v1.GetNearbyStoresResponse
-	(*UpdateStoreProfileRequest)(nil),  // 14: dextea.store.v1.UpdateStoreProfileRequest
-	(*UpdateStoreLocationRequest)(nil), // 15: dextea.store.v1.UpdateStoreLocationRequest
-	(*UpdateStoreStatusRequest)(nil),   // 16: dextea.store.v1.UpdateStoreStatusRequest
-	(*ChangeStorePasswordRequest)(nil), // 17: dextea.store.v1.ChangeStorePasswordRequest
-	(*PasswordChangedResponse)(nil),    // 18: dextea.store.v1.PasswordChangedResponse
-	(*ResetStorePasswordRequest)(nil),  // 19: dextea.store.v1.ResetStorePasswordRequest
-	(*ResetStorePasswordResponse)(nil), // 20: dextea.store.v1.ResetStorePasswordResponse
+	(*Store)(nil),                           // 0: dextea.store.v1.Store
+	(*CreateStoreRequest)(nil),              // 1: dextea.store.v1.CreateStoreRequest
+	(*CreateStoreResponse)(nil),             // 2: dextea.store.v1.CreateStoreResponse
+	(*GetStoreRequest)(nil),                 // 3: dextea.store.v1.GetStoreRequest
+	(*GetStoreByAccountRequest)(nil),        // 4: dextea.store.v1.GetStoreByAccountRequest
+	(*GetAdminStoresRequest)(nil),           // 5: dextea.store.v1.GetAdminStoresRequest
+	(*GetAdminStoresResponse)(nil),          // 6: dextea.store.v1.GetAdminStoresResponse
+	(*SearchAdminStoresRequest)(nil),        // 7: dextea.store.v1.SearchAdminStoresRequest
+	(*SearchAdminStoresResponse)(nil),       // 8: dextea.store.v1.SearchAdminStoresResponse
+	(*AuthenticateStoreRequest)(nil),        // 9: dextea.store.v1.AuthenticateStoreRequest
+	(*StoreAuthInfo)(nil),                   // 10: dextea.store.v1.StoreAuthInfo
+	(*ListStoresRequest)(nil),               // 11: dextea.store.v1.ListStoresRequest
+	(*ListStoresResponse)(nil),              // 12: dextea.store.v1.ListStoresResponse
+	(*GetStoreStatisticsRequest)(nil),       // 13: dextea.store.v1.GetStoreStatisticsRequest
+	(*StoreStatusCount)(nil),                // 14: dextea.store.v1.StoreStatusCount
+	(*GetStoreStatisticsResponse)(nil),      // 15: dextea.store.v1.GetStoreStatisticsResponse
+	(*UpdateStoreProfileRequest)(nil),       // 16: dextea.store.v1.UpdateStoreProfileRequest
+	(*UpdateStoreLocationRequest)(nil),      // 17: dextea.store.v1.UpdateStoreLocationRequest
+	(*UpdateStoreStatusRequest)(nil),        // 18: dextea.store.v1.UpdateStoreStatusRequest
+	(*ChangeStorePasswordRequest)(nil),      // 19: dextea.store.v1.ChangeStorePasswordRequest
+	(*PasswordChangedResponse)(nil),         // 20: dextea.store.v1.PasswordChangedResponse
+	(*ResetStorePasswordRequest)(nil),       // 21: dextea.store.v1.ResetStorePasswordRequest
+	(*ResetStorePasswordResponse)(nil),      // 22: dextea.store.v1.ResetStorePasswordResponse
+	(*BusinessStore)(nil),                   // 23: dextea.store.v1.BusinessStore
+	(*BusinessStoreDistance)(nil),           // 24: dextea.store.v1.BusinessStoreDistance
+	(*GetBusinessStoreRequest)(nil),         // 25: dextea.store.v1.GetBusinessStoreRequest
+	(*GetBusinessStoresRequest)(nil),        // 26: dextea.store.v1.GetBusinessStoresRequest
+	(*GetBusinessStoresResponse)(nil),       // 27: dextea.store.v1.GetBusinessStoresResponse
+	(*SearchBusinessStoresRequest)(nil),     // 28: dextea.store.v1.SearchBusinessStoresRequest
+	(*SearchBusinessStoresResponse)(nil),    // 29: dextea.store.v1.SearchBusinessStoresResponse
+	(*ListStoreCitiesRequest)(nil),          // 30: dextea.store.v1.ListStoreCitiesRequest
+	(*ListStoreCitiesResponse)(nil),         // 31: dextea.store.v1.ListStoreCitiesResponse
+	(*GetBusinessNearbyStoresRequest)(nil),  // 32: dextea.store.v1.GetBusinessNearbyStoresRequest
+	(*GetBusinessNearbyStoresResponse)(nil), // 33: dextea.store.v1.GetBusinessNearbyStoresResponse
 }
 var file_store_v1_store_proto_depIdxs = []int32{
 	0,  // 0: dextea.store.v1.CreateStoreResponse.store:type_name -> dextea.store.v1.Store
-	0,  // 1: dextea.store.v1.ListStoresResponse.stores:type_name -> dextea.store.v1.Store
-	0,  // 2: dextea.store.v1.SearchStoresResponse.stores:type_name -> dextea.store.v1.Store
-	0,  // 3: dextea.store.v1.NearbyStore.store:type_name -> dextea.store.v1.Store
-	12, // 4: dextea.store.v1.GetNearbyStoresResponse.stores:type_name -> dextea.store.v1.NearbyStore
-	1,  // 5: dextea.store.v1.StoreService.CreateStore:input_type -> dextea.store.v1.CreateStoreRequest
-	3,  // 6: dextea.store.v1.StoreService.GetStore:input_type -> dextea.store.v1.GetStoreRequest
-	4,  // 7: dextea.store.v1.StoreService.GetStoreByAccount:input_type -> dextea.store.v1.GetStoreByAccountRequest
-	5,  // 8: dextea.store.v1.StoreService.AuthenticateStore:input_type -> dextea.store.v1.AuthenticateStoreRequest
-	7,  // 9: dextea.store.v1.StoreService.ListStores:input_type -> dextea.store.v1.ListStoresRequest
-	9,  // 10: dextea.store.v1.StoreService.SearchStores:input_type -> dextea.store.v1.SearchStoresRequest
-	11, // 11: dextea.store.v1.StoreService.GetNearbyStores:input_type -> dextea.store.v1.GetNearbyStoresRequest
-	14, // 12: dextea.store.v1.StoreService.UpdateStoreProfile:input_type -> dextea.store.v1.UpdateStoreProfileRequest
-	15, // 13: dextea.store.v1.StoreService.UpdateStoreLocation:input_type -> dextea.store.v1.UpdateStoreLocationRequest
-	16, // 14: dextea.store.v1.StoreService.UpdateStoreStatus:input_type -> dextea.store.v1.UpdateStoreStatusRequest
-	17, // 15: dextea.store.v1.StoreService.ChangeStorePassword:input_type -> dextea.store.v1.ChangeStorePasswordRequest
-	19, // 16: dextea.store.v1.StoreService.ResetStorePassword:input_type -> dextea.store.v1.ResetStorePasswordRequest
-	2,  // 17: dextea.store.v1.StoreService.CreateStore:output_type -> dextea.store.v1.CreateStoreResponse
-	0,  // 18: dextea.store.v1.StoreService.GetStore:output_type -> dextea.store.v1.Store
-	0,  // 19: dextea.store.v1.StoreService.GetStoreByAccount:output_type -> dextea.store.v1.Store
-	6,  // 20: dextea.store.v1.StoreService.AuthenticateStore:output_type -> dextea.store.v1.StoreAuthInfo
-	8,  // 21: dextea.store.v1.StoreService.ListStores:output_type -> dextea.store.v1.ListStoresResponse
-	10, // 22: dextea.store.v1.StoreService.SearchStores:output_type -> dextea.store.v1.SearchStoresResponse
-	13, // 23: dextea.store.v1.StoreService.GetNearbyStores:output_type -> dextea.store.v1.GetNearbyStoresResponse
-	0,  // 24: dextea.store.v1.StoreService.UpdateStoreProfile:output_type -> dextea.store.v1.Store
-	0,  // 25: dextea.store.v1.StoreService.UpdateStoreLocation:output_type -> dextea.store.v1.Store
-	0,  // 26: dextea.store.v1.StoreService.UpdateStoreStatus:output_type -> dextea.store.v1.Store
-	18, // 27: dextea.store.v1.StoreService.ChangeStorePassword:output_type -> dextea.store.v1.PasswordChangedResponse
-	20, // 28: dextea.store.v1.StoreService.ResetStorePassword:output_type -> dextea.store.v1.ResetStorePasswordResponse
-	17, // [17:29] is the sub-list for method output_type
-	5,  // [5:17] is the sub-list for method input_type
-	5,  // [5:5] is the sub-list for extension type_name
-	5,  // [5:5] is the sub-list for extension extendee
-	0,  // [0:5] is the sub-list for field type_name
+	0,  // 1: dextea.store.v1.GetAdminStoresResponse.stores:type_name -> dextea.store.v1.Store
+	0,  // 2: dextea.store.v1.SearchAdminStoresResponse.stores:type_name -> dextea.store.v1.Store
+	0,  // 3: dextea.store.v1.ListStoresResponse.stores:type_name -> dextea.store.v1.Store
+	14, // 4: dextea.store.v1.GetStoreStatisticsResponse.statuses:type_name -> dextea.store.v1.StoreStatusCount
+	23, // 5: dextea.store.v1.BusinessStoreDistance.store:type_name -> dextea.store.v1.BusinessStore
+	23, // 6: dextea.store.v1.GetBusinessStoresResponse.stores:type_name -> dextea.store.v1.BusinessStore
+	24, // 7: dextea.store.v1.SearchBusinessStoresResponse.stores:type_name -> dextea.store.v1.BusinessStoreDistance
+	24, // 8: dextea.store.v1.GetBusinessNearbyStoresResponse.stores:type_name -> dextea.store.v1.BusinessStoreDistance
+	1,  // 9: dextea.store.v1.StoreAdminService.CreateStore:input_type -> dextea.store.v1.CreateStoreRequest
+	3,  // 10: dextea.store.v1.StoreAdminService.GetStore:input_type -> dextea.store.v1.GetStoreRequest
+	4,  // 11: dextea.store.v1.StoreAdminService.GetStoreByAccount:input_type -> dextea.store.v1.GetStoreByAccountRequest
+	5,  // 12: dextea.store.v1.StoreAdminService.GetStores:input_type -> dextea.store.v1.GetAdminStoresRequest
+	7,  // 13: dextea.store.v1.StoreAdminService.SearchStores:input_type -> dextea.store.v1.SearchAdminStoresRequest
+	11, // 14: dextea.store.v1.StoreAdminService.ListStores:input_type -> dextea.store.v1.ListStoresRequest
+	13, // 15: dextea.store.v1.StoreAdminService.GetStoreStatistics:input_type -> dextea.store.v1.GetStoreStatisticsRequest
+	16, // 16: dextea.store.v1.StoreAdminService.UpdateStoreProfile:input_type -> dextea.store.v1.UpdateStoreProfileRequest
+	17, // 17: dextea.store.v1.StoreAdminService.UpdateStoreLocation:input_type -> dextea.store.v1.UpdateStoreLocationRequest
+	18, // 18: dextea.store.v1.StoreAdminService.UpdateStoreStatus:input_type -> dextea.store.v1.UpdateStoreStatusRequest
+	21, // 19: dextea.store.v1.StoreAdminService.ResetStorePassword:input_type -> dextea.store.v1.ResetStorePasswordRequest
+	25, // 20: dextea.store.v1.StoreBusinessService.GetStore:input_type -> dextea.store.v1.GetBusinessStoreRequest
+	26, // 21: dextea.store.v1.StoreBusinessService.GetStores:input_type -> dextea.store.v1.GetBusinessStoresRequest
+	28, // 22: dextea.store.v1.StoreBusinessService.SearchStores:input_type -> dextea.store.v1.SearchBusinessStoresRequest
+	30, // 23: dextea.store.v1.StoreBusinessService.ListStoreCities:input_type -> dextea.store.v1.ListStoreCitiesRequest
+	32, // 24: dextea.store.v1.StoreBusinessService.GetNearbyStores:input_type -> dextea.store.v1.GetBusinessNearbyStoresRequest
+	9,  // 25: dextea.store.v1.StoreCredentialService.AuthenticateStore:input_type -> dextea.store.v1.AuthenticateStoreRequest
+	19, // 26: dextea.store.v1.StoreCredentialService.ChangeStorePassword:input_type -> dextea.store.v1.ChangeStorePasswordRequest
+	2,  // 27: dextea.store.v1.StoreAdminService.CreateStore:output_type -> dextea.store.v1.CreateStoreResponse
+	0,  // 28: dextea.store.v1.StoreAdminService.GetStore:output_type -> dextea.store.v1.Store
+	0,  // 29: dextea.store.v1.StoreAdminService.GetStoreByAccount:output_type -> dextea.store.v1.Store
+	6,  // 30: dextea.store.v1.StoreAdminService.GetStores:output_type -> dextea.store.v1.GetAdminStoresResponse
+	8,  // 31: dextea.store.v1.StoreAdminService.SearchStores:output_type -> dextea.store.v1.SearchAdminStoresResponse
+	12, // 32: dextea.store.v1.StoreAdminService.ListStores:output_type -> dextea.store.v1.ListStoresResponse
+	15, // 33: dextea.store.v1.StoreAdminService.GetStoreStatistics:output_type -> dextea.store.v1.GetStoreStatisticsResponse
+	0,  // 34: dextea.store.v1.StoreAdminService.UpdateStoreProfile:output_type -> dextea.store.v1.Store
+	0,  // 35: dextea.store.v1.StoreAdminService.UpdateStoreLocation:output_type -> dextea.store.v1.Store
+	0,  // 36: dextea.store.v1.StoreAdminService.UpdateStoreStatus:output_type -> dextea.store.v1.Store
+	22, // 37: dextea.store.v1.StoreAdminService.ResetStorePassword:output_type -> dextea.store.v1.ResetStorePasswordResponse
+	24, // 38: dextea.store.v1.StoreBusinessService.GetStore:output_type -> dextea.store.v1.BusinessStoreDistance
+	27, // 39: dextea.store.v1.StoreBusinessService.GetStores:output_type -> dextea.store.v1.GetBusinessStoresResponse
+	29, // 40: dextea.store.v1.StoreBusinessService.SearchStores:output_type -> dextea.store.v1.SearchBusinessStoresResponse
+	31, // 41: dextea.store.v1.StoreBusinessService.ListStoreCities:output_type -> dextea.store.v1.ListStoreCitiesResponse
+	33, // 42: dextea.store.v1.StoreBusinessService.GetNearbyStores:output_type -> dextea.store.v1.GetBusinessNearbyStoresResponse
+	10, // 43: dextea.store.v1.StoreCredentialService.AuthenticateStore:output_type -> dextea.store.v1.StoreAuthInfo
+	20, // 44: dextea.store.v1.StoreCredentialService.ChangeStorePassword:output_type -> dextea.store.v1.PasswordChangedResponse
+	27, // [27:45] is the sub-list for method output_type
+	9,  // [9:27] is the sub-list for method input_type
+	9,  // [9:9] is the sub-list for extension type_name
+	9,  // [9:9] is the sub-list for extension extendee
+	0,  // [0:9] is the sub-list for field type_name
 }
 
 func init() { file_store_v1_store_proto_init() }
@@ -1609,18 +2459,19 @@ func file_store_v1_store_proto_init() {
 	}
 	file_store_v1_store_proto_msgTypes[1].OneofWrappers = []any{}
 	file_store_v1_store_proto_msgTypes[7].OneofWrappers = []any{}
-	file_store_v1_store_proto_msgTypes[14].OneofWrappers = []any{}
-	file_store_v1_store_proto_msgTypes[15].OneofWrappers = []any{}
-	file_store_v1_store_proto_msgTypes[19].OneofWrappers = []any{}
+	file_store_v1_store_proto_msgTypes[11].OneofWrappers = []any{}
+	file_store_v1_store_proto_msgTypes[16].OneofWrappers = []any{}
+	file_store_v1_store_proto_msgTypes[17].OneofWrappers = []any{}
+	file_store_v1_store_proto_msgTypes[21].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_store_v1_store_proto_rawDesc), len(file_store_v1_store_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   21,
+			NumMessages:   34,
 			NumExtensions: 0,
-			NumServices:   1,
+			NumServices:   3,
 		},
 		GoTypes:           file_store_v1_store_proto_goTypes,
 		DependencyIndexes: file_store_v1_store_proto_depIdxs,

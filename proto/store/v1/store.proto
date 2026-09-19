@@ -4,19 +4,37 @@ package dextea.store.v1;
 
 option go_package = "github.com/wilson-lyc/dextea-v3-proto/gen/go/store/v1;storev1";
 
-service StoreService {
+// StoreAdminService is the management-plane API. Its Store view may contain
+// management fields such as account, email, and timestamps.
+service StoreAdminService {
   rpc CreateStore(CreateStoreRequest) returns (CreateStoreResponse);
   rpc GetStore(GetStoreRequest) returns (Store);
   rpc GetStoreByAccount(GetStoreByAccountRequest) returns (Store);
-  rpc AuthenticateStore(AuthenticateStoreRequest) returns (StoreAuthInfo);
+  rpc GetStores(GetAdminStoresRequest) returns (GetAdminStoresResponse);
+  rpc SearchStores(SearchAdminStoresRequest) returns (SearchAdminStoresResponse);
   rpc ListStores(ListStoresRequest) returns (ListStoresResponse);
-  rpc SearchStores(SearchStoresRequest) returns (SearchStoresResponse);
-  rpc GetNearbyStores(GetNearbyStoresRequest) returns (GetNearbyStoresResponse);
+  rpc GetStoreStatistics(GetStoreStatisticsRequest) returns (GetStoreStatisticsResponse);
   rpc UpdateStoreProfile(UpdateStoreProfileRequest) returns (Store);
   rpc UpdateStoreLocation(UpdateStoreLocationRequest) returns (Store);
   rpc UpdateStoreStatus(UpdateStoreStatusRequest) returns (Store);
-  rpc ChangeStorePassword(ChangeStorePasswordRequest) returns (PasswordChangedResponse);
   rpc ResetStorePassword(ResetStorePasswordRequest) returns (ResetStorePasswordResponse);
+}
+
+// StoreBusinessService is the customer/business read API. It only returns
+// customer-visible fields and owns location-aware discovery semantics.
+service StoreBusinessService {
+  rpc GetStore(GetBusinessStoreRequest) returns (BusinessStoreDistance);
+  rpc GetStores(GetBusinessStoresRequest) returns (GetBusinessStoresResponse);
+  rpc SearchStores(SearchBusinessStoresRequest) returns (SearchBusinessStoresResponse);
+  rpc ListStoreCities(ListStoreCitiesRequest) returns (ListStoreCitiesResponse);
+  rpc GetNearbyStores(GetBusinessNearbyStoresRequest) returns (GetBusinessNearbyStoresResponse);
+}
+
+// StoreCredentialService is isolated from both the management and customer
+// read planes because it handles store-account authentication and passwords.
+service StoreCredentialService {
+  rpc AuthenticateStore(AuthenticateStoreRequest) returns (StoreAuthInfo);
+  rpc ChangeStorePassword(ChangeStorePasswordRequest) returns (PasswordChangedResponse);
 }
 
 message Store {
@@ -60,6 +78,20 @@ message CreateStoreResponse {
 
 message GetStoreRequest { uint64 id = 1; }
 message GetStoreByAccountRequest { string account = 1; }
+message GetAdminStoresRequest {
+  repeated uint64 ids = 1;
+  bool include_unavailable = 2;
+}
+message GetAdminStoresResponse { repeated Store stores = 1; }
+message SearchAdminStoresRequest {
+  string province = 1;
+  string city = 2;
+  string district = 3;
+  string keyword = 4;
+  bool include_unavailable = 5;
+  optional int32 status = 6;
+}
+message SearchAdminStoresResponse { repeated Store stores = 1; }
 message AuthenticateStoreRequest { string account = 1; string password = 2; }
 message StoreAuthInfo { uint64 store_id = 1; int32 status = 2; string name = 3; }
 
@@ -68,6 +100,9 @@ message ListStoresRequest {
   int32 page_size = 2;
   string keyword = 3;
   optional int32 status = 4;
+  optional string province = 5;
+  optional string city = 6;
+  optional string district = 7;
 }
 
 message ListStoresResponse {
@@ -77,27 +112,12 @@ message ListStoresResponse {
   repeated Store stores = 4;
 }
 
-message SearchStoresRequest {
-  string city = 1;
-  string keyword = 2;
-  bool include_unavailable = 3;
+message GetStoreStatisticsRequest {}
+message StoreStatusCount {
+  int32 status = 1;
+  int64 count = 2;
 }
-
-message SearchStoresResponse { repeated Store stores = 1; }
-
-message GetNearbyStoresRequest {
-  double longitude = 1;
-  double latitude = 2;
-  double distance_km = 3;
-  int32 count = 4;
-}
-
-message NearbyStore {
-  Store store = 1;
-  double distance_km = 2;
-}
-
-message GetNearbyStoresResponse { repeated NearbyStore stores = 1; }
+message GetStoreStatisticsResponse { repeated StoreStatusCount statuses = 1; }
 
 message UpdateStoreProfileRequest {
   uint64 id = 1;
@@ -113,8 +133,8 @@ message UpdateStoreLocationRequest {
   optional string city = 3;
   optional string district = 4;
   optional string address = 5;
-  double longitude = 6;
-  double latitude = 7;
+  optional double longitude = 6;
+  optional double latitude = 7;
 }
 
 message UpdateStoreStatusRequest {
@@ -136,3 +156,52 @@ message ResetStorePasswordRequest {
 }
 
 message ResetStorePasswordResponse { string password = 1; }
+
+message BusinessStore {
+  uint64 id = 1;
+  string name = 2;
+  string province = 3;
+  string city = 4;
+  string district = 5;
+  string address = 6;
+  int32 status = 7;
+  string business_hours = 8;
+  string phone = 9;
+  double longitude = 10;
+  double latitude = 11;
+}
+
+message BusinessStoreDistance {
+  BusinessStore store = 1;
+  double distance_km = 2;
+}
+
+message GetBusinessStoreRequest {
+  uint64 id = 1;
+  double longitude = 2;
+  double latitude = 3;
+}
+
+message GetBusinessStoresRequest { repeated uint64 ids = 1; }
+message GetBusinessStoresResponse { repeated BusinessStore stores = 1; }
+
+message SearchBusinessStoresRequest {
+  string province = 1;
+  string city = 2;
+  string district = 3;
+  string keyword = 4;
+  double longitude = 5;
+  double latitude = 6;
+}
+message SearchBusinessStoresResponse { repeated BusinessStoreDistance stores = 1; }
+
+message ListStoreCitiesRequest {}
+message ListStoreCitiesResponse { repeated string cities = 1; }
+
+message GetBusinessNearbyStoresRequest {
+  double longitude = 1;
+  double latitude = 2;
+  double distance_km = 3;
+  int32 count = 4;
+}
+message GetBusinessNearbyStoresResponse { repeated BusinessStoreDistance stores = 1; }

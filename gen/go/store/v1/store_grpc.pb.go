@@ -19,519 +19,894 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	StoreService_CreateStore_FullMethodName         = "/dextea.store.v1.StoreService/CreateStore"
-	StoreService_GetStore_FullMethodName            = "/dextea.store.v1.StoreService/GetStore"
-	StoreService_GetStoreByAccount_FullMethodName   = "/dextea.store.v1.StoreService/GetStoreByAccount"
-	StoreService_AuthenticateStore_FullMethodName   = "/dextea.store.v1.StoreService/AuthenticateStore"
-	StoreService_ListStores_FullMethodName          = "/dextea.store.v1.StoreService/ListStores"
-	StoreService_SearchStores_FullMethodName        = "/dextea.store.v1.StoreService/SearchStores"
-	StoreService_GetNearbyStores_FullMethodName     = "/dextea.store.v1.StoreService/GetNearbyStores"
-	StoreService_UpdateStoreProfile_FullMethodName  = "/dextea.store.v1.StoreService/UpdateStoreProfile"
-	StoreService_UpdateStoreLocation_FullMethodName = "/dextea.store.v1.StoreService/UpdateStoreLocation"
-	StoreService_UpdateStoreStatus_FullMethodName   = "/dextea.store.v1.StoreService/UpdateStoreStatus"
-	StoreService_ChangeStorePassword_FullMethodName = "/dextea.store.v1.StoreService/ChangeStorePassword"
-	StoreService_ResetStorePassword_FullMethodName  = "/dextea.store.v1.StoreService/ResetStorePassword"
+	StoreAdminService_CreateStore_FullMethodName         = "/dextea.store.v1.StoreAdminService/CreateStore"
+	StoreAdminService_GetStore_FullMethodName            = "/dextea.store.v1.StoreAdminService/GetStore"
+	StoreAdminService_GetStoreByAccount_FullMethodName   = "/dextea.store.v1.StoreAdminService/GetStoreByAccount"
+	StoreAdminService_GetStores_FullMethodName           = "/dextea.store.v1.StoreAdminService/GetStores"
+	StoreAdminService_SearchStores_FullMethodName        = "/dextea.store.v1.StoreAdminService/SearchStores"
+	StoreAdminService_ListStores_FullMethodName          = "/dextea.store.v1.StoreAdminService/ListStores"
+	StoreAdminService_GetStoreStatistics_FullMethodName  = "/dextea.store.v1.StoreAdminService/GetStoreStatistics"
+	StoreAdminService_UpdateStoreProfile_FullMethodName  = "/dextea.store.v1.StoreAdminService/UpdateStoreProfile"
+	StoreAdminService_UpdateStoreLocation_FullMethodName = "/dextea.store.v1.StoreAdminService/UpdateStoreLocation"
+	StoreAdminService_UpdateStoreStatus_FullMethodName   = "/dextea.store.v1.StoreAdminService/UpdateStoreStatus"
+	StoreAdminService_ResetStorePassword_FullMethodName  = "/dextea.store.v1.StoreAdminService/ResetStorePassword"
 )
 
-// StoreServiceClient is the client API for StoreService service.
+// StoreAdminServiceClient is the client API for StoreAdminService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type StoreServiceClient interface {
+//
+// StoreAdminService is the management-plane API. Its Store view may contain
+// management fields such as account, email, and timestamps.
+type StoreAdminServiceClient interface {
 	CreateStore(ctx context.Context, in *CreateStoreRequest, opts ...grpc.CallOption) (*CreateStoreResponse, error)
 	GetStore(ctx context.Context, in *GetStoreRequest, opts ...grpc.CallOption) (*Store, error)
 	GetStoreByAccount(ctx context.Context, in *GetStoreByAccountRequest, opts ...grpc.CallOption) (*Store, error)
-	AuthenticateStore(ctx context.Context, in *AuthenticateStoreRequest, opts ...grpc.CallOption) (*StoreAuthInfo, error)
+	GetStores(ctx context.Context, in *GetAdminStoresRequest, opts ...grpc.CallOption) (*GetAdminStoresResponse, error)
+	SearchStores(ctx context.Context, in *SearchAdminStoresRequest, opts ...grpc.CallOption) (*SearchAdminStoresResponse, error)
 	ListStores(ctx context.Context, in *ListStoresRequest, opts ...grpc.CallOption) (*ListStoresResponse, error)
-	SearchStores(ctx context.Context, in *SearchStoresRequest, opts ...grpc.CallOption) (*SearchStoresResponse, error)
-	GetNearbyStores(ctx context.Context, in *GetNearbyStoresRequest, opts ...grpc.CallOption) (*GetNearbyStoresResponse, error)
+	GetStoreStatistics(ctx context.Context, in *GetStoreStatisticsRequest, opts ...grpc.CallOption) (*GetStoreStatisticsResponse, error)
 	UpdateStoreProfile(ctx context.Context, in *UpdateStoreProfileRequest, opts ...grpc.CallOption) (*Store, error)
 	UpdateStoreLocation(ctx context.Context, in *UpdateStoreLocationRequest, opts ...grpc.CallOption) (*Store, error)
 	UpdateStoreStatus(ctx context.Context, in *UpdateStoreStatusRequest, opts ...grpc.CallOption) (*Store, error)
-	ChangeStorePassword(ctx context.Context, in *ChangeStorePasswordRequest, opts ...grpc.CallOption) (*PasswordChangedResponse, error)
 	ResetStorePassword(ctx context.Context, in *ResetStorePasswordRequest, opts ...grpc.CallOption) (*ResetStorePasswordResponse, error)
 }
 
-type storeServiceClient struct {
+type storeAdminServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewStoreServiceClient(cc grpc.ClientConnInterface) StoreServiceClient {
-	return &storeServiceClient{cc}
+func NewStoreAdminServiceClient(cc grpc.ClientConnInterface) StoreAdminServiceClient {
+	return &storeAdminServiceClient{cc}
 }
 
-func (c *storeServiceClient) CreateStore(ctx context.Context, in *CreateStoreRequest, opts ...grpc.CallOption) (*CreateStoreResponse, error) {
+func (c *storeAdminServiceClient) CreateStore(ctx context.Context, in *CreateStoreRequest, opts ...grpc.CallOption) (*CreateStoreResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CreateStoreResponse)
-	err := c.cc.Invoke(ctx, StoreService_CreateStore_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, StoreAdminService_CreateStore_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *storeServiceClient) GetStore(ctx context.Context, in *GetStoreRequest, opts ...grpc.CallOption) (*Store, error) {
+func (c *storeAdminServiceClient) GetStore(ctx context.Context, in *GetStoreRequest, opts ...grpc.CallOption) (*Store, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Store)
-	err := c.cc.Invoke(ctx, StoreService_GetStore_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, StoreAdminService_GetStore_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *storeServiceClient) GetStoreByAccount(ctx context.Context, in *GetStoreByAccountRequest, opts ...grpc.CallOption) (*Store, error) {
+func (c *storeAdminServiceClient) GetStoreByAccount(ctx context.Context, in *GetStoreByAccountRequest, opts ...grpc.CallOption) (*Store, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Store)
-	err := c.cc.Invoke(ctx, StoreService_GetStoreByAccount_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, StoreAdminService_GetStoreByAccount_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *storeServiceClient) AuthenticateStore(ctx context.Context, in *AuthenticateStoreRequest, opts ...grpc.CallOption) (*StoreAuthInfo, error) {
+func (c *storeAdminServiceClient) GetStores(ctx context.Context, in *GetAdminStoresRequest, opts ...grpc.CallOption) (*GetAdminStoresResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(StoreAuthInfo)
-	err := c.cc.Invoke(ctx, StoreService_AuthenticateStore_FullMethodName, in, out, cOpts...)
+	out := new(GetAdminStoresResponse)
+	err := c.cc.Invoke(ctx, StoreAdminService_GetStores_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *storeServiceClient) ListStores(ctx context.Context, in *ListStoresRequest, opts ...grpc.CallOption) (*ListStoresResponse, error) {
+func (c *storeAdminServiceClient) SearchStores(ctx context.Context, in *SearchAdminStoresRequest, opts ...grpc.CallOption) (*SearchAdminStoresResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SearchAdminStoresResponse)
+	err := c.cc.Invoke(ctx, StoreAdminService_SearchStores_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *storeAdminServiceClient) ListStores(ctx context.Context, in *ListStoresRequest, opts ...grpc.CallOption) (*ListStoresResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListStoresResponse)
-	err := c.cc.Invoke(ctx, StoreService_ListStores_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, StoreAdminService_ListStores_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *storeServiceClient) SearchStores(ctx context.Context, in *SearchStoresRequest, opts ...grpc.CallOption) (*SearchStoresResponse, error) {
+func (c *storeAdminServiceClient) GetStoreStatistics(ctx context.Context, in *GetStoreStatisticsRequest, opts ...grpc.CallOption) (*GetStoreStatisticsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(SearchStoresResponse)
-	err := c.cc.Invoke(ctx, StoreService_SearchStores_FullMethodName, in, out, cOpts...)
+	out := new(GetStoreStatisticsResponse)
+	err := c.cc.Invoke(ctx, StoreAdminService_GetStoreStatistics_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *storeServiceClient) GetNearbyStores(ctx context.Context, in *GetNearbyStoresRequest, opts ...grpc.CallOption) (*GetNearbyStoresResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetNearbyStoresResponse)
-	err := c.cc.Invoke(ctx, StoreService_GetNearbyStores_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *storeServiceClient) UpdateStoreProfile(ctx context.Context, in *UpdateStoreProfileRequest, opts ...grpc.CallOption) (*Store, error) {
+func (c *storeAdminServiceClient) UpdateStoreProfile(ctx context.Context, in *UpdateStoreProfileRequest, opts ...grpc.CallOption) (*Store, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Store)
-	err := c.cc.Invoke(ctx, StoreService_UpdateStoreProfile_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, StoreAdminService_UpdateStoreProfile_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *storeServiceClient) UpdateStoreLocation(ctx context.Context, in *UpdateStoreLocationRequest, opts ...grpc.CallOption) (*Store, error) {
+func (c *storeAdminServiceClient) UpdateStoreLocation(ctx context.Context, in *UpdateStoreLocationRequest, opts ...grpc.CallOption) (*Store, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Store)
-	err := c.cc.Invoke(ctx, StoreService_UpdateStoreLocation_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, StoreAdminService_UpdateStoreLocation_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *storeServiceClient) UpdateStoreStatus(ctx context.Context, in *UpdateStoreStatusRequest, opts ...grpc.CallOption) (*Store, error) {
+func (c *storeAdminServiceClient) UpdateStoreStatus(ctx context.Context, in *UpdateStoreStatusRequest, opts ...grpc.CallOption) (*Store, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Store)
-	err := c.cc.Invoke(ctx, StoreService_UpdateStoreStatus_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, StoreAdminService_UpdateStoreStatus_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *storeServiceClient) ChangeStorePassword(ctx context.Context, in *ChangeStorePasswordRequest, opts ...grpc.CallOption) (*PasswordChangedResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(PasswordChangedResponse)
-	err := c.cc.Invoke(ctx, StoreService_ChangeStorePassword_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *storeServiceClient) ResetStorePassword(ctx context.Context, in *ResetStorePasswordRequest, opts ...grpc.CallOption) (*ResetStorePasswordResponse, error) {
+func (c *storeAdminServiceClient) ResetStorePassword(ctx context.Context, in *ResetStorePasswordRequest, opts ...grpc.CallOption) (*ResetStorePasswordResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResetStorePasswordResponse)
-	err := c.cc.Invoke(ctx, StoreService_ResetStorePassword_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, StoreAdminService_ResetStorePassword_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// StoreServiceServer is the server API for StoreService service.
-// All implementations must embed UnimplementedStoreServiceServer
+// StoreAdminServiceServer is the server API for StoreAdminService service.
+// All implementations must embed UnimplementedStoreAdminServiceServer
 // for forward compatibility.
-type StoreServiceServer interface {
+//
+// StoreAdminService is the management-plane API. Its Store view may contain
+// management fields such as account, email, and timestamps.
+type StoreAdminServiceServer interface {
 	CreateStore(context.Context, *CreateStoreRequest) (*CreateStoreResponse, error)
 	GetStore(context.Context, *GetStoreRequest) (*Store, error)
 	GetStoreByAccount(context.Context, *GetStoreByAccountRequest) (*Store, error)
-	AuthenticateStore(context.Context, *AuthenticateStoreRequest) (*StoreAuthInfo, error)
+	GetStores(context.Context, *GetAdminStoresRequest) (*GetAdminStoresResponse, error)
+	SearchStores(context.Context, *SearchAdminStoresRequest) (*SearchAdminStoresResponse, error)
 	ListStores(context.Context, *ListStoresRequest) (*ListStoresResponse, error)
-	SearchStores(context.Context, *SearchStoresRequest) (*SearchStoresResponse, error)
-	GetNearbyStores(context.Context, *GetNearbyStoresRequest) (*GetNearbyStoresResponse, error)
+	GetStoreStatistics(context.Context, *GetStoreStatisticsRequest) (*GetStoreStatisticsResponse, error)
 	UpdateStoreProfile(context.Context, *UpdateStoreProfileRequest) (*Store, error)
 	UpdateStoreLocation(context.Context, *UpdateStoreLocationRequest) (*Store, error)
 	UpdateStoreStatus(context.Context, *UpdateStoreStatusRequest) (*Store, error)
-	ChangeStorePassword(context.Context, *ChangeStorePasswordRequest) (*PasswordChangedResponse, error)
 	ResetStorePassword(context.Context, *ResetStorePasswordRequest) (*ResetStorePasswordResponse, error)
-	mustEmbedUnimplementedStoreServiceServer()
+	mustEmbedUnimplementedStoreAdminServiceServer()
 }
 
-// UnimplementedStoreServiceServer must be embedded to have
+// UnimplementedStoreAdminServiceServer must be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
 // pointer dereference when methods are called.
-type UnimplementedStoreServiceServer struct{}
+type UnimplementedStoreAdminServiceServer struct{}
 
-func (UnimplementedStoreServiceServer) CreateStore(context.Context, *CreateStoreRequest) (*CreateStoreResponse, error) {
+func (UnimplementedStoreAdminServiceServer) CreateStore(context.Context, *CreateStoreRequest) (*CreateStoreResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method CreateStore not implemented")
 }
-func (UnimplementedStoreServiceServer) GetStore(context.Context, *GetStoreRequest) (*Store, error) {
+func (UnimplementedStoreAdminServiceServer) GetStore(context.Context, *GetStoreRequest) (*Store, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetStore not implemented")
 }
-func (UnimplementedStoreServiceServer) GetStoreByAccount(context.Context, *GetStoreByAccountRequest) (*Store, error) {
+func (UnimplementedStoreAdminServiceServer) GetStoreByAccount(context.Context, *GetStoreByAccountRequest) (*Store, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetStoreByAccount not implemented")
 }
-func (UnimplementedStoreServiceServer) AuthenticateStore(context.Context, *AuthenticateStoreRequest) (*StoreAuthInfo, error) {
-	return nil, status.Error(codes.Unimplemented, "method AuthenticateStore not implemented")
+func (UnimplementedStoreAdminServiceServer) GetStores(context.Context, *GetAdminStoresRequest) (*GetAdminStoresResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetStores not implemented")
 }
-func (UnimplementedStoreServiceServer) ListStores(context.Context, *ListStoresRequest) (*ListStoresResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method ListStores not implemented")
-}
-func (UnimplementedStoreServiceServer) SearchStores(context.Context, *SearchStoresRequest) (*SearchStoresResponse, error) {
+func (UnimplementedStoreAdminServiceServer) SearchStores(context.Context, *SearchAdminStoresRequest) (*SearchAdminStoresResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method SearchStores not implemented")
 }
-func (UnimplementedStoreServiceServer) GetNearbyStores(context.Context, *GetNearbyStoresRequest) (*GetNearbyStoresResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method GetNearbyStores not implemented")
+func (UnimplementedStoreAdminServiceServer) ListStores(context.Context, *ListStoresRequest) (*ListStoresResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ListStores not implemented")
 }
-func (UnimplementedStoreServiceServer) UpdateStoreProfile(context.Context, *UpdateStoreProfileRequest) (*Store, error) {
+func (UnimplementedStoreAdminServiceServer) GetStoreStatistics(context.Context, *GetStoreStatisticsRequest) (*GetStoreStatisticsResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetStoreStatistics not implemented")
+}
+func (UnimplementedStoreAdminServiceServer) UpdateStoreProfile(context.Context, *UpdateStoreProfileRequest) (*Store, error) {
 	return nil, status.Error(codes.Unimplemented, "method UpdateStoreProfile not implemented")
 }
-func (UnimplementedStoreServiceServer) UpdateStoreLocation(context.Context, *UpdateStoreLocationRequest) (*Store, error) {
+func (UnimplementedStoreAdminServiceServer) UpdateStoreLocation(context.Context, *UpdateStoreLocationRequest) (*Store, error) {
 	return nil, status.Error(codes.Unimplemented, "method UpdateStoreLocation not implemented")
 }
-func (UnimplementedStoreServiceServer) UpdateStoreStatus(context.Context, *UpdateStoreStatusRequest) (*Store, error) {
+func (UnimplementedStoreAdminServiceServer) UpdateStoreStatus(context.Context, *UpdateStoreStatusRequest) (*Store, error) {
 	return nil, status.Error(codes.Unimplemented, "method UpdateStoreStatus not implemented")
 }
-func (UnimplementedStoreServiceServer) ChangeStorePassword(context.Context, *ChangeStorePasswordRequest) (*PasswordChangedResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method ChangeStorePassword not implemented")
-}
-func (UnimplementedStoreServiceServer) ResetStorePassword(context.Context, *ResetStorePasswordRequest) (*ResetStorePasswordResponse, error) {
+func (UnimplementedStoreAdminServiceServer) ResetStorePassword(context.Context, *ResetStorePasswordRequest) (*ResetStorePasswordResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ResetStorePassword not implemented")
 }
-func (UnimplementedStoreServiceServer) mustEmbedUnimplementedStoreServiceServer() {}
-func (UnimplementedStoreServiceServer) testEmbeddedByValue()                      {}
+func (UnimplementedStoreAdminServiceServer) mustEmbedUnimplementedStoreAdminServiceServer() {}
+func (UnimplementedStoreAdminServiceServer) testEmbeddedByValue()                           {}
 
-// UnsafeStoreServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to StoreServiceServer will
+// UnsafeStoreAdminServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to StoreAdminServiceServer will
 // result in compilation errors.
-type UnsafeStoreServiceServer interface {
-	mustEmbedUnimplementedStoreServiceServer()
+type UnsafeStoreAdminServiceServer interface {
+	mustEmbedUnimplementedStoreAdminServiceServer()
 }
 
-func RegisterStoreServiceServer(s grpc.ServiceRegistrar, srv StoreServiceServer) {
-	// If the following call panics, it indicates UnimplementedStoreServiceServer was
+func RegisterStoreAdminServiceServer(s grpc.ServiceRegistrar, srv StoreAdminServiceServer) {
+	// If the following call panics, it indicates UnimplementedStoreAdminServiceServer was
 	// embedded by pointer and is nil.  This will cause panics if an
 	// unimplemented method is ever invoked, so we test this at initialization
 	// time to prevent it from happening at runtime later due to I/O.
 	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
 		t.testEmbeddedByValue()
 	}
-	s.RegisterService(&StoreService_ServiceDesc, srv)
+	s.RegisterService(&StoreAdminService_ServiceDesc, srv)
 }
 
-func _StoreService_CreateStore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _StoreAdminService_CreateStore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateStoreRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(StoreServiceServer).CreateStore(ctx, in)
+		return srv.(StoreAdminServiceServer).CreateStore(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: StoreService_CreateStore_FullMethodName,
+		FullMethod: StoreAdminService_CreateStore_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StoreServiceServer).CreateStore(ctx, req.(*CreateStoreRequest))
+		return srv.(StoreAdminServiceServer).CreateStore(ctx, req.(*CreateStoreRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _StoreService_GetStore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _StoreAdminService_GetStore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetStoreRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(StoreServiceServer).GetStore(ctx, in)
+		return srv.(StoreAdminServiceServer).GetStore(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: StoreService_GetStore_FullMethodName,
+		FullMethod: StoreAdminService_GetStore_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StoreServiceServer).GetStore(ctx, req.(*GetStoreRequest))
+		return srv.(StoreAdminServiceServer).GetStore(ctx, req.(*GetStoreRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _StoreService_GetStoreByAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _StoreAdminService_GetStoreByAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetStoreByAccountRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(StoreServiceServer).GetStoreByAccount(ctx, in)
+		return srv.(StoreAdminServiceServer).GetStoreByAccount(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: StoreService_GetStoreByAccount_FullMethodName,
+		FullMethod: StoreAdminService_GetStoreByAccount_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StoreServiceServer).GetStoreByAccount(ctx, req.(*GetStoreByAccountRequest))
+		return srv.(StoreAdminServiceServer).GetStoreByAccount(ctx, req.(*GetStoreByAccountRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _StoreService_AuthenticateStore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AuthenticateStoreRequest)
+func _StoreAdminService_GetStores_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAdminStoresRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(StoreServiceServer).AuthenticateStore(ctx, in)
+		return srv.(StoreAdminServiceServer).GetStores(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: StoreService_AuthenticateStore_FullMethodName,
+		FullMethod: StoreAdminService_GetStores_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StoreServiceServer).AuthenticateStore(ctx, req.(*AuthenticateStoreRequest))
+		return srv.(StoreAdminServiceServer).GetStores(ctx, req.(*GetAdminStoresRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _StoreService_ListStores_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _StoreAdminService_SearchStores_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SearchAdminStoresRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StoreAdminServiceServer).SearchStores(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: StoreAdminService_SearchStores_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StoreAdminServiceServer).SearchStores(ctx, req.(*SearchAdminStoresRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StoreAdminService_ListStores_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListStoresRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(StoreServiceServer).ListStores(ctx, in)
+		return srv.(StoreAdminServiceServer).ListStores(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: StoreService_ListStores_FullMethodName,
+		FullMethod: StoreAdminService_ListStores_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StoreServiceServer).ListStores(ctx, req.(*ListStoresRequest))
+		return srv.(StoreAdminServiceServer).ListStores(ctx, req.(*ListStoresRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _StoreService_SearchStores_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SearchStoresRequest)
+func _StoreAdminService_GetStoreStatistics_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetStoreStatisticsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(StoreServiceServer).SearchStores(ctx, in)
+		return srv.(StoreAdminServiceServer).GetStoreStatistics(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: StoreService_SearchStores_FullMethodName,
+		FullMethod: StoreAdminService_GetStoreStatistics_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StoreServiceServer).SearchStores(ctx, req.(*SearchStoresRequest))
+		return srv.(StoreAdminServiceServer).GetStoreStatistics(ctx, req.(*GetStoreStatisticsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _StoreService_GetNearbyStores_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetNearbyStoresRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(StoreServiceServer).GetNearbyStores(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: StoreService_GetNearbyStores_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StoreServiceServer).GetNearbyStores(ctx, req.(*GetNearbyStoresRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _StoreService_UpdateStoreProfile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _StoreAdminService_UpdateStoreProfile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateStoreProfileRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(StoreServiceServer).UpdateStoreProfile(ctx, in)
+		return srv.(StoreAdminServiceServer).UpdateStoreProfile(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: StoreService_UpdateStoreProfile_FullMethodName,
+		FullMethod: StoreAdminService_UpdateStoreProfile_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StoreServiceServer).UpdateStoreProfile(ctx, req.(*UpdateStoreProfileRequest))
+		return srv.(StoreAdminServiceServer).UpdateStoreProfile(ctx, req.(*UpdateStoreProfileRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _StoreService_UpdateStoreLocation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _StoreAdminService_UpdateStoreLocation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateStoreLocationRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(StoreServiceServer).UpdateStoreLocation(ctx, in)
+		return srv.(StoreAdminServiceServer).UpdateStoreLocation(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: StoreService_UpdateStoreLocation_FullMethodName,
+		FullMethod: StoreAdminService_UpdateStoreLocation_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StoreServiceServer).UpdateStoreLocation(ctx, req.(*UpdateStoreLocationRequest))
+		return srv.(StoreAdminServiceServer).UpdateStoreLocation(ctx, req.(*UpdateStoreLocationRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _StoreService_UpdateStoreStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _StoreAdminService_UpdateStoreStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateStoreStatusRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(StoreServiceServer).UpdateStoreStatus(ctx, in)
+		return srv.(StoreAdminServiceServer).UpdateStoreStatus(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: StoreService_UpdateStoreStatus_FullMethodName,
+		FullMethod: StoreAdminService_UpdateStoreStatus_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StoreServiceServer).UpdateStoreStatus(ctx, req.(*UpdateStoreStatusRequest))
+		return srv.(StoreAdminServiceServer).UpdateStoreStatus(ctx, req.(*UpdateStoreStatusRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _StoreService_ChangeStorePassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ChangeStorePasswordRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(StoreServiceServer).ChangeStorePassword(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: StoreService_ChangeStorePassword_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StoreServiceServer).ChangeStorePassword(ctx, req.(*ChangeStorePasswordRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _StoreService_ResetStorePassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _StoreAdminService_ResetStorePassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ResetStorePasswordRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(StoreServiceServer).ResetStorePassword(ctx, in)
+		return srv.(StoreAdminServiceServer).ResetStorePassword(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: StoreService_ResetStorePassword_FullMethodName,
+		FullMethod: StoreAdminService_ResetStorePassword_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StoreServiceServer).ResetStorePassword(ctx, req.(*ResetStorePasswordRequest))
+		return srv.(StoreAdminServiceServer).ResetStorePassword(ctx, req.(*ResetStorePasswordRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// StoreService_ServiceDesc is the grpc.ServiceDesc for StoreService service.
+// StoreAdminService_ServiceDesc is the grpc.ServiceDesc for StoreAdminService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var StoreService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "dextea.store.v1.StoreService",
-	HandlerType: (*StoreServiceServer)(nil),
+var StoreAdminService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "dextea.store.v1.StoreAdminService",
+	HandlerType: (*StoreAdminServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "CreateStore",
-			Handler:    _StoreService_CreateStore_Handler,
+			Handler:    _StoreAdminService_CreateStore_Handler,
 		},
 		{
 			MethodName: "GetStore",
-			Handler:    _StoreService_GetStore_Handler,
+			Handler:    _StoreAdminService_GetStore_Handler,
 		},
 		{
 			MethodName: "GetStoreByAccount",
-			Handler:    _StoreService_GetStoreByAccount_Handler,
+			Handler:    _StoreAdminService_GetStoreByAccount_Handler,
 		},
 		{
-			MethodName: "AuthenticateStore",
-			Handler:    _StoreService_AuthenticateStore_Handler,
-		},
-		{
-			MethodName: "ListStores",
-			Handler:    _StoreService_ListStores_Handler,
+			MethodName: "GetStores",
+			Handler:    _StoreAdminService_GetStores_Handler,
 		},
 		{
 			MethodName: "SearchStores",
-			Handler:    _StoreService_SearchStores_Handler,
+			Handler:    _StoreAdminService_SearchStores_Handler,
 		},
 		{
-			MethodName: "GetNearbyStores",
-			Handler:    _StoreService_GetNearbyStores_Handler,
+			MethodName: "ListStores",
+			Handler:    _StoreAdminService_ListStores_Handler,
+		},
+		{
+			MethodName: "GetStoreStatistics",
+			Handler:    _StoreAdminService_GetStoreStatistics_Handler,
 		},
 		{
 			MethodName: "UpdateStoreProfile",
-			Handler:    _StoreService_UpdateStoreProfile_Handler,
+			Handler:    _StoreAdminService_UpdateStoreProfile_Handler,
 		},
 		{
 			MethodName: "UpdateStoreLocation",
-			Handler:    _StoreService_UpdateStoreLocation_Handler,
+			Handler:    _StoreAdminService_UpdateStoreLocation_Handler,
 		},
 		{
 			MethodName: "UpdateStoreStatus",
-			Handler:    _StoreService_UpdateStoreStatus_Handler,
-		},
-		{
-			MethodName: "ChangeStorePassword",
-			Handler:    _StoreService_ChangeStorePassword_Handler,
+			Handler:    _StoreAdminService_UpdateStoreStatus_Handler,
 		},
 		{
 			MethodName: "ResetStorePassword",
-			Handler:    _StoreService_ResetStorePassword_Handler,
+			Handler:    _StoreAdminService_ResetStorePassword_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "store/v1/store.proto",
+}
+
+const (
+	StoreBusinessService_GetStore_FullMethodName        = "/dextea.store.v1.StoreBusinessService/GetStore"
+	StoreBusinessService_GetStores_FullMethodName       = "/dextea.store.v1.StoreBusinessService/GetStores"
+	StoreBusinessService_SearchStores_FullMethodName    = "/dextea.store.v1.StoreBusinessService/SearchStores"
+	StoreBusinessService_ListStoreCities_FullMethodName = "/dextea.store.v1.StoreBusinessService/ListStoreCities"
+	StoreBusinessService_GetNearbyStores_FullMethodName = "/dextea.store.v1.StoreBusinessService/GetNearbyStores"
+)
+
+// StoreBusinessServiceClient is the client API for StoreBusinessService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+//
+// StoreBusinessService is the customer/business read API. It only returns
+// customer-visible fields and owns location-aware discovery semantics.
+type StoreBusinessServiceClient interface {
+	GetStore(ctx context.Context, in *GetBusinessStoreRequest, opts ...grpc.CallOption) (*BusinessStoreDistance, error)
+	GetStores(ctx context.Context, in *GetBusinessStoresRequest, opts ...grpc.CallOption) (*GetBusinessStoresResponse, error)
+	SearchStores(ctx context.Context, in *SearchBusinessStoresRequest, opts ...grpc.CallOption) (*SearchBusinessStoresResponse, error)
+	ListStoreCities(ctx context.Context, in *ListStoreCitiesRequest, opts ...grpc.CallOption) (*ListStoreCitiesResponse, error)
+	GetNearbyStores(ctx context.Context, in *GetBusinessNearbyStoresRequest, opts ...grpc.CallOption) (*GetBusinessNearbyStoresResponse, error)
+}
+
+type storeBusinessServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewStoreBusinessServiceClient(cc grpc.ClientConnInterface) StoreBusinessServiceClient {
+	return &storeBusinessServiceClient{cc}
+}
+
+func (c *storeBusinessServiceClient) GetStore(ctx context.Context, in *GetBusinessStoreRequest, opts ...grpc.CallOption) (*BusinessStoreDistance, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(BusinessStoreDistance)
+	err := c.cc.Invoke(ctx, StoreBusinessService_GetStore_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *storeBusinessServiceClient) GetStores(ctx context.Context, in *GetBusinessStoresRequest, opts ...grpc.CallOption) (*GetBusinessStoresResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetBusinessStoresResponse)
+	err := c.cc.Invoke(ctx, StoreBusinessService_GetStores_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *storeBusinessServiceClient) SearchStores(ctx context.Context, in *SearchBusinessStoresRequest, opts ...grpc.CallOption) (*SearchBusinessStoresResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SearchBusinessStoresResponse)
+	err := c.cc.Invoke(ctx, StoreBusinessService_SearchStores_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *storeBusinessServiceClient) ListStoreCities(ctx context.Context, in *ListStoreCitiesRequest, opts ...grpc.CallOption) (*ListStoreCitiesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListStoreCitiesResponse)
+	err := c.cc.Invoke(ctx, StoreBusinessService_ListStoreCities_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *storeBusinessServiceClient) GetNearbyStores(ctx context.Context, in *GetBusinessNearbyStoresRequest, opts ...grpc.CallOption) (*GetBusinessNearbyStoresResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetBusinessNearbyStoresResponse)
+	err := c.cc.Invoke(ctx, StoreBusinessService_GetNearbyStores_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// StoreBusinessServiceServer is the server API for StoreBusinessService service.
+// All implementations must embed UnimplementedStoreBusinessServiceServer
+// for forward compatibility.
+//
+// StoreBusinessService is the customer/business read API. It only returns
+// customer-visible fields and owns location-aware discovery semantics.
+type StoreBusinessServiceServer interface {
+	GetStore(context.Context, *GetBusinessStoreRequest) (*BusinessStoreDistance, error)
+	GetStores(context.Context, *GetBusinessStoresRequest) (*GetBusinessStoresResponse, error)
+	SearchStores(context.Context, *SearchBusinessStoresRequest) (*SearchBusinessStoresResponse, error)
+	ListStoreCities(context.Context, *ListStoreCitiesRequest) (*ListStoreCitiesResponse, error)
+	GetNearbyStores(context.Context, *GetBusinessNearbyStoresRequest) (*GetBusinessNearbyStoresResponse, error)
+	mustEmbedUnimplementedStoreBusinessServiceServer()
+}
+
+// UnimplementedStoreBusinessServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedStoreBusinessServiceServer struct{}
+
+func (UnimplementedStoreBusinessServiceServer) GetStore(context.Context, *GetBusinessStoreRequest) (*BusinessStoreDistance, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetStore not implemented")
+}
+func (UnimplementedStoreBusinessServiceServer) GetStores(context.Context, *GetBusinessStoresRequest) (*GetBusinessStoresResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetStores not implemented")
+}
+func (UnimplementedStoreBusinessServiceServer) SearchStores(context.Context, *SearchBusinessStoresRequest) (*SearchBusinessStoresResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SearchStores not implemented")
+}
+func (UnimplementedStoreBusinessServiceServer) ListStoreCities(context.Context, *ListStoreCitiesRequest) (*ListStoreCitiesResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ListStoreCities not implemented")
+}
+func (UnimplementedStoreBusinessServiceServer) GetNearbyStores(context.Context, *GetBusinessNearbyStoresRequest) (*GetBusinessNearbyStoresResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetNearbyStores not implemented")
+}
+func (UnimplementedStoreBusinessServiceServer) mustEmbedUnimplementedStoreBusinessServiceServer() {}
+func (UnimplementedStoreBusinessServiceServer) testEmbeddedByValue()                              {}
+
+// UnsafeStoreBusinessServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to StoreBusinessServiceServer will
+// result in compilation errors.
+type UnsafeStoreBusinessServiceServer interface {
+	mustEmbedUnimplementedStoreBusinessServiceServer()
+}
+
+func RegisterStoreBusinessServiceServer(s grpc.ServiceRegistrar, srv StoreBusinessServiceServer) {
+	// If the following call panics, it indicates UnimplementedStoreBusinessServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&StoreBusinessService_ServiceDesc, srv)
+}
+
+func _StoreBusinessService_GetStore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetBusinessStoreRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StoreBusinessServiceServer).GetStore(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: StoreBusinessService_GetStore_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StoreBusinessServiceServer).GetStore(ctx, req.(*GetBusinessStoreRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StoreBusinessService_GetStores_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetBusinessStoresRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StoreBusinessServiceServer).GetStores(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: StoreBusinessService_GetStores_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StoreBusinessServiceServer).GetStores(ctx, req.(*GetBusinessStoresRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StoreBusinessService_SearchStores_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SearchBusinessStoresRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StoreBusinessServiceServer).SearchStores(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: StoreBusinessService_SearchStores_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StoreBusinessServiceServer).SearchStores(ctx, req.(*SearchBusinessStoresRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StoreBusinessService_ListStoreCities_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListStoreCitiesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StoreBusinessServiceServer).ListStoreCities(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: StoreBusinessService_ListStoreCities_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StoreBusinessServiceServer).ListStoreCities(ctx, req.(*ListStoreCitiesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StoreBusinessService_GetNearbyStores_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetBusinessNearbyStoresRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StoreBusinessServiceServer).GetNearbyStores(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: StoreBusinessService_GetNearbyStores_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StoreBusinessServiceServer).GetNearbyStores(ctx, req.(*GetBusinessNearbyStoresRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// StoreBusinessService_ServiceDesc is the grpc.ServiceDesc for StoreBusinessService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var StoreBusinessService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "dextea.store.v1.StoreBusinessService",
+	HandlerType: (*StoreBusinessServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "GetStore",
+			Handler:    _StoreBusinessService_GetStore_Handler,
+		},
+		{
+			MethodName: "GetStores",
+			Handler:    _StoreBusinessService_GetStores_Handler,
+		},
+		{
+			MethodName: "SearchStores",
+			Handler:    _StoreBusinessService_SearchStores_Handler,
+		},
+		{
+			MethodName: "ListStoreCities",
+			Handler:    _StoreBusinessService_ListStoreCities_Handler,
+		},
+		{
+			MethodName: "GetNearbyStores",
+			Handler:    _StoreBusinessService_GetNearbyStores_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "store/v1/store.proto",
+}
+
+const (
+	StoreCredentialService_AuthenticateStore_FullMethodName   = "/dextea.store.v1.StoreCredentialService/AuthenticateStore"
+	StoreCredentialService_ChangeStorePassword_FullMethodName = "/dextea.store.v1.StoreCredentialService/ChangeStorePassword"
+)
+
+// StoreCredentialServiceClient is the client API for StoreCredentialService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+//
+// StoreCredentialService is isolated from both the management and customer
+// read planes because it handles store-account authentication and passwords.
+type StoreCredentialServiceClient interface {
+	AuthenticateStore(ctx context.Context, in *AuthenticateStoreRequest, opts ...grpc.CallOption) (*StoreAuthInfo, error)
+	ChangeStorePassword(ctx context.Context, in *ChangeStorePasswordRequest, opts ...grpc.CallOption) (*PasswordChangedResponse, error)
+}
+
+type storeCredentialServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewStoreCredentialServiceClient(cc grpc.ClientConnInterface) StoreCredentialServiceClient {
+	return &storeCredentialServiceClient{cc}
+}
+
+func (c *storeCredentialServiceClient) AuthenticateStore(ctx context.Context, in *AuthenticateStoreRequest, opts ...grpc.CallOption) (*StoreAuthInfo, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(StoreAuthInfo)
+	err := c.cc.Invoke(ctx, StoreCredentialService_AuthenticateStore_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *storeCredentialServiceClient) ChangeStorePassword(ctx context.Context, in *ChangeStorePasswordRequest, opts ...grpc.CallOption) (*PasswordChangedResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(PasswordChangedResponse)
+	err := c.cc.Invoke(ctx, StoreCredentialService_ChangeStorePassword_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// StoreCredentialServiceServer is the server API for StoreCredentialService service.
+// All implementations must embed UnimplementedStoreCredentialServiceServer
+// for forward compatibility.
+//
+// StoreCredentialService is isolated from both the management and customer
+// read planes because it handles store-account authentication and passwords.
+type StoreCredentialServiceServer interface {
+	AuthenticateStore(context.Context, *AuthenticateStoreRequest) (*StoreAuthInfo, error)
+	ChangeStorePassword(context.Context, *ChangeStorePasswordRequest) (*PasswordChangedResponse, error)
+	mustEmbedUnimplementedStoreCredentialServiceServer()
+}
+
+// UnimplementedStoreCredentialServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedStoreCredentialServiceServer struct{}
+
+func (UnimplementedStoreCredentialServiceServer) AuthenticateStore(context.Context, *AuthenticateStoreRequest) (*StoreAuthInfo, error) {
+	return nil, status.Error(codes.Unimplemented, "method AuthenticateStore not implemented")
+}
+func (UnimplementedStoreCredentialServiceServer) ChangeStorePassword(context.Context, *ChangeStorePasswordRequest) (*PasswordChangedResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ChangeStorePassword not implemented")
+}
+func (UnimplementedStoreCredentialServiceServer) mustEmbedUnimplementedStoreCredentialServiceServer() {
+}
+func (UnimplementedStoreCredentialServiceServer) testEmbeddedByValue() {}
+
+// UnsafeStoreCredentialServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to StoreCredentialServiceServer will
+// result in compilation errors.
+type UnsafeStoreCredentialServiceServer interface {
+	mustEmbedUnimplementedStoreCredentialServiceServer()
+}
+
+func RegisterStoreCredentialServiceServer(s grpc.ServiceRegistrar, srv StoreCredentialServiceServer) {
+	// If the following call panics, it indicates UnimplementedStoreCredentialServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&StoreCredentialService_ServiceDesc, srv)
+}
+
+func _StoreCredentialService_AuthenticateStore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AuthenticateStoreRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StoreCredentialServiceServer).AuthenticateStore(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: StoreCredentialService_AuthenticateStore_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StoreCredentialServiceServer).AuthenticateStore(ctx, req.(*AuthenticateStoreRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StoreCredentialService_ChangeStorePassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ChangeStorePasswordRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StoreCredentialServiceServer).ChangeStorePassword(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: StoreCredentialService_ChangeStorePassword_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StoreCredentialServiceServer).ChangeStorePassword(ctx, req.(*ChangeStorePasswordRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// StoreCredentialService_ServiceDesc is the grpc.ServiceDesc for StoreCredentialService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var StoreCredentialService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "dextea.store.v1.StoreCredentialService",
+	HandlerType: (*StoreCredentialServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "AuthenticateStore",
+			Handler:    _StoreCredentialService_AuthenticateStore_Handler,
+		},
+		{
+			MethodName: "ChangeStorePassword",
+			Handler:    _StoreCredentialService_ChangeStorePassword_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

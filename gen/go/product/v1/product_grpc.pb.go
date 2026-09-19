@@ -19,83 +19,81 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ProductService_CreateProduct_FullMethodName                          = "/dextea.product.v1.ProductService/CreateProduct"
-	ProductService_UpdateProduct_FullMethodName                          = "/dextea.product.v1.ProductService/UpdateProduct"
-	ProductService_ListProducts_FullMethodName                           = "/dextea.product.v1.ProductService/ListProducts"
-	ProductService_GetProductStats_FullMethodName                        = "/dextea.product.v1.ProductService/GetProductStats"
-	ProductService_BatchUpdateProductStatus_FullMethodName               = "/dextea.product.v1.ProductService/BatchUpdateProductStatus"
-	ProductService_BatchSetProductStoreStatus_FullMethodName             = "/dextea.product.v1.ProductService/BatchSetProductStoreStatus"
-	ProductService_GetProductDetail_FullMethodName                       = "/dextea.product.v1.ProductService/GetProductDetail"
-	ProductService_GetProductStoreStatuses_FullMethodName                = "/dextea.product.v1.ProductService/GetProductStoreStatuses"
-	ProductService_GetCustomizationOptionStoreStatuses_FullMethodName    = "/dextea.product.v1.ProductService/GetCustomizationOptionStoreStatuses"
-	ProductService_GetProductImages_FullMethodName                       = "/dextea.product.v1.ProductService/GetProductImages"
-	ProductService_SetProductImages_FullMethodName                       = "/dextea.product.v1.ProductService/SetProductImages"
-	ProductService_CreateCustomizationItem_FullMethodName                = "/dextea.product.v1.ProductService/CreateCustomizationItem"
-	ProductService_UpdateCustomizationItem_FullMethodName                = "/dextea.product.v1.ProductService/UpdateCustomizationItem"
-	ProductService_ListCustomizationItems_FullMethodName                 = "/dextea.product.v1.ProductService/ListCustomizationItems"
-	ProductService_BatchUpdateCustomizationItemStatus_FullMethodName     = "/dextea.product.v1.ProductService/BatchUpdateCustomizationItemStatus"
-	ProductService_CreateCustomizationOption_FullMethodName              = "/dextea.product.v1.ProductService/CreateCustomizationOption"
-	ProductService_UpdateCustomizationOption_FullMethodName              = "/dextea.product.v1.ProductService/UpdateCustomizationOption"
-	ProductService_UpdateCustomizationOptionIngredient_FullMethodName    = "/dextea.product.v1.ProductService/UpdateCustomizationOptionIngredient"
-	ProductService_ListCustomizationOptions_FullMethodName               = "/dextea.product.v1.ProductService/ListCustomizationOptions"
-	ProductService_BatchUpdateCustomizationOptionStatus_FullMethodName   = "/dextea.product.v1.ProductService/BatchUpdateCustomizationOptionStatus"
-	ProductService_BatchSetCustomizationOptionStoreStatus_FullMethodName = "/dextea.product.v1.ProductService/BatchSetCustomizationOptionStoreStatus"
-	ProductService_CreateMenu_FullMethodName                             = "/dextea.product.v1.ProductService/CreateMenu"
-	ProductService_UpdateMenu_FullMethodName                             = "/dextea.product.v1.ProductService/UpdateMenu"
-	ProductService_GetMenu_FullMethodName                                = "/dextea.product.v1.ProductService/GetMenu"
-	ProductService_ListMenus_FullMethodName                              = "/dextea.product.v1.ProductService/ListMenus"
-	ProductService_GetMenuTree_FullMethodName                            = "/dextea.product.v1.ProductService/GetMenuTree"
-	ProductService_CreateMenuGroup_FullMethodName                        = "/dextea.product.v1.ProductService/CreateMenuGroup"
-	ProductService_UpdateMenuGroup_FullMethodName                        = "/dextea.product.v1.ProductService/UpdateMenuGroup"
-	ProductService_ListMenuGroups_FullMethodName                         = "/dextea.product.v1.ProductService/ListMenuGroups"
-	ProductService_CreateMenuProduct_FullMethodName                      = "/dextea.product.v1.ProductService/CreateMenuProduct"
-	ProductService_UpdateMenuProduct_FullMethodName                      = "/dextea.product.v1.ProductService/UpdateMenuProduct"
-	ProductService_DeleteMenuProduct_FullMethodName                      = "/dextea.product.v1.ProductService/DeleteMenuProduct"
-	ProductService_ListMenuProducts_FullMethodName                       = "/dextea.product.v1.ProductService/ListMenuProducts"
-	ProductService_DeleteMenu_FullMethodName                             = "/dextea.product.v1.ProductService/DeleteMenu"
-	ProductService_DeleteMenuGroup_FullMethodName                        = "/dextea.product.v1.ProductService/DeleteMenuGroup"
-	ProductService_ListTags_FullMethodName                               = "/dextea.product.v1.ProductService/ListTags"
-	ProductService_CreateTag_FullMethodName                              = "/dextea.product.v1.ProductService/CreateTag"
-	ProductService_UpdateTag_FullMethodName                              = "/dextea.product.v1.ProductService/UpdateTag"
-	ProductService_DeleteTag_FullMethodName                              = "/dextea.product.v1.ProductService/DeleteTag"
-	ProductService_ListProductTags_FullMethodName                        = "/dextea.product.v1.ProductService/ListProductTags"
-	ProductService_BindProductTags_FullMethodName                        = "/dextea.product.v1.ProductService/BindProductTags"
-	ProductService_UnbindProductTags_FullMethodName                      = "/dextea.product.v1.ProductService/UnbindProductTags"
-	ProductService_ListTagProducts_FullMethodName                        = "/dextea.product.v1.ProductService/ListTagProducts"
-	ProductService_BindTagProducts_FullMethodName                        = "/dextea.product.v1.ProductService/BindTagProducts"
-	ProductService_UnbindTagProducts_FullMethodName                      = "/dextea.product.v1.ProductService/UnbindTagProducts"
-	ProductService_CreateIngredient_FullMethodName                       = "/dextea.product.v1.ProductService/CreateIngredient"
-	ProductService_GetIngredient_FullMethodName                          = "/dextea.product.v1.ProductService/GetIngredient"
-	ProductService_UpdateIngredient_FullMethodName                       = "/dextea.product.v1.ProductService/UpdateIngredient"
-	ProductService_ListIngredients_FullMethodName                        = "/dextea.product.v1.ProductService/ListIngredients"
-	ProductService_ListIngredientSelect_FullMethodName                   = "/dextea.product.v1.ProductService/ListIngredientSelect"
-	ProductService_ListProductIngredients_FullMethodName                 = "/dextea.product.v1.ProductService/ListProductIngredients"
-	ProductService_BindProductIngredient_FullMethodName                  = "/dextea.product.v1.ProductService/BindProductIngredient"
-	ProductService_UpdateProductIngredient_FullMethodName                = "/dextea.product.v1.ProductService/UpdateProductIngredient"
-	ProductService_DeleteProductIngredient_FullMethodName                = "/dextea.product.v1.ProductService/DeleteProductIngredient"
-	ProductService_ListIngredientProducts_FullMethodName                 = "/dextea.product.v1.ProductService/ListIngredientProducts"
-	ProductService_ListIngredientOptions_FullMethodName                  = "/dextea.product.v1.ProductService/ListIngredientOptions"
-	ProductService_ListStoreIngredients_FullMethodName                   = "/dextea.product.v1.ProductService/ListStoreIngredients"
-	ProductService_ExportCustomization_FullMethodName                    = "/dextea.product.v1.ProductService/ExportCustomization"
-	ProductService_ImportCustomization_FullMethodName                    = "/dextea.product.v1.ProductService/ImportCustomization"
-	ProductService_ListMenuStores_FullMethodName                         = "/dextea.product.v1.ProductService/ListMenuStores"
-	ProductService_DispatchMenuByStores_FullMethodName                   = "/dextea.product.v1.ProductService/DispatchMenuByStores"
-	ProductService_DispatchMenuByArea_FullMethodName                     = "/dextea.product.v1.ProductService/DispatchMenuByArea"
+	ProductAdminService_CreateProduct_FullMethodName                          = "/dextea.product.v1.ProductAdminService/CreateProduct"
+	ProductAdminService_UpdateProduct_FullMethodName                          = "/dextea.product.v1.ProductAdminService/UpdateProduct"
+	ProductAdminService_ListProducts_FullMethodName                           = "/dextea.product.v1.ProductAdminService/ListProducts"
+	ProductAdminService_GetProductStats_FullMethodName                        = "/dextea.product.v1.ProductAdminService/GetProductStats"
+	ProductAdminService_BatchUpdateProductStatus_FullMethodName               = "/dextea.product.v1.ProductAdminService/BatchUpdateProductStatus"
+	ProductAdminService_BatchSetProductStoreStatus_FullMethodName             = "/dextea.product.v1.ProductAdminService/BatchSetProductStoreStatus"
+	ProductAdminService_GetProductImages_FullMethodName                       = "/dextea.product.v1.ProductAdminService/GetProductImages"
+	ProductAdminService_SetProductImages_FullMethodName                       = "/dextea.product.v1.ProductAdminService/SetProductImages"
+	ProductAdminService_CreateCustomizationItem_FullMethodName                = "/dextea.product.v1.ProductAdminService/CreateCustomizationItem"
+	ProductAdminService_UpdateCustomizationItem_FullMethodName                = "/dextea.product.v1.ProductAdminService/UpdateCustomizationItem"
+	ProductAdminService_ListCustomizationItems_FullMethodName                 = "/dextea.product.v1.ProductAdminService/ListCustomizationItems"
+	ProductAdminService_BatchUpdateCustomizationItemStatus_FullMethodName     = "/dextea.product.v1.ProductAdminService/BatchUpdateCustomizationItemStatus"
+	ProductAdminService_CreateCustomizationOption_FullMethodName              = "/dextea.product.v1.ProductAdminService/CreateCustomizationOption"
+	ProductAdminService_UpdateCustomizationOption_FullMethodName              = "/dextea.product.v1.ProductAdminService/UpdateCustomizationOption"
+	ProductAdminService_UpdateCustomizationOptionIngredient_FullMethodName    = "/dextea.product.v1.ProductAdminService/UpdateCustomizationOptionIngredient"
+	ProductAdminService_ListCustomizationOptions_FullMethodName               = "/dextea.product.v1.ProductAdminService/ListCustomizationOptions"
+	ProductAdminService_BatchUpdateCustomizationOptionStatus_FullMethodName   = "/dextea.product.v1.ProductAdminService/BatchUpdateCustomizationOptionStatus"
+	ProductAdminService_BatchSetCustomizationOptionStoreStatus_FullMethodName = "/dextea.product.v1.ProductAdminService/BatchSetCustomizationOptionStoreStatus"
+	ProductAdminService_CreateMenu_FullMethodName                             = "/dextea.product.v1.ProductAdminService/CreateMenu"
+	ProductAdminService_UpdateMenu_FullMethodName                             = "/dextea.product.v1.ProductAdminService/UpdateMenu"
+	ProductAdminService_GetMenu_FullMethodName                                = "/dextea.product.v1.ProductAdminService/GetMenu"
+	ProductAdminService_ListMenus_FullMethodName                              = "/dextea.product.v1.ProductAdminService/ListMenus"
+	ProductAdminService_GetMenuTree_FullMethodName                            = "/dextea.product.v1.ProductAdminService/GetMenuTree"
+	ProductAdminService_GetAdminStoreMenu_FullMethodName                      = "/dextea.product.v1.ProductAdminService/GetAdminStoreMenu"
+	ProductAdminService_CreateMenuGroup_FullMethodName                        = "/dextea.product.v1.ProductAdminService/CreateMenuGroup"
+	ProductAdminService_UpdateMenuGroup_FullMethodName                        = "/dextea.product.v1.ProductAdminService/UpdateMenuGroup"
+	ProductAdminService_ListMenuGroups_FullMethodName                         = "/dextea.product.v1.ProductAdminService/ListMenuGroups"
+	ProductAdminService_CreateMenuProduct_FullMethodName                      = "/dextea.product.v1.ProductAdminService/CreateMenuProduct"
+	ProductAdminService_UpdateMenuProduct_FullMethodName                      = "/dextea.product.v1.ProductAdminService/UpdateMenuProduct"
+	ProductAdminService_DeleteMenuProduct_FullMethodName                      = "/dextea.product.v1.ProductAdminService/DeleteMenuProduct"
+	ProductAdminService_ListMenuProducts_FullMethodName                       = "/dextea.product.v1.ProductAdminService/ListMenuProducts"
+	ProductAdminService_DeleteMenu_FullMethodName                             = "/dextea.product.v1.ProductAdminService/DeleteMenu"
+	ProductAdminService_DeleteMenuGroup_FullMethodName                        = "/dextea.product.v1.ProductAdminService/DeleteMenuGroup"
+	ProductAdminService_ListTags_FullMethodName                               = "/dextea.product.v1.ProductAdminService/ListTags"
+	ProductAdminService_CreateTag_FullMethodName                              = "/dextea.product.v1.ProductAdminService/CreateTag"
+	ProductAdminService_UpdateTag_FullMethodName                              = "/dextea.product.v1.ProductAdminService/UpdateTag"
+	ProductAdminService_DeleteTag_FullMethodName                              = "/dextea.product.v1.ProductAdminService/DeleteTag"
+	ProductAdminService_ListProductTags_FullMethodName                        = "/dextea.product.v1.ProductAdminService/ListProductTags"
+	ProductAdminService_BindProductTags_FullMethodName                        = "/dextea.product.v1.ProductAdminService/BindProductTags"
+	ProductAdminService_UnbindProductTags_FullMethodName                      = "/dextea.product.v1.ProductAdminService/UnbindProductTags"
+	ProductAdminService_ListTagProducts_FullMethodName                        = "/dextea.product.v1.ProductAdminService/ListTagProducts"
+	ProductAdminService_BindTagProducts_FullMethodName                        = "/dextea.product.v1.ProductAdminService/BindTagProducts"
+	ProductAdminService_UnbindTagProducts_FullMethodName                      = "/dextea.product.v1.ProductAdminService/UnbindTagProducts"
+	ProductAdminService_CreateIngredient_FullMethodName                       = "/dextea.product.v1.ProductAdminService/CreateIngredient"
+	ProductAdminService_GetIngredient_FullMethodName                          = "/dextea.product.v1.ProductAdminService/GetIngredient"
+	ProductAdminService_UpdateIngredient_FullMethodName                       = "/dextea.product.v1.ProductAdminService/UpdateIngredient"
+	ProductAdminService_ListIngredients_FullMethodName                        = "/dextea.product.v1.ProductAdminService/ListIngredients"
+	ProductAdminService_ListIngredientSelect_FullMethodName                   = "/dextea.product.v1.ProductAdminService/ListIngredientSelect"
+	ProductAdminService_ListProductIngredients_FullMethodName                 = "/dextea.product.v1.ProductAdminService/ListProductIngredients"
+	ProductAdminService_BindProductIngredient_FullMethodName                  = "/dextea.product.v1.ProductAdminService/BindProductIngredient"
+	ProductAdminService_UpdateProductIngredient_FullMethodName                = "/dextea.product.v1.ProductAdminService/UpdateProductIngredient"
+	ProductAdminService_DeleteProductIngredient_FullMethodName                = "/dextea.product.v1.ProductAdminService/DeleteProductIngredient"
+	ProductAdminService_ListIngredientProducts_FullMethodName                 = "/dextea.product.v1.ProductAdminService/ListIngredientProducts"
+	ProductAdminService_ListIngredientOptions_FullMethodName                  = "/dextea.product.v1.ProductAdminService/ListIngredientOptions"
+	ProductAdminService_ListStoreIngredients_FullMethodName                   = "/dextea.product.v1.ProductAdminService/ListStoreIngredients"
+	ProductAdminService_ExportCustomization_FullMethodName                    = "/dextea.product.v1.ProductAdminService/ExportCustomization"
+	ProductAdminService_ImportCustomization_FullMethodName                    = "/dextea.product.v1.ProductAdminService/ImportCustomization"
+	ProductAdminService_ListMenuStores_FullMethodName                         = "/dextea.product.v1.ProductAdminService/ListMenuStores"
+	ProductAdminService_DispatchMenuByStores_FullMethodName                   = "/dextea.product.v1.ProductAdminService/DispatchMenuByStores"
+	ProductAdminService_DispatchMenuByArea_FullMethodName                     = "/dextea.product.v1.ProductAdminService/DispatchMenuByArea"
 )
 
-// ProductServiceClient is the client API for ProductService service.
+// ProductAdminServiceClient is the client API for ProductAdminService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type ProductServiceClient interface {
+//
+// ProductAdminService is the management-plane API. It owns product,
+// customization, menu, tag, ingredient, image, and menu-dispatch operations.
+type ProductAdminServiceClient interface {
 	CreateProduct(ctx context.Context, in *CreateProductRequest, opts ...grpc.CallOption) (*Product, error)
 	UpdateProduct(ctx context.Context, in *UpdateProductRequest, opts ...grpc.CallOption) (*Product, error)
 	ListProducts(ctx context.Context, in *ListProductsRequest, opts ...grpc.CallOption) (*ListProductsResponse, error)
 	GetProductStats(ctx context.Context, in *GetProductStatsRequest, opts ...grpc.CallOption) (*ProductStats, error)
 	BatchUpdateProductStatus(ctx context.Context, in *BatchUpdateStatusRequest, opts ...grpc.CallOption) (*BatchUpdateResponse, error)
 	BatchSetProductStoreStatus(ctx context.Context, in *BatchSetProductStoreStatusRequest, opts ...grpc.CallOption) (*BatchUpdateResponse, error)
-	GetProductDetail(ctx context.Context, in *GetProductDetailRequest, opts ...grpc.CallOption) (*ProductDetail, error)
-	GetProductStoreStatuses(ctx context.Context, in *GetProductStoreStatusesRequest, opts ...grpc.CallOption) (*ProductStoreStatusesResponse, error)
-	GetCustomizationOptionStoreStatuses(ctx context.Context, in *GetCustomizationOptionStoreStatusesRequest, opts ...grpc.CallOption) (*CustomizationOptionStoreStatusesResponse, error)
 	GetProductImages(ctx context.Context, in *GetProductImagesRequest, opts ...grpc.CallOption) (*ProductImagesResponse, error)
 	SetProductImages(ctx context.Context, in *SetProductImagesRequest, opts ...grpc.CallOption) (*ProductImagesResponse, error)
 	CreateCustomizationItem(ctx context.Context, in *CreateCustomizationItemRequest, opts ...grpc.CallOption) (*CustomizationItem, error)
@@ -113,6 +111,7 @@ type ProductServiceClient interface {
 	GetMenu(ctx context.Context, in *GetMenuRequest, opts ...grpc.CallOption) (*Menu, error)
 	ListMenus(ctx context.Context, in *ListMenusRequest, opts ...grpc.CallOption) (*ListMenusResponse, error)
 	GetMenuTree(ctx context.Context, in *GetMenuTreeRequest, opts ...grpc.CallOption) (*MenuTreeResponse, error)
+	GetAdminStoreMenu(ctx context.Context, in *GetStoreMenuRequest, opts ...grpc.CallOption) (*StoreMenuResponse, error)
 	CreateMenuGroup(ctx context.Context, in *CreateMenuGroupRequest, opts ...grpc.CallOption) (*MenuGroup, error)
 	UpdateMenuGroup(ctx context.Context, in *UpdateMenuGroupRequest, opts ...grpc.CallOption) (*MenuGroup, error)
 	ListMenuGroups(ctx context.Context, in *ListMenuGroupsRequest, opts ...grpc.CallOption) (*ListMenuGroupsResponse, error)
@@ -151,647 +150,627 @@ type ProductServiceClient interface {
 	DispatchMenuByArea(ctx context.Context, in *DispatchMenuByAreaRequest, opts ...grpc.CallOption) (*BatchUpdateResponse, error)
 }
 
-type productServiceClient struct {
+type productAdminServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewProductServiceClient(cc grpc.ClientConnInterface) ProductServiceClient {
-	return &productServiceClient{cc}
+func NewProductAdminServiceClient(cc grpc.ClientConnInterface) ProductAdminServiceClient {
+	return &productAdminServiceClient{cc}
 }
 
-func (c *productServiceClient) CreateProduct(ctx context.Context, in *CreateProductRequest, opts ...grpc.CallOption) (*Product, error) {
+func (c *productAdminServiceClient) CreateProduct(ctx context.Context, in *CreateProductRequest, opts ...grpc.CallOption) (*Product, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Product)
-	err := c.cc.Invoke(ctx, ProductService_CreateProduct_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_CreateProduct_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) UpdateProduct(ctx context.Context, in *UpdateProductRequest, opts ...grpc.CallOption) (*Product, error) {
+func (c *productAdminServiceClient) UpdateProduct(ctx context.Context, in *UpdateProductRequest, opts ...grpc.CallOption) (*Product, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Product)
-	err := c.cc.Invoke(ctx, ProductService_UpdateProduct_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_UpdateProduct_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) ListProducts(ctx context.Context, in *ListProductsRequest, opts ...grpc.CallOption) (*ListProductsResponse, error) {
+func (c *productAdminServiceClient) ListProducts(ctx context.Context, in *ListProductsRequest, opts ...grpc.CallOption) (*ListProductsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListProductsResponse)
-	err := c.cc.Invoke(ctx, ProductService_ListProducts_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_ListProducts_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) GetProductStats(ctx context.Context, in *GetProductStatsRequest, opts ...grpc.CallOption) (*ProductStats, error) {
+func (c *productAdminServiceClient) GetProductStats(ctx context.Context, in *GetProductStatsRequest, opts ...grpc.CallOption) (*ProductStats, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ProductStats)
-	err := c.cc.Invoke(ctx, ProductService_GetProductStats_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_GetProductStats_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) BatchUpdateProductStatus(ctx context.Context, in *BatchUpdateStatusRequest, opts ...grpc.CallOption) (*BatchUpdateResponse, error) {
+func (c *productAdminServiceClient) BatchUpdateProductStatus(ctx context.Context, in *BatchUpdateStatusRequest, opts ...grpc.CallOption) (*BatchUpdateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(BatchUpdateResponse)
-	err := c.cc.Invoke(ctx, ProductService_BatchUpdateProductStatus_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_BatchUpdateProductStatus_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) BatchSetProductStoreStatus(ctx context.Context, in *BatchSetProductStoreStatusRequest, opts ...grpc.CallOption) (*BatchUpdateResponse, error) {
+func (c *productAdminServiceClient) BatchSetProductStoreStatus(ctx context.Context, in *BatchSetProductStoreStatusRequest, opts ...grpc.CallOption) (*BatchUpdateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(BatchUpdateResponse)
-	err := c.cc.Invoke(ctx, ProductService_BatchSetProductStoreStatus_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_BatchSetProductStoreStatus_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) GetProductDetail(ctx context.Context, in *GetProductDetailRequest, opts ...grpc.CallOption) (*ProductDetail, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ProductDetail)
-	err := c.cc.Invoke(ctx, ProductService_GetProductDetail_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *productServiceClient) GetProductStoreStatuses(ctx context.Context, in *GetProductStoreStatusesRequest, opts ...grpc.CallOption) (*ProductStoreStatusesResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ProductStoreStatusesResponse)
-	err := c.cc.Invoke(ctx, ProductService_GetProductStoreStatuses_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *productServiceClient) GetCustomizationOptionStoreStatuses(ctx context.Context, in *GetCustomizationOptionStoreStatusesRequest, opts ...grpc.CallOption) (*CustomizationOptionStoreStatusesResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CustomizationOptionStoreStatusesResponse)
-	err := c.cc.Invoke(ctx, ProductService_GetCustomizationOptionStoreStatuses_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *productServiceClient) GetProductImages(ctx context.Context, in *GetProductImagesRequest, opts ...grpc.CallOption) (*ProductImagesResponse, error) {
+func (c *productAdminServiceClient) GetProductImages(ctx context.Context, in *GetProductImagesRequest, opts ...grpc.CallOption) (*ProductImagesResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ProductImagesResponse)
-	err := c.cc.Invoke(ctx, ProductService_GetProductImages_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_GetProductImages_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) SetProductImages(ctx context.Context, in *SetProductImagesRequest, opts ...grpc.CallOption) (*ProductImagesResponse, error) {
+func (c *productAdminServiceClient) SetProductImages(ctx context.Context, in *SetProductImagesRequest, opts ...grpc.CallOption) (*ProductImagesResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ProductImagesResponse)
-	err := c.cc.Invoke(ctx, ProductService_SetProductImages_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_SetProductImages_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) CreateCustomizationItem(ctx context.Context, in *CreateCustomizationItemRequest, opts ...grpc.CallOption) (*CustomizationItem, error) {
+func (c *productAdminServiceClient) CreateCustomizationItem(ctx context.Context, in *CreateCustomizationItemRequest, opts ...grpc.CallOption) (*CustomizationItem, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CustomizationItem)
-	err := c.cc.Invoke(ctx, ProductService_CreateCustomizationItem_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_CreateCustomizationItem_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) UpdateCustomizationItem(ctx context.Context, in *UpdateCustomizationItemRequest, opts ...grpc.CallOption) (*CustomizationItem, error) {
+func (c *productAdminServiceClient) UpdateCustomizationItem(ctx context.Context, in *UpdateCustomizationItemRequest, opts ...grpc.CallOption) (*CustomizationItem, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CustomizationItem)
-	err := c.cc.Invoke(ctx, ProductService_UpdateCustomizationItem_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_UpdateCustomizationItem_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) ListCustomizationItems(ctx context.Context, in *ListCustomizationItemsRequest, opts ...grpc.CallOption) (*ListCustomizationItemsResponse, error) {
+func (c *productAdminServiceClient) ListCustomizationItems(ctx context.Context, in *ListCustomizationItemsRequest, opts ...grpc.CallOption) (*ListCustomizationItemsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListCustomizationItemsResponse)
-	err := c.cc.Invoke(ctx, ProductService_ListCustomizationItems_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_ListCustomizationItems_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) BatchUpdateCustomizationItemStatus(ctx context.Context, in *BatchUpdateStatusRequest, opts ...grpc.CallOption) (*BatchUpdateResponse, error) {
+func (c *productAdminServiceClient) BatchUpdateCustomizationItemStatus(ctx context.Context, in *BatchUpdateStatusRequest, opts ...grpc.CallOption) (*BatchUpdateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(BatchUpdateResponse)
-	err := c.cc.Invoke(ctx, ProductService_BatchUpdateCustomizationItemStatus_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_BatchUpdateCustomizationItemStatus_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) CreateCustomizationOption(ctx context.Context, in *CreateCustomizationOptionRequest, opts ...grpc.CallOption) (*CustomizationOption, error) {
+func (c *productAdminServiceClient) CreateCustomizationOption(ctx context.Context, in *CreateCustomizationOptionRequest, opts ...grpc.CallOption) (*CustomizationOption, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CustomizationOption)
-	err := c.cc.Invoke(ctx, ProductService_CreateCustomizationOption_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_CreateCustomizationOption_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) UpdateCustomizationOption(ctx context.Context, in *UpdateCustomizationOptionRequest, opts ...grpc.CallOption) (*CustomizationOption, error) {
+func (c *productAdminServiceClient) UpdateCustomizationOption(ctx context.Context, in *UpdateCustomizationOptionRequest, opts ...grpc.CallOption) (*CustomizationOption, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CustomizationOption)
-	err := c.cc.Invoke(ctx, ProductService_UpdateCustomizationOption_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_UpdateCustomizationOption_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) UpdateCustomizationOptionIngredient(ctx context.Context, in *UpdateCustomizationOptionIngredientRequest, opts ...grpc.CallOption) (*CustomizationOption, error) {
+func (c *productAdminServiceClient) UpdateCustomizationOptionIngredient(ctx context.Context, in *UpdateCustomizationOptionIngredientRequest, opts ...grpc.CallOption) (*CustomizationOption, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CustomizationOption)
-	err := c.cc.Invoke(ctx, ProductService_UpdateCustomizationOptionIngredient_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_UpdateCustomizationOptionIngredient_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) ListCustomizationOptions(ctx context.Context, in *ListCustomizationOptionsRequest, opts ...grpc.CallOption) (*ListCustomizationOptionsResponse, error) {
+func (c *productAdminServiceClient) ListCustomizationOptions(ctx context.Context, in *ListCustomizationOptionsRequest, opts ...grpc.CallOption) (*ListCustomizationOptionsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListCustomizationOptionsResponse)
-	err := c.cc.Invoke(ctx, ProductService_ListCustomizationOptions_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_ListCustomizationOptions_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) BatchUpdateCustomizationOptionStatus(ctx context.Context, in *BatchUpdateStatusRequest, opts ...grpc.CallOption) (*BatchUpdateResponse, error) {
+func (c *productAdminServiceClient) BatchUpdateCustomizationOptionStatus(ctx context.Context, in *BatchUpdateStatusRequest, opts ...grpc.CallOption) (*BatchUpdateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(BatchUpdateResponse)
-	err := c.cc.Invoke(ctx, ProductService_BatchUpdateCustomizationOptionStatus_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_BatchUpdateCustomizationOptionStatus_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) BatchSetCustomizationOptionStoreStatus(ctx context.Context, in *BatchSetOptionStoreStatusRequest, opts ...grpc.CallOption) (*BatchUpdateResponse, error) {
+func (c *productAdminServiceClient) BatchSetCustomizationOptionStoreStatus(ctx context.Context, in *BatchSetOptionStoreStatusRequest, opts ...grpc.CallOption) (*BatchUpdateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(BatchUpdateResponse)
-	err := c.cc.Invoke(ctx, ProductService_BatchSetCustomizationOptionStoreStatus_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_BatchSetCustomizationOptionStoreStatus_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) CreateMenu(ctx context.Context, in *CreateMenuRequest, opts ...grpc.CallOption) (*Menu, error) {
+func (c *productAdminServiceClient) CreateMenu(ctx context.Context, in *CreateMenuRequest, opts ...grpc.CallOption) (*Menu, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Menu)
-	err := c.cc.Invoke(ctx, ProductService_CreateMenu_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_CreateMenu_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) UpdateMenu(ctx context.Context, in *UpdateMenuRequest, opts ...grpc.CallOption) (*Menu, error) {
+func (c *productAdminServiceClient) UpdateMenu(ctx context.Context, in *UpdateMenuRequest, opts ...grpc.CallOption) (*Menu, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Menu)
-	err := c.cc.Invoke(ctx, ProductService_UpdateMenu_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_UpdateMenu_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) GetMenu(ctx context.Context, in *GetMenuRequest, opts ...grpc.CallOption) (*Menu, error) {
+func (c *productAdminServiceClient) GetMenu(ctx context.Context, in *GetMenuRequest, opts ...grpc.CallOption) (*Menu, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Menu)
-	err := c.cc.Invoke(ctx, ProductService_GetMenu_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_GetMenu_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) ListMenus(ctx context.Context, in *ListMenusRequest, opts ...grpc.CallOption) (*ListMenusResponse, error) {
+func (c *productAdminServiceClient) ListMenus(ctx context.Context, in *ListMenusRequest, opts ...grpc.CallOption) (*ListMenusResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListMenusResponse)
-	err := c.cc.Invoke(ctx, ProductService_ListMenus_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_ListMenus_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) GetMenuTree(ctx context.Context, in *GetMenuTreeRequest, opts ...grpc.CallOption) (*MenuTreeResponse, error) {
+func (c *productAdminServiceClient) GetMenuTree(ctx context.Context, in *GetMenuTreeRequest, opts ...grpc.CallOption) (*MenuTreeResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(MenuTreeResponse)
-	err := c.cc.Invoke(ctx, ProductService_GetMenuTree_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_GetMenuTree_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) CreateMenuGroup(ctx context.Context, in *CreateMenuGroupRequest, opts ...grpc.CallOption) (*MenuGroup, error) {
+func (c *productAdminServiceClient) GetAdminStoreMenu(ctx context.Context, in *GetStoreMenuRequest, opts ...grpc.CallOption) (*StoreMenuResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(StoreMenuResponse)
+	err := c.cc.Invoke(ctx, ProductAdminService_GetAdminStoreMenu_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *productAdminServiceClient) CreateMenuGroup(ctx context.Context, in *CreateMenuGroupRequest, opts ...grpc.CallOption) (*MenuGroup, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(MenuGroup)
-	err := c.cc.Invoke(ctx, ProductService_CreateMenuGroup_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_CreateMenuGroup_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) UpdateMenuGroup(ctx context.Context, in *UpdateMenuGroupRequest, opts ...grpc.CallOption) (*MenuGroup, error) {
+func (c *productAdminServiceClient) UpdateMenuGroup(ctx context.Context, in *UpdateMenuGroupRequest, opts ...grpc.CallOption) (*MenuGroup, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(MenuGroup)
-	err := c.cc.Invoke(ctx, ProductService_UpdateMenuGroup_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_UpdateMenuGroup_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) ListMenuGroups(ctx context.Context, in *ListMenuGroupsRequest, opts ...grpc.CallOption) (*ListMenuGroupsResponse, error) {
+func (c *productAdminServiceClient) ListMenuGroups(ctx context.Context, in *ListMenuGroupsRequest, opts ...grpc.CallOption) (*ListMenuGroupsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListMenuGroupsResponse)
-	err := c.cc.Invoke(ctx, ProductService_ListMenuGroups_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_ListMenuGroups_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) CreateMenuProduct(ctx context.Context, in *CreateMenuProductRequest, opts ...grpc.CallOption) (*MenuProduct, error) {
+func (c *productAdminServiceClient) CreateMenuProduct(ctx context.Context, in *CreateMenuProductRequest, opts ...grpc.CallOption) (*MenuProduct, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(MenuProduct)
-	err := c.cc.Invoke(ctx, ProductService_CreateMenuProduct_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_CreateMenuProduct_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) UpdateMenuProduct(ctx context.Context, in *UpdateMenuProductRequest, opts ...grpc.CallOption) (*MenuProduct, error) {
+func (c *productAdminServiceClient) UpdateMenuProduct(ctx context.Context, in *UpdateMenuProductRequest, opts ...grpc.CallOption) (*MenuProduct, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(MenuProduct)
-	err := c.cc.Invoke(ctx, ProductService_UpdateMenuProduct_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_UpdateMenuProduct_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) DeleteMenuProduct(ctx context.Context, in *DeleteMenuProductRequest, opts ...grpc.CallOption) (*Empty, error) {
+func (c *productAdminServiceClient) DeleteMenuProduct(ctx context.Context, in *DeleteMenuProductRequest, opts ...grpc.CallOption) (*Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Empty)
-	err := c.cc.Invoke(ctx, ProductService_DeleteMenuProduct_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_DeleteMenuProduct_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) ListMenuProducts(ctx context.Context, in *ListMenuProductsRequest, opts ...grpc.CallOption) (*ListMenuProductsResponse, error) {
+func (c *productAdminServiceClient) ListMenuProducts(ctx context.Context, in *ListMenuProductsRequest, opts ...grpc.CallOption) (*ListMenuProductsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListMenuProductsResponse)
-	err := c.cc.Invoke(ctx, ProductService_ListMenuProducts_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_ListMenuProducts_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) DeleteMenu(ctx context.Context, in *DeleteMenuRequest, opts ...grpc.CallOption) (*Empty, error) {
+func (c *productAdminServiceClient) DeleteMenu(ctx context.Context, in *DeleteMenuRequest, opts ...grpc.CallOption) (*Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Empty)
-	err := c.cc.Invoke(ctx, ProductService_DeleteMenu_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_DeleteMenu_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) DeleteMenuGroup(ctx context.Context, in *DeleteMenuGroupRequest, opts ...grpc.CallOption) (*Empty, error) {
+func (c *productAdminServiceClient) DeleteMenuGroup(ctx context.Context, in *DeleteMenuGroupRequest, opts ...grpc.CallOption) (*Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Empty)
-	err := c.cc.Invoke(ctx, ProductService_DeleteMenuGroup_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_DeleteMenuGroup_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) ListTags(ctx context.Context, in *ListTagsRequest, opts ...grpc.CallOption) (*ListTagsResponse, error) {
+func (c *productAdminServiceClient) ListTags(ctx context.Context, in *ListTagsRequest, opts ...grpc.CallOption) (*ListTagsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListTagsResponse)
-	err := c.cc.Invoke(ctx, ProductService_ListTags_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_ListTags_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) CreateTag(ctx context.Context, in *CreateTagRequest, opts ...grpc.CallOption) (*Tag, error) {
+func (c *productAdminServiceClient) CreateTag(ctx context.Context, in *CreateTagRequest, opts ...grpc.CallOption) (*Tag, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Tag)
-	err := c.cc.Invoke(ctx, ProductService_CreateTag_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_CreateTag_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) UpdateTag(ctx context.Context, in *UpdateTagRequest, opts ...grpc.CallOption) (*Tag, error) {
+func (c *productAdminServiceClient) UpdateTag(ctx context.Context, in *UpdateTagRequest, opts ...grpc.CallOption) (*Tag, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Tag)
-	err := c.cc.Invoke(ctx, ProductService_UpdateTag_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_UpdateTag_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) DeleteTag(ctx context.Context, in *DeleteTagRequest, opts ...grpc.CallOption) (*Empty, error) {
+func (c *productAdminServiceClient) DeleteTag(ctx context.Context, in *DeleteTagRequest, opts ...grpc.CallOption) (*Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Empty)
-	err := c.cc.Invoke(ctx, ProductService_DeleteTag_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_DeleteTag_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) ListProductTags(ctx context.Context, in *ListProductTagsRequest, opts ...grpc.CallOption) (*ListProductTagsResponse, error) {
+func (c *productAdminServiceClient) ListProductTags(ctx context.Context, in *ListProductTagsRequest, opts ...grpc.CallOption) (*ListProductTagsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListProductTagsResponse)
-	err := c.cc.Invoke(ctx, ProductService_ListProductTags_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_ListProductTags_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) BindProductTags(ctx context.Context, in *BindProductTagsRequest, opts ...grpc.CallOption) (*BatchUpdateResponse, error) {
+func (c *productAdminServiceClient) BindProductTags(ctx context.Context, in *BindProductTagsRequest, opts ...grpc.CallOption) (*BatchUpdateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(BatchUpdateResponse)
-	err := c.cc.Invoke(ctx, ProductService_BindProductTags_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_BindProductTags_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) UnbindProductTags(ctx context.Context, in *BindProductTagsRequest, opts ...grpc.CallOption) (*BatchUpdateResponse, error) {
+func (c *productAdminServiceClient) UnbindProductTags(ctx context.Context, in *BindProductTagsRequest, opts ...grpc.CallOption) (*BatchUpdateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(BatchUpdateResponse)
-	err := c.cc.Invoke(ctx, ProductService_UnbindProductTags_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_UnbindProductTags_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) ListTagProducts(ctx context.Context, in *ListTagProductsRequest, opts ...grpc.CallOption) (*ListTagProductsResponse, error) {
+func (c *productAdminServiceClient) ListTagProducts(ctx context.Context, in *ListTagProductsRequest, opts ...grpc.CallOption) (*ListTagProductsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListTagProductsResponse)
-	err := c.cc.Invoke(ctx, ProductService_ListTagProducts_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_ListTagProducts_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) BindTagProducts(ctx context.Context, in *BindTagProductsRequest, opts ...grpc.CallOption) (*BatchUpdateResponse, error) {
+func (c *productAdminServiceClient) BindTagProducts(ctx context.Context, in *BindTagProductsRequest, opts ...grpc.CallOption) (*BatchUpdateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(BatchUpdateResponse)
-	err := c.cc.Invoke(ctx, ProductService_BindTagProducts_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_BindTagProducts_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) UnbindTagProducts(ctx context.Context, in *BindTagProductsRequest, opts ...grpc.CallOption) (*BatchUpdateResponse, error) {
+func (c *productAdminServiceClient) UnbindTagProducts(ctx context.Context, in *BindTagProductsRequest, opts ...grpc.CallOption) (*BatchUpdateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(BatchUpdateResponse)
-	err := c.cc.Invoke(ctx, ProductService_UnbindTagProducts_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_UnbindTagProducts_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) CreateIngredient(ctx context.Context, in *CreateIngredientRequest, opts ...grpc.CallOption) (*Ingredient, error) {
+func (c *productAdminServiceClient) CreateIngredient(ctx context.Context, in *CreateIngredientRequest, opts ...grpc.CallOption) (*Ingredient, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Ingredient)
-	err := c.cc.Invoke(ctx, ProductService_CreateIngredient_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_CreateIngredient_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) GetIngredient(ctx context.Context, in *GetIngredientRequest, opts ...grpc.CallOption) (*Ingredient, error) {
+func (c *productAdminServiceClient) GetIngredient(ctx context.Context, in *GetIngredientRequest, opts ...grpc.CallOption) (*Ingredient, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Ingredient)
-	err := c.cc.Invoke(ctx, ProductService_GetIngredient_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_GetIngredient_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) UpdateIngredient(ctx context.Context, in *UpdateIngredientRequest, opts ...grpc.CallOption) (*Ingredient, error) {
+func (c *productAdminServiceClient) UpdateIngredient(ctx context.Context, in *UpdateIngredientRequest, opts ...grpc.CallOption) (*Ingredient, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Ingredient)
-	err := c.cc.Invoke(ctx, ProductService_UpdateIngredient_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_UpdateIngredient_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) ListIngredients(ctx context.Context, in *ListIngredientsRequest, opts ...grpc.CallOption) (*ListIngredientsResponse, error) {
+func (c *productAdminServiceClient) ListIngredients(ctx context.Context, in *ListIngredientsRequest, opts ...grpc.CallOption) (*ListIngredientsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListIngredientsResponse)
-	err := c.cc.Invoke(ctx, ProductService_ListIngredients_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_ListIngredients_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) ListIngredientSelect(ctx context.Context, in *ListIngredientSelectRequest, opts ...grpc.CallOption) (*ListIngredientSelectResponse, error) {
+func (c *productAdminServiceClient) ListIngredientSelect(ctx context.Context, in *ListIngredientSelectRequest, opts ...grpc.CallOption) (*ListIngredientSelectResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListIngredientSelectResponse)
-	err := c.cc.Invoke(ctx, ProductService_ListIngredientSelect_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_ListIngredientSelect_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) ListProductIngredients(ctx context.Context, in *ListProductIngredientsRequest, opts ...grpc.CallOption) (*ListProductIngredientsResponse, error) {
+func (c *productAdminServiceClient) ListProductIngredients(ctx context.Context, in *ListProductIngredientsRequest, opts ...grpc.CallOption) (*ListProductIngredientsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListProductIngredientsResponse)
-	err := c.cc.Invoke(ctx, ProductService_ListProductIngredients_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_ListProductIngredients_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) BindProductIngredient(ctx context.Context, in *BindProductIngredientRequest, opts ...grpc.CallOption) (*ProductIngredient, error) {
+func (c *productAdminServiceClient) BindProductIngredient(ctx context.Context, in *BindProductIngredientRequest, opts ...grpc.CallOption) (*ProductIngredient, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ProductIngredient)
-	err := c.cc.Invoke(ctx, ProductService_BindProductIngredient_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_BindProductIngredient_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) UpdateProductIngredient(ctx context.Context, in *UpdateProductIngredientRequest, opts ...grpc.CallOption) (*ProductIngredient, error) {
+func (c *productAdminServiceClient) UpdateProductIngredient(ctx context.Context, in *UpdateProductIngredientRequest, opts ...grpc.CallOption) (*ProductIngredient, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ProductIngredient)
-	err := c.cc.Invoke(ctx, ProductService_UpdateProductIngredient_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_UpdateProductIngredient_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) DeleteProductIngredient(ctx context.Context, in *DeleteProductIngredientRequest, opts ...grpc.CallOption) (*Empty, error) {
+func (c *productAdminServiceClient) DeleteProductIngredient(ctx context.Context, in *DeleteProductIngredientRequest, opts ...grpc.CallOption) (*Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Empty)
-	err := c.cc.Invoke(ctx, ProductService_DeleteProductIngredient_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_DeleteProductIngredient_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) ListIngredientProducts(ctx context.Context, in *ListIngredientRelationsRequest, opts ...grpc.CallOption) (*ListIngredientProductsResponse, error) {
+func (c *productAdminServiceClient) ListIngredientProducts(ctx context.Context, in *ListIngredientRelationsRequest, opts ...grpc.CallOption) (*ListIngredientProductsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListIngredientProductsResponse)
-	err := c.cc.Invoke(ctx, ProductService_ListIngredientProducts_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_ListIngredientProducts_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) ListIngredientOptions(ctx context.Context, in *ListIngredientRelationsRequest, opts ...grpc.CallOption) (*ListIngredientOptionsResponse, error) {
+func (c *productAdminServiceClient) ListIngredientOptions(ctx context.Context, in *ListIngredientRelationsRequest, opts ...grpc.CallOption) (*ListIngredientOptionsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListIngredientOptionsResponse)
-	err := c.cc.Invoke(ctx, ProductService_ListIngredientOptions_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_ListIngredientOptions_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) ListStoreIngredients(ctx context.Context, in *ListStoreIngredientsRequest, opts ...grpc.CallOption) (*ListStoreIngredientsResponse, error) {
+func (c *productAdminServiceClient) ListStoreIngredients(ctx context.Context, in *ListStoreIngredientsRequest, opts ...grpc.CallOption) (*ListStoreIngredientsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListStoreIngredientsResponse)
-	err := c.cc.Invoke(ctx, ProductService_ListStoreIngredients_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_ListStoreIngredients_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) ExportCustomization(ctx context.Context, in *ExportCustomizationRequest, opts ...grpc.CallOption) (*ExportCustomizationResponse, error) {
+func (c *productAdminServiceClient) ExportCustomization(ctx context.Context, in *ExportCustomizationRequest, opts ...grpc.CallOption) (*ExportCustomizationResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ExportCustomizationResponse)
-	err := c.cc.Invoke(ctx, ProductService_ExportCustomization_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_ExportCustomization_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) ImportCustomization(ctx context.Context, in *ImportCustomizationRequest, opts ...grpc.CallOption) (*ImportCustomizationResponse, error) {
+func (c *productAdminServiceClient) ImportCustomization(ctx context.Context, in *ImportCustomizationRequest, opts ...grpc.CallOption) (*ImportCustomizationResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ImportCustomizationResponse)
-	err := c.cc.Invoke(ctx, ProductService_ImportCustomization_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_ImportCustomization_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) ListMenuStores(ctx context.Context, in *ListMenuStoresRequest, opts ...grpc.CallOption) (*ListMenuStoresResponse, error) {
+func (c *productAdminServiceClient) ListMenuStores(ctx context.Context, in *ListMenuStoresRequest, opts ...grpc.CallOption) (*ListMenuStoresResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListMenuStoresResponse)
-	err := c.cc.Invoke(ctx, ProductService_ListMenuStores_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_ListMenuStores_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) DispatchMenuByStores(ctx context.Context, in *DispatchMenuByStoresRequest, opts ...grpc.CallOption) (*BatchUpdateResponse, error) {
+func (c *productAdminServiceClient) DispatchMenuByStores(ctx context.Context, in *DispatchMenuByStoresRequest, opts ...grpc.CallOption) (*BatchUpdateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(BatchUpdateResponse)
-	err := c.cc.Invoke(ctx, ProductService_DispatchMenuByStores_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_DispatchMenuByStores_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) DispatchMenuByArea(ctx context.Context, in *DispatchMenuByAreaRequest, opts ...grpc.CallOption) (*BatchUpdateResponse, error) {
+func (c *productAdminServiceClient) DispatchMenuByArea(ctx context.Context, in *DispatchMenuByAreaRequest, opts ...grpc.CallOption) (*BatchUpdateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(BatchUpdateResponse)
-	err := c.cc.Invoke(ctx, ProductService_DispatchMenuByArea_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductAdminService_DispatchMenuByArea_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// ProductServiceServer is the server API for ProductService service.
-// All implementations must embed UnimplementedProductServiceServer
+// ProductAdminServiceServer is the server API for ProductAdminService service.
+// All implementations must embed UnimplementedProductAdminServiceServer
 // for forward compatibility.
-type ProductServiceServer interface {
+//
+// ProductAdminService is the management-plane API. It owns product,
+// customization, menu, tag, ingredient, image, and menu-dispatch operations.
+type ProductAdminServiceServer interface {
 	CreateProduct(context.Context, *CreateProductRequest) (*Product, error)
 	UpdateProduct(context.Context, *UpdateProductRequest) (*Product, error)
 	ListProducts(context.Context, *ListProductsRequest) (*ListProductsResponse, error)
 	GetProductStats(context.Context, *GetProductStatsRequest) (*ProductStats, error)
 	BatchUpdateProductStatus(context.Context, *BatchUpdateStatusRequest) (*BatchUpdateResponse, error)
 	BatchSetProductStoreStatus(context.Context, *BatchSetProductStoreStatusRequest) (*BatchUpdateResponse, error)
-	GetProductDetail(context.Context, *GetProductDetailRequest) (*ProductDetail, error)
-	GetProductStoreStatuses(context.Context, *GetProductStoreStatusesRequest) (*ProductStoreStatusesResponse, error)
-	GetCustomizationOptionStoreStatuses(context.Context, *GetCustomizationOptionStoreStatusesRequest) (*CustomizationOptionStoreStatusesResponse, error)
 	GetProductImages(context.Context, *GetProductImagesRequest) (*ProductImagesResponse, error)
 	SetProductImages(context.Context, *SetProductImagesRequest) (*ProductImagesResponse, error)
 	CreateCustomizationItem(context.Context, *CreateCustomizationItemRequest) (*CustomizationItem, error)
@@ -809,6 +788,7 @@ type ProductServiceServer interface {
 	GetMenu(context.Context, *GetMenuRequest) (*Menu, error)
 	ListMenus(context.Context, *ListMenusRequest) (*ListMenusResponse, error)
 	GetMenuTree(context.Context, *GetMenuTreeRequest) (*MenuTreeResponse, error)
+	GetAdminStoreMenu(context.Context, *GetStoreMenuRequest) (*StoreMenuResponse, error)
 	CreateMenuGroup(context.Context, *CreateMenuGroupRequest) (*MenuGroup, error)
 	UpdateMenuGroup(context.Context, *UpdateMenuGroupRequest) (*MenuGroup, error)
 	ListMenuGroups(context.Context, *ListMenuGroupsRequest) (*ListMenuGroupsResponse, error)
@@ -845,1593 +825,1804 @@ type ProductServiceServer interface {
 	ListMenuStores(context.Context, *ListMenuStoresRequest) (*ListMenuStoresResponse, error)
 	DispatchMenuByStores(context.Context, *DispatchMenuByStoresRequest) (*BatchUpdateResponse, error)
 	DispatchMenuByArea(context.Context, *DispatchMenuByAreaRequest) (*BatchUpdateResponse, error)
-	mustEmbedUnimplementedProductServiceServer()
+	mustEmbedUnimplementedProductAdminServiceServer()
 }
 
-// UnimplementedProductServiceServer must be embedded to have
+// UnimplementedProductAdminServiceServer must be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
 // pointer dereference when methods are called.
-type UnimplementedProductServiceServer struct{}
+type UnimplementedProductAdminServiceServer struct{}
 
-func (UnimplementedProductServiceServer) CreateProduct(context.Context, *CreateProductRequest) (*Product, error) {
+func (UnimplementedProductAdminServiceServer) CreateProduct(context.Context, *CreateProductRequest) (*Product, error) {
 	return nil, status.Error(codes.Unimplemented, "method CreateProduct not implemented")
 }
-func (UnimplementedProductServiceServer) UpdateProduct(context.Context, *UpdateProductRequest) (*Product, error) {
+func (UnimplementedProductAdminServiceServer) UpdateProduct(context.Context, *UpdateProductRequest) (*Product, error) {
 	return nil, status.Error(codes.Unimplemented, "method UpdateProduct not implemented")
 }
-func (UnimplementedProductServiceServer) ListProducts(context.Context, *ListProductsRequest) (*ListProductsResponse, error) {
+func (UnimplementedProductAdminServiceServer) ListProducts(context.Context, *ListProductsRequest) (*ListProductsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListProducts not implemented")
 }
-func (UnimplementedProductServiceServer) GetProductStats(context.Context, *GetProductStatsRequest) (*ProductStats, error) {
+func (UnimplementedProductAdminServiceServer) GetProductStats(context.Context, *GetProductStatsRequest) (*ProductStats, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetProductStats not implemented")
 }
-func (UnimplementedProductServiceServer) BatchUpdateProductStatus(context.Context, *BatchUpdateStatusRequest) (*BatchUpdateResponse, error) {
+func (UnimplementedProductAdminServiceServer) BatchUpdateProductStatus(context.Context, *BatchUpdateStatusRequest) (*BatchUpdateResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method BatchUpdateProductStatus not implemented")
 }
-func (UnimplementedProductServiceServer) BatchSetProductStoreStatus(context.Context, *BatchSetProductStoreStatusRequest) (*BatchUpdateResponse, error) {
+func (UnimplementedProductAdminServiceServer) BatchSetProductStoreStatus(context.Context, *BatchSetProductStoreStatusRequest) (*BatchUpdateResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method BatchSetProductStoreStatus not implemented")
 }
-func (UnimplementedProductServiceServer) GetProductDetail(context.Context, *GetProductDetailRequest) (*ProductDetail, error) {
-	return nil, status.Error(codes.Unimplemented, "method GetProductDetail not implemented")
-}
-func (UnimplementedProductServiceServer) GetProductStoreStatuses(context.Context, *GetProductStoreStatusesRequest) (*ProductStoreStatusesResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method GetProductStoreStatuses not implemented")
-}
-func (UnimplementedProductServiceServer) GetCustomizationOptionStoreStatuses(context.Context, *GetCustomizationOptionStoreStatusesRequest) (*CustomizationOptionStoreStatusesResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method GetCustomizationOptionStoreStatuses not implemented")
-}
-func (UnimplementedProductServiceServer) GetProductImages(context.Context, *GetProductImagesRequest) (*ProductImagesResponse, error) {
+func (UnimplementedProductAdminServiceServer) GetProductImages(context.Context, *GetProductImagesRequest) (*ProductImagesResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetProductImages not implemented")
 }
-func (UnimplementedProductServiceServer) SetProductImages(context.Context, *SetProductImagesRequest) (*ProductImagesResponse, error) {
+func (UnimplementedProductAdminServiceServer) SetProductImages(context.Context, *SetProductImagesRequest) (*ProductImagesResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method SetProductImages not implemented")
 }
-func (UnimplementedProductServiceServer) CreateCustomizationItem(context.Context, *CreateCustomizationItemRequest) (*CustomizationItem, error) {
+func (UnimplementedProductAdminServiceServer) CreateCustomizationItem(context.Context, *CreateCustomizationItemRequest) (*CustomizationItem, error) {
 	return nil, status.Error(codes.Unimplemented, "method CreateCustomizationItem not implemented")
 }
-func (UnimplementedProductServiceServer) UpdateCustomizationItem(context.Context, *UpdateCustomizationItemRequest) (*CustomizationItem, error) {
+func (UnimplementedProductAdminServiceServer) UpdateCustomizationItem(context.Context, *UpdateCustomizationItemRequest) (*CustomizationItem, error) {
 	return nil, status.Error(codes.Unimplemented, "method UpdateCustomizationItem not implemented")
 }
-func (UnimplementedProductServiceServer) ListCustomizationItems(context.Context, *ListCustomizationItemsRequest) (*ListCustomizationItemsResponse, error) {
+func (UnimplementedProductAdminServiceServer) ListCustomizationItems(context.Context, *ListCustomizationItemsRequest) (*ListCustomizationItemsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListCustomizationItems not implemented")
 }
-func (UnimplementedProductServiceServer) BatchUpdateCustomizationItemStatus(context.Context, *BatchUpdateStatusRequest) (*BatchUpdateResponse, error) {
+func (UnimplementedProductAdminServiceServer) BatchUpdateCustomizationItemStatus(context.Context, *BatchUpdateStatusRequest) (*BatchUpdateResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method BatchUpdateCustomizationItemStatus not implemented")
 }
-func (UnimplementedProductServiceServer) CreateCustomizationOption(context.Context, *CreateCustomizationOptionRequest) (*CustomizationOption, error) {
+func (UnimplementedProductAdminServiceServer) CreateCustomizationOption(context.Context, *CreateCustomizationOptionRequest) (*CustomizationOption, error) {
 	return nil, status.Error(codes.Unimplemented, "method CreateCustomizationOption not implemented")
 }
-func (UnimplementedProductServiceServer) UpdateCustomizationOption(context.Context, *UpdateCustomizationOptionRequest) (*CustomizationOption, error) {
+func (UnimplementedProductAdminServiceServer) UpdateCustomizationOption(context.Context, *UpdateCustomizationOptionRequest) (*CustomizationOption, error) {
 	return nil, status.Error(codes.Unimplemented, "method UpdateCustomizationOption not implemented")
 }
-func (UnimplementedProductServiceServer) UpdateCustomizationOptionIngredient(context.Context, *UpdateCustomizationOptionIngredientRequest) (*CustomizationOption, error) {
+func (UnimplementedProductAdminServiceServer) UpdateCustomizationOptionIngredient(context.Context, *UpdateCustomizationOptionIngredientRequest) (*CustomizationOption, error) {
 	return nil, status.Error(codes.Unimplemented, "method UpdateCustomizationOptionIngredient not implemented")
 }
-func (UnimplementedProductServiceServer) ListCustomizationOptions(context.Context, *ListCustomizationOptionsRequest) (*ListCustomizationOptionsResponse, error) {
+func (UnimplementedProductAdminServiceServer) ListCustomizationOptions(context.Context, *ListCustomizationOptionsRequest) (*ListCustomizationOptionsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListCustomizationOptions not implemented")
 }
-func (UnimplementedProductServiceServer) BatchUpdateCustomizationOptionStatus(context.Context, *BatchUpdateStatusRequest) (*BatchUpdateResponse, error) {
+func (UnimplementedProductAdminServiceServer) BatchUpdateCustomizationOptionStatus(context.Context, *BatchUpdateStatusRequest) (*BatchUpdateResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method BatchUpdateCustomizationOptionStatus not implemented")
 }
-func (UnimplementedProductServiceServer) BatchSetCustomizationOptionStoreStatus(context.Context, *BatchSetOptionStoreStatusRequest) (*BatchUpdateResponse, error) {
+func (UnimplementedProductAdminServiceServer) BatchSetCustomizationOptionStoreStatus(context.Context, *BatchSetOptionStoreStatusRequest) (*BatchUpdateResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method BatchSetCustomizationOptionStoreStatus not implemented")
 }
-func (UnimplementedProductServiceServer) CreateMenu(context.Context, *CreateMenuRequest) (*Menu, error) {
+func (UnimplementedProductAdminServiceServer) CreateMenu(context.Context, *CreateMenuRequest) (*Menu, error) {
 	return nil, status.Error(codes.Unimplemented, "method CreateMenu not implemented")
 }
-func (UnimplementedProductServiceServer) UpdateMenu(context.Context, *UpdateMenuRequest) (*Menu, error) {
+func (UnimplementedProductAdminServiceServer) UpdateMenu(context.Context, *UpdateMenuRequest) (*Menu, error) {
 	return nil, status.Error(codes.Unimplemented, "method UpdateMenu not implemented")
 }
-func (UnimplementedProductServiceServer) GetMenu(context.Context, *GetMenuRequest) (*Menu, error) {
+func (UnimplementedProductAdminServiceServer) GetMenu(context.Context, *GetMenuRequest) (*Menu, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetMenu not implemented")
 }
-func (UnimplementedProductServiceServer) ListMenus(context.Context, *ListMenusRequest) (*ListMenusResponse, error) {
+func (UnimplementedProductAdminServiceServer) ListMenus(context.Context, *ListMenusRequest) (*ListMenusResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListMenus not implemented")
 }
-func (UnimplementedProductServiceServer) GetMenuTree(context.Context, *GetMenuTreeRequest) (*MenuTreeResponse, error) {
+func (UnimplementedProductAdminServiceServer) GetMenuTree(context.Context, *GetMenuTreeRequest) (*MenuTreeResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetMenuTree not implemented")
 }
-func (UnimplementedProductServiceServer) CreateMenuGroup(context.Context, *CreateMenuGroupRequest) (*MenuGroup, error) {
+func (UnimplementedProductAdminServiceServer) GetAdminStoreMenu(context.Context, *GetStoreMenuRequest) (*StoreMenuResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetAdminStoreMenu not implemented")
+}
+func (UnimplementedProductAdminServiceServer) CreateMenuGroup(context.Context, *CreateMenuGroupRequest) (*MenuGroup, error) {
 	return nil, status.Error(codes.Unimplemented, "method CreateMenuGroup not implemented")
 }
-func (UnimplementedProductServiceServer) UpdateMenuGroup(context.Context, *UpdateMenuGroupRequest) (*MenuGroup, error) {
+func (UnimplementedProductAdminServiceServer) UpdateMenuGroup(context.Context, *UpdateMenuGroupRequest) (*MenuGroup, error) {
 	return nil, status.Error(codes.Unimplemented, "method UpdateMenuGroup not implemented")
 }
-func (UnimplementedProductServiceServer) ListMenuGroups(context.Context, *ListMenuGroupsRequest) (*ListMenuGroupsResponse, error) {
+func (UnimplementedProductAdminServiceServer) ListMenuGroups(context.Context, *ListMenuGroupsRequest) (*ListMenuGroupsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListMenuGroups not implemented")
 }
-func (UnimplementedProductServiceServer) CreateMenuProduct(context.Context, *CreateMenuProductRequest) (*MenuProduct, error) {
+func (UnimplementedProductAdminServiceServer) CreateMenuProduct(context.Context, *CreateMenuProductRequest) (*MenuProduct, error) {
 	return nil, status.Error(codes.Unimplemented, "method CreateMenuProduct not implemented")
 }
-func (UnimplementedProductServiceServer) UpdateMenuProduct(context.Context, *UpdateMenuProductRequest) (*MenuProduct, error) {
+func (UnimplementedProductAdminServiceServer) UpdateMenuProduct(context.Context, *UpdateMenuProductRequest) (*MenuProduct, error) {
 	return nil, status.Error(codes.Unimplemented, "method UpdateMenuProduct not implemented")
 }
-func (UnimplementedProductServiceServer) DeleteMenuProduct(context.Context, *DeleteMenuProductRequest) (*Empty, error) {
+func (UnimplementedProductAdminServiceServer) DeleteMenuProduct(context.Context, *DeleteMenuProductRequest) (*Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method DeleteMenuProduct not implemented")
 }
-func (UnimplementedProductServiceServer) ListMenuProducts(context.Context, *ListMenuProductsRequest) (*ListMenuProductsResponse, error) {
+func (UnimplementedProductAdminServiceServer) ListMenuProducts(context.Context, *ListMenuProductsRequest) (*ListMenuProductsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListMenuProducts not implemented")
 }
-func (UnimplementedProductServiceServer) DeleteMenu(context.Context, *DeleteMenuRequest) (*Empty, error) {
+func (UnimplementedProductAdminServiceServer) DeleteMenu(context.Context, *DeleteMenuRequest) (*Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method DeleteMenu not implemented")
 }
-func (UnimplementedProductServiceServer) DeleteMenuGroup(context.Context, *DeleteMenuGroupRequest) (*Empty, error) {
+func (UnimplementedProductAdminServiceServer) DeleteMenuGroup(context.Context, *DeleteMenuGroupRequest) (*Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method DeleteMenuGroup not implemented")
 }
-func (UnimplementedProductServiceServer) ListTags(context.Context, *ListTagsRequest) (*ListTagsResponse, error) {
+func (UnimplementedProductAdminServiceServer) ListTags(context.Context, *ListTagsRequest) (*ListTagsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListTags not implemented")
 }
-func (UnimplementedProductServiceServer) CreateTag(context.Context, *CreateTagRequest) (*Tag, error) {
+func (UnimplementedProductAdminServiceServer) CreateTag(context.Context, *CreateTagRequest) (*Tag, error) {
 	return nil, status.Error(codes.Unimplemented, "method CreateTag not implemented")
 }
-func (UnimplementedProductServiceServer) UpdateTag(context.Context, *UpdateTagRequest) (*Tag, error) {
+func (UnimplementedProductAdminServiceServer) UpdateTag(context.Context, *UpdateTagRequest) (*Tag, error) {
 	return nil, status.Error(codes.Unimplemented, "method UpdateTag not implemented")
 }
-func (UnimplementedProductServiceServer) DeleteTag(context.Context, *DeleteTagRequest) (*Empty, error) {
+func (UnimplementedProductAdminServiceServer) DeleteTag(context.Context, *DeleteTagRequest) (*Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method DeleteTag not implemented")
 }
-func (UnimplementedProductServiceServer) ListProductTags(context.Context, *ListProductTagsRequest) (*ListProductTagsResponse, error) {
+func (UnimplementedProductAdminServiceServer) ListProductTags(context.Context, *ListProductTagsRequest) (*ListProductTagsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListProductTags not implemented")
 }
-func (UnimplementedProductServiceServer) BindProductTags(context.Context, *BindProductTagsRequest) (*BatchUpdateResponse, error) {
+func (UnimplementedProductAdminServiceServer) BindProductTags(context.Context, *BindProductTagsRequest) (*BatchUpdateResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method BindProductTags not implemented")
 }
-func (UnimplementedProductServiceServer) UnbindProductTags(context.Context, *BindProductTagsRequest) (*BatchUpdateResponse, error) {
+func (UnimplementedProductAdminServiceServer) UnbindProductTags(context.Context, *BindProductTagsRequest) (*BatchUpdateResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method UnbindProductTags not implemented")
 }
-func (UnimplementedProductServiceServer) ListTagProducts(context.Context, *ListTagProductsRequest) (*ListTagProductsResponse, error) {
+func (UnimplementedProductAdminServiceServer) ListTagProducts(context.Context, *ListTagProductsRequest) (*ListTagProductsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListTagProducts not implemented")
 }
-func (UnimplementedProductServiceServer) BindTagProducts(context.Context, *BindTagProductsRequest) (*BatchUpdateResponse, error) {
+func (UnimplementedProductAdminServiceServer) BindTagProducts(context.Context, *BindTagProductsRequest) (*BatchUpdateResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method BindTagProducts not implemented")
 }
-func (UnimplementedProductServiceServer) UnbindTagProducts(context.Context, *BindTagProductsRequest) (*BatchUpdateResponse, error) {
+func (UnimplementedProductAdminServiceServer) UnbindTagProducts(context.Context, *BindTagProductsRequest) (*BatchUpdateResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method UnbindTagProducts not implemented")
 }
-func (UnimplementedProductServiceServer) CreateIngredient(context.Context, *CreateIngredientRequest) (*Ingredient, error) {
+func (UnimplementedProductAdminServiceServer) CreateIngredient(context.Context, *CreateIngredientRequest) (*Ingredient, error) {
 	return nil, status.Error(codes.Unimplemented, "method CreateIngredient not implemented")
 }
-func (UnimplementedProductServiceServer) GetIngredient(context.Context, *GetIngredientRequest) (*Ingredient, error) {
+func (UnimplementedProductAdminServiceServer) GetIngredient(context.Context, *GetIngredientRequest) (*Ingredient, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetIngredient not implemented")
 }
-func (UnimplementedProductServiceServer) UpdateIngredient(context.Context, *UpdateIngredientRequest) (*Ingredient, error) {
+func (UnimplementedProductAdminServiceServer) UpdateIngredient(context.Context, *UpdateIngredientRequest) (*Ingredient, error) {
 	return nil, status.Error(codes.Unimplemented, "method UpdateIngredient not implemented")
 }
-func (UnimplementedProductServiceServer) ListIngredients(context.Context, *ListIngredientsRequest) (*ListIngredientsResponse, error) {
+func (UnimplementedProductAdminServiceServer) ListIngredients(context.Context, *ListIngredientsRequest) (*ListIngredientsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListIngredients not implemented")
 }
-func (UnimplementedProductServiceServer) ListIngredientSelect(context.Context, *ListIngredientSelectRequest) (*ListIngredientSelectResponse, error) {
+func (UnimplementedProductAdminServiceServer) ListIngredientSelect(context.Context, *ListIngredientSelectRequest) (*ListIngredientSelectResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListIngredientSelect not implemented")
 }
-func (UnimplementedProductServiceServer) ListProductIngredients(context.Context, *ListProductIngredientsRequest) (*ListProductIngredientsResponse, error) {
+func (UnimplementedProductAdminServiceServer) ListProductIngredients(context.Context, *ListProductIngredientsRequest) (*ListProductIngredientsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListProductIngredients not implemented")
 }
-func (UnimplementedProductServiceServer) BindProductIngredient(context.Context, *BindProductIngredientRequest) (*ProductIngredient, error) {
+func (UnimplementedProductAdminServiceServer) BindProductIngredient(context.Context, *BindProductIngredientRequest) (*ProductIngredient, error) {
 	return nil, status.Error(codes.Unimplemented, "method BindProductIngredient not implemented")
 }
-func (UnimplementedProductServiceServer) UpdateProductIngredient(context.Context, *UpdateProductIngredientRequest) (*ProductIngredient, error) {
+func (UnimplementedProductAdminServiceServer) UpdateProductIngredient(context.Context, *UpdateProductIngredientRequest) (*ProductIngredient, error) {
 	return nil, status.Error(codes.Unimplemented, "method UpdateProductIngredient not implemented")
 }
-func (UnimplementedProductServiceServer) DeleteProductIngredient(context.Context, *DeleteProductIngredientRequest) (*Empty, error) {
+func (UnimplementedProductAdminServiceServer) DeleteProductIngredient(context.Context, *DeleteProductIngredientRequest) (*Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method DeleteProductIngredient not implemented")
 }
-func (UnimplementedProductServiceServer) ListIngredientProducts(context.Context, *ListIngredientRelationsRequest) (*ListIngredientProductsResponse, error) {
+func (UnimplementedProductAdminServiceServer) ListIngredientProducts(context.Context, *ListIngredientRelationsRequest) (*ListIngredientProductsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListIngredientProducts not implemented")
 }
-func (UnimplementedProductServiceServer) ListIngredientOptions(context.Context, *ListIngredientRelationsRequest) (*ListIngredientOptionsResponse, error) {
+func (UnimplementedProductAdminServiceServer) ListIngredientOptions(context.Context, *ListIngredientRelationsRequest) (*ListIngredientOptionsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListIngredientOptions not implemented")
 }
-func (UnimplementedProductServiceServer) ListStoreIngredients(context.Context, *ListStoreIngredientsRequest) (*ListStoreIngredientsResponse, error) {
+func (UnimplementedProductAdminServiceServer) ListStoreIngredients(context.Context, *ListStoreIngredientsRequest) (*ListStoreIngredientsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListStoreIngredients not implemented")
 }
-func (UnimplementedProductServiceServer) ExportCustomization(context.Context, *ExportCustomizationRequest) (*ExportCustomizationResponse, error) {
+func (UnimplementedProductAdminServiceServer) ExportCustomization(context.Context, *ExportCustomizationRequest) (*ExportCustomizationResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ExportCustomization not implemented")
 }
-func (UnimplementedProductServiceServer) ImportCustomization(context.Context, *ImportCustomizationRequest) (*ImportCustomizationResponse, error) {
+func (UnimplementedProductAdminServiceServer) ImportCustomization(context.Context, *ImportCustomizationRequest) (*ImportCustomizationResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ImportCustomization not implemented")
 }
-func (UnimplementedProductServiceServer) ListMenuStores(context.Context, *ListMenuStoresRequest) (*ListMenuStoresResponse, error) {
+func (UnimplementedProductAdminServiceServer) ListMenuStores(context.Context, *ListMenuStoresRequest) (*ListMenuStoresResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListMenuStores not implemented")
 }
-func (UnimplementedProductServiceServer) DispatchMenuByStores(context.Context, *DispatchMenuByStoresRequest) (*BatchUpdateResponse, error) {
+func (UnimplementedProductAdminServiceServer) DispatchMenuByStores(context.Context, *DispatchMenuByStoresRequest) (*BatchUpdateResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method DispatchMenuByStores not implemented")
 }
-func (UnimplementedProductServiceServer) DispatchMenuByArea(context.Context, *DispatchMenuByAreaRequest) (*BatchUpdateResponse, error) {
+func (UnimplementedProductAdminServiceServer) DispatchMenuByArea(context.Context, *DispatchMenuByAreaRequest) (*BatchUpdateResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method DispatchMenuByArea not implemented")
 }
-func (UnimplementedProductServiceServer) mustEmbedUnimplementedProductServiceServer() {}
-func (UnimplementedProductServiceServer) testEmbeddedByValue()                        {}
+func (UnimplementedProductAdminServiceServer) mustEmbedUnimplementedProductAdminServiceServer() {}
+func (UnimplementedProductAdminServiceServer) testEmbeddedByValue()                             {}
 
-// UnsafeProductServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to ProductServiceServer will
+// UnsafeProductAdminServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to ProductAdminServiceServer will
 // result in compilation errors.
-type UnsafeProductServiceServer interface {
-	mustEmbedUnimplementedProductServiceServer()
+type UnsafeProductAdminServiceServer interface {
+	mustEmbedUnimplementedProductAdminServiceServer()
 }
 
-func RegisterProductServiceServer(s grpc.ServiceRegistrar, srv ProductServiceServer) {
-	// If the following call panics, it indicates UnimplementedProductServiceServer was
+func RegisterProductAdminServiceServer(s grpc.ServiceRegistrar, srv ProductAdminServiceServer) {
+	// If the following call panics, it indicates UnimplementedProductAdminServiceServer was
 	// embedded by pointer and is nil.  This will cause panics if an
 	// unimplemented method is ever invoked, so we test this at initialization
 	// time to prevent it from happening at runtime later due to I/O.
 	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
 		t.testEmbeddedByValue()
 	}
-	s.RegisterService(&ProductService_ServiceDesc, srv)
+	s.RegisterService(&ProductAdminService_ServiceDesc, srv)
 }
 
-func _ProductService_CreateProduct_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_CreateProduct_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateProductRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).CreateProduct(ctx, in)
+		return srv.(ProductAdminServiceServer).CreateProduct(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_CreateProduct_FullMethodName,
+		FullMethod: ProductAdminService_CreateProduct_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).CreateProduct(ctx, req.(*CreateProductRequest))
+		return srv.(ProductAdminServiceServer).CreateProduct(ctx, req.(*CreateProductRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_UpdateProduct_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_UpdateProduct_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateProductRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).UpdateProduct(ctx, in)
+		return srv.(ProductAdminServiceServer).UpdateProduct(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_UpdateProduct_FullMethodName,
+		FullMethod: ProductAdminService_UpdateProduct_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).UpdateProduct(ctx, req.(*UpdateProductRequest))
+		return srv.(ProductAdminServiceServer).UpdateProduct(ctx, req.(*UpdateProductRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_ListProducts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_ListProducts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListProductsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).ListProducts(ctx, in)
+		return srv.(ProductAdminServiceServer).ListProducts(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_ListProducts_FullMethodName,
+		FullMethod: ProductAdminService_ListProducts_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).ListProducts(ctx, req.(*ListProductsRequest))
+		return srv.(ProductAdminServiceServer).ListProducts(ctx, req.(*ListProductsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_GetProductStats_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_GetProductStats_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetProductStatsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).GetProductStats(ctx, in)
+		return srv.(ProductAdminServiceServer).GetProductStats(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_GetProductStats_FullMethodName,
+		FullMethod: ProductAdminService_GetProductStats_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).GetProductStats(ctx, req.(*GetProductStatsRequest))
+		return srv.(ProductAdminServiceServer).GetProductStats(ctx, req.(*GetProductStatsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_BatchUpdateProductStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_BatchUpdateProductStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(BatchUpdateStatusRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).BatchUpdateProductStatus(ctx, in)
+		return srv.(ProductAdminServiceServer).BatchUpdateProductStatus(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_BatchUpdateProductStatus_FullMethodName,
+		FullMethod: ProductAdminService_BatchUpdateProductStatus_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).BatchUpdateProductStatus(ctx, req.(*BatchUpdateStatusRequest))
+		return srv.(ProductAdminServiceServer).BatchUpdateProductStatus(ctx, req.(*BatchUpdateStatusRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_BatchSetProductStoreStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_BatchSetProductStoreStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(BatchSetProductStoreStatusRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).BatchSetProductStoreStatus(ctx, in)
+		return srv.(ProductAdminServiceServer).BatchSetProductStoreStatus(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_BatchSetProductStoreStatus_FullMethodName,
+		FullMethod: ProductAdminService_BatchSetProductStoreStatus_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).BatchSetProductStoreStatus(ctx, req.(*BatchSetProductStoreStatusRequest))
+		return srv.(ProductAdminServiceServer).BatchSetProductStoreStatus(ctx, req.(*BatchSetProductStoreStatusRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_GetProductDetail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetProductDetailRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ProductServiceServer).GetProductDetail(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ProductService_GetProductDetail_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).GetProductDetail(ctx, req.(*GetProductDetailRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ProductService_GetProductStoreStatuses_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetProductStoreStatusesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ProductServiceServer).GetProductStoreStatuses(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ProductService_GetProductStoreStatuses_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).GetProductStoreStatuses(ctx, req.(*GetProductStoreStatusesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ProductService_GetCustomizationOptionStoreStatuses_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetCustomizationOptionStoreStatusesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ProductServiceServer).GetCustomizationOptionStoreStatuses(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ProductService_GetCustomizationOptionStoreStatuses_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).GetCustomizationOptionStoreStatuses(ctx, req.(*GetCustomizationOptionStoreStatusesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ProductService_GetProductImages_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_GetProductImages_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetProductImagesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).GetProductImages(ctx, in)
+		return srv.(ProductAdminServiceServer).GetProductImages(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_GetProductImages_FullMethodName,
+		FullMethod: ProductAdminService_GetProductImages_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).GetProductImages(ctx, req.(*GetProductImagesRequest))
+		return srv.(ProductAdminServiceServer).GetProductImages(ctx, req.(*GetProductImagesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_SetProductImages_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_SetProductImages_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SetProductImagesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).SetProductImages(ctx, in)
+		return srv.(ProductAdminServiceServer).SetProductImages(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_SetProductImages_FullMethodName,
+		FullMethod: ProductAdminService_SetProductImages_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).SetProductImages(ctx, req.(*SetProductImagesRequest))
+		return srv.(ProductAdminServiceServer).SetProductImages(ctx, req.(*SetProductImagesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_CreateCustomizationItem_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_CreateCustomizationItem_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateCustomizationItemRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).CreateCustomizationItem(ctx, in)
+		return srv.(ProductAdminServiceServer).CreateCustomizationItem(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_CreateCustomizationItem_FullMethodName,
+		FullMethod: ProductAdminService_CreateCustomizationItem_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).CreateCustomizationItem(ctx, req.(*CreateCustomizationItemRequest))
+		return srv.(ProductAdminServiceServer).CreateCustomizationItem(ctx, req.(*CreateCustomizationItemRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_UpdateCustomizationItem_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_UpdateCustomizationItem_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateCustomizationItemRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).UpdateCustomizationItem(ctx, in)
+		return srv.(ProductAdminServiceServer).UpdateCustomizationItem(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_UpdateCustomizationItem_FullMethodName,
+		FullMethod: ProductAdminService_UpdateCustomizationItem_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).UpdateCustomizationItem(ctx, req.(*UpdateCustomizationItemRequest))
+		return srv.(ProductAdminServiceServer).UpdateCustomizationItem(ctx, req.(*UpdateCustomizationItemRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_ListCustomizationItems_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_ListCustomizationItems_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListCustomizationItemsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).ListCustomizationItems(ctx, in)
+		return srv.(ProductAdminServiceServer).ListCustomizationItems(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_ListCustomizationItems_FullMethodName,
+		FullMethod: ProductAdminService_ListCustomizationItems_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).ListCustomizationItems(ctx, req.(*ListCustomizationItemsRequest))
+		return srv.(ProductAdminServiceServer).ListCustomizationItems(ctx, req.(*ListCustomizationItemsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_BatchUpdateCustomizationItemStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_BatchUpdateCustomizationItemStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(BatchUpdateStatusRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).BatchUpdateCustomizationItemStatus(ctx, in)
+		return srv.(ProductAdminServiceServer).BatchUpdateCustomizationItemStatus(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_BatchUpdateCustomizationItemStatus_FullMethodName,
+		FullMethod: ProductAdminService_BatchUpdateCustomizationItemStatus_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).BatchUpdateCustomizationItemStatus(ctx, req.(*BatchUpdateStatusRequest))
+		return srv.(ProductAdminServiceServer).BatchUpdateCustomizationItemStatus(ctx, req.(*BatchUpdateStatusRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_CreateCustomizationOption_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_CreateCustomizationOption_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateCustomizationOptionRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).CreateCustomizationOption(ctx, in)
+		return srv.(ProductAdminServiceServer).CreateCustomizationOption(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_CreateCustomizationOption_FullMethodName,
+		FullMethod: ProductAdminService_CreateCustomizationOption_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).CreateCustomizationOption(ctx, req.(*CreateCustomizationOptionRequest))
+		return srv.(ProductAdminServiceServer).CreateCustomizationOption(ctx, req.(*CreateCustomizationOptionRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_UpdateCustomizationOption_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_UpdateCustomizationOption_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateCustomizationOptionRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).UpdateCustomizationOption(ctx, in)
+		return srv.(ProductAdminServiceServer).UpdateCustomizationOption(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_UpdateCustomizationOption_FullMethodName,
+		FullMethod: ProductAdminService_UpdateCustomizationOption_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).UpdateCustomizationOption(ctx, req.(*UpdateCustomizationOptionRequest))
+		return srv.(ProductAdminServiceServer).UpdateCustomizationOption(ctx, req.(*UpdateCustomizationOptionRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_UpdateCustomizationOptionIngredient_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_UpdateCustomizationOptionIngredient_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateCustomizationOptionIngredientRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).UpdateCustomizationOptionIngredient(ctx, in)
+		return srv.(ProductAdminServiceServer).UpdateCustomizationOptionIngredient(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_UpdateCustomizationOptionIngredient_FullMethodName,
+		FullMethod: ProductAdminService_UpdateCustomizationOptionIngredient_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).UpdateCustomizationOptionIngredient(ctx, req.(*UpdateCustomizationOptionIngredientRequest))
+		return srv.(ProductAdminServiceServer).UpdateCustomizationOptionIngredient(ctx, req.(*UpdateCustomizationOptionIngredientRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_ListCustomizationOptions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_ListCustomizationOptions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListCustomizationOptionsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).ListCustomizationOptions(ctx, in)
+		return srv.(ProductAdminServiceServer).ListCustomizationOptions(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_ListCustomizationOptions_FullMethodName,
+		FullMethod: ProductAdminService_ListCustomizationOptions_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).ListCustomizationOptions(ctx, req.(*ListCustomizationOptionsRequest))
+		return srv.(ProductAdminServiceServer).ListCustomizationOptions(ctx, req.(*ListCustomizationOptionsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_BatchUpdateCustomizationOptionStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_BatchUpdateCustomizationOptionStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(BatchUpdateStatusRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).BatchUpdateCustomizationOptionStatus(ctx, in)
+		return srv.(ProductAdminServiceServer).BatchUpdateCustomizationOptionStatus(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_BatchUpdateCustomizationOptionStatus_FullMethodName,
+		FullMethod: ProductAdminService_BatchUpdateCustomizationOptionStatus_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).BatchUpdateCustomizationOptionStatus(ctx, req.(*BatchUpdateStatusRequest))
+		return srv.(ProductAdminServiceServer).BatchUpdateCustomizationOptionStatus(ctx, req.(*BatchUpdateStatusRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_BatchSetCustomizationOptionStoreStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_BatchSetCustomizationOptionStoreStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(BatchSetOptionStoreStatusRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).BatchSetCustomizationOptionStoreStatus(ctx, in)
+		return srv.(ProductAdminServiceServer).BatchSetCustomizationOptionStoreStatus(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_BatchSetCustomizationOptionStoreStatus_FullMethodName,
+		FullMethod: ProductAdminService_BatchSetCustomizationOptionStoreStatus_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).BatchSetCustomizationOptionStoreStatus(ctx, req.(*BatchSetOptionStoreStatusRequest))
+		return srv.(ProductAdminServiceServer).BatchSetCustomizationOptionStoreStatus(ctx, req.(*BatchSetOptionStoreStatusRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_CreateMenu_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_CreateMenu_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateMenuRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).CreateMenu(ctx, in)
+		return srv.(ProductAdminServiceServer).CreateMenu(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_CreateMenu_FullMethodName,
+		FullMethod: ProductAdminService_CreateMenu_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).CreateMenu(ctx, req.(*CreateMenuRequest))
+		return srv.(ProductAdminServiceServer).CreateMenu(ctx, req.(*CreateMenuRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_UpdateMenu_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_UpdateMenu_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateMenuRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).UpdateMenu(ctx, in)
+		return srv.(ProductAdminServiceServer).UpdateMenu(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_UpdateMenu_FullMethodName,
+		FullMethod: ProductAdminService_UpdateMenu_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).UpdateMenu(ctx, req.(*UpdateMenuRequest))
+		return srv.(ProductAdminServiceServer).UpdateMenu(ctx, req.(*UpdateMenuRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_GetMenu_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_GetMenu_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetMenuRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).GetMenu(ctx, in)
+		return srv.(ProductAdminServiceServer).GetMenu(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_GetMenu_FullMethodName,
+		FullMethod: ProductAdminService_GetMenu_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).GetMenu(ctx, req.(*GetMenuRequest))
+		return srv.(ProductAdminServiceServer).GetMenu(ctx, req.(*GetMenuRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_ListMenus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_ListMenus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListMenusRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).ListMenus(ctx, in)
+		return srv.(ProductAdminServiceServer).ListMenus(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_ListMenus_FullMethodName,
+		FullMethod: ProductAdminService_ListMenus_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).ListMenus(ctx, req.(*ListMenusRequest))
+		return srv.(ProductAdminServiceServer).ListMenus(ctx, req.(*ListMenusRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_GetMenuTree_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_GetMenuTree_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetMenuTreeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).GetMenuTree(ctx, in)
+		return srv.(ProductAdminServiceServer).GetMenuTree(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_GetMenuTree_FullMethodName,
+		FullMethod: ProductAdminService_GetMenuTree_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).GetMenuTree(ctx, req.(*GetMenuTreeRequest))
+		return srv.(ProductAdminServiceServer).GetMenuTree(ctx, req.(*GetMenuTreeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_CreateMenuGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_GetAdminStoreMenu_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetStoreMenuRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProductAdminServiceServer).GetAdminStoreMenu(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProductAdminService_GetAdminStoreMenu_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProductAdminServiceServer).GetAdminStoreMenu(ctx, req.(*GetStoreMenuRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ProductAdminService_CreateMenuGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateMenuGroupRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).CreateMenuGroup(ctx, in)
+		return srv.(ProductAdminServiceServer).CreateMenuGroup(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_CreateMenuGroup_FullMethodName,
+		FullMethod: ProductAdminService_CreateMenuGroup_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).CreateMenuGroup(ctx, req.(*CreateMenuGroupRequest))
+		return srv.(ProductAdminServiceServer).CreateMenuGroup(ctx, req.(*CreateMenuGroupRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_UpdateMenuGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_UpdateMenuGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateMenuGroupRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).UpdateMenuGroup(ctx, in)
+		return srv.(ProductAdminServiceServer).UpdateMenuGroup(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_UpdateMenuGroup_FullMethodName,
+		FullMethod: ProductAdminService_UpdateMenuGroup_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).UpdateMenuGroup(ctx, req.(*UpdateMenuGroupRequest))
+		return srv.(ProductAdminServiceServer).UpdateMenuGroup(ctx, req.(*UpdateMenuGroupRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_ListMenuGroups_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_ListMenuGroups_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListMenuGroupsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).ListMenuGroups(ctx, in)
+		return srv.(ProductAdminServiceServer).ListMenuGroups(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_ListMenuGroups_FullMethodName,
+		FullMethod: ProductAdminService_ListMenuGroups_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).ListMenuGroups(ctx, req.(*ListMenuGroupsRequest))
+		return srv.(ProductAdminServiceServer).ListMenuGroups(ctx, req.(*ListMenuGroupsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_CreateMenuProduct_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_CreateMenuProduct_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateMenuProductRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).CreateMenuProduct(ctx, in)
+		return srv.(ProductAdminServiceServer).CreateMenuProduct(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_CreateMenuProduct_FullMethodName,
+		FullMethod: ProductAdminService_CreateMenuProduct_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).CreateMenuProduct(ctx, req.(*CreateMenuProductRequest))
+		return srv.(ProductAdminServiceServer).CreateMenuProduct(ctx, req.(*CreateMenuProductRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_UpdateMenuProduct_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_UpdateMenuProduct_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateMenuProductRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).UpdateMenuProduct(ctx, in)
+		return srv.(ProductAdminServiceServer).UpdateMenuProduct(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_UpdateMenuProduct_FullMethodName,
+		FullMethod: ProductAdminService_UpdateMenuProduct_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).UpdateMenuProduct(ctx, req.(*UpdateMenuProductRequest))
+		return srv.(ProductAdminServiceServer).UpdateMenuProduct(ctx, req.(*UpdateMenuProductRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_DeleteMenuProduct_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_DeleteMenuProduct_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteMenuProductRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).DeleteMenuProduct(ctx, in)
+		return srv.(ProductAdminServiceServer).DeleteMenuProduct(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_DeleteMenuProduct_FullMethodName,
+		FullMethod: ProductAdminService_DeleteMenuProduct_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).DeleteMenuProduct(ctx, req.(*DeleteMenuProductRequest))
+		return srv.(ProductAdminServiceServer).DeleteMenuProduct(ctx, req.(*DeleteMenuProductRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_ListMenuProducts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_ListMenuProducts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListMenuProductsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).ListMenuProducts(ctx, in)
+		return srv.(ProductAdminServiceServer).ListMenuProducts(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_ListMenuProducts_FullMethodName,
+		FullMethod: ProductAdminService_ListMenuProducts_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).ListMenuProducts(ctx, req.(*ListMenuProductsRequest))
+		return srv.(ProductAdminServiceServer).ListMenuProducts(ctx, req.(*ListMenuProductsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_DeleteMenu_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_DeleteMenu_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteMenuRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).DeleteMenu(ctx, in)
+		return srv.(ProductAdminServiceServer).DeleteMenu(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_DeleteMenu_FullMethodName,
+		FullMethod: ProductAdminService_DeleteMenu_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).DeleteMenu(ctx, req.(*DeleteMenuRequest))
+		return srv.(ProductAdminServiceServer).DeleteMenu(ctx, req.(*DeleteMenuRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_DeleteMenuGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_DeleteMenuGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteMenuGroupRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).DeleteMenuGroup(ctx, in)
+		return srv.(ProductAdminServiceServer).DeleteMenuGroup(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_DeleteMenuGroup_FullMethodName,
+		FullMethod: ProductAdminService_DeleteMenuGroup_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).DeleteMenuGroup(ctx, req.(*DeleteMenuGroupRequest))
+		return srv.(ProductAdminServiceServer).DeleteMenuGroup(ctx, req.(*DeleteMenuGroupRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_ListTags_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_ListTags_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListTagsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).ListTags(ctx, in)
+		return srv.(ProductAdminServiceServer).ListTags(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_ListTags_FullMethodName,
+		FullMethod: ProductAdminService_ListTags_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).ListTags(ctx, req.(*ListTagsRequest))
+		return srv.(ProductAdminServiceServer).ListTags(ctx, req.(*ListTagsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_CreateTag_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_CreateTag_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateTagRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).CreateTag(ctx, in)
+		return srv.(ProductAdminServiceServer).CreateTag(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_CreateTag_FullMethodName,
+		FullMethod: ProductAdminService_CreateTag_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).CreateTag(ctx, req.(*CreateTagRequest))
+		return srv.(ProductAdminServiceServer).CreateTag(ctx, req.(*CreateTagRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_UpdateTag_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_UpdateTag_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateTagRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).UpdateTag(ctx, in)
+		return srv.(ProductAdminServiceServer).UpdateTag(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_UpdateTag_FullMethodName,
+		FullMethod: ProductAdminService_UpdateTag_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).UpdateTag(ctx, req.(*UpdateTagRequest))
+		return srv.(ProductAdminServiceServer).UpdateTag(ctx, req.(*UpdateTagRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_DeleteTag_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_DeleteTag_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteTagRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).DeleteTag(ctx, in)
+		return srv.(ProductAdminServiceServer).DeleteTag(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_DeleteTag_FullMethodName,
+		FullMethod: ProductAdminService_DeleteTag_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).DeleteTag(ctx, req.(*DeleteTagRequest))
+		return srv.(ProductAdminServiceServer).DeleteTag(ctx, req.(*DeleteTagRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_ListProductTags_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_ListProductTags_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListProductTagsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).ListProductTags(ctx, in)
+		return srv.(ProductAdminServiceServer).ListProductTags(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_ListProductTags_FullMethodName,
+		FullMethod: ProductAdminService_ListProductTags_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).ListProductTags(ctx, req.(*ListProductTagsRequest))
+		return srv.(ProductAdminServiceServer).ListProductTags(ctx, req.(*ListProductTagsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_BindProductTags_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_BindProductTags_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(BindProductTagsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).BindProductTags(ctx, in)
+		return srv.(ProductAdminServiceServer).BindProductTags(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_BindProductTags_FullMethodName,
+		FullMethod: ProductAdminService_BindProductTags_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).BindProductTags(ctx, req.(*BindProductTagsRequest))
+		return srv.(ProductAdminServiceServer).BindProductTags(ctx, req.(*BindProductTagsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_UnbindProductTags_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_UnbindProductTags_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(BindProductTagsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).UnbindProductTags(ctx, in)
+		return srv.(ProductAdminServiceServer).UnbindProductTags(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_UnbindProductTags_FullMethodName,
+		FullMethod: ProductAdminService_UnbindProductTags_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).UnbindProductTags(ctx, req.(*BindProductTagsRequest))
+		return srv.(ProductAdminServiceServer).UnbindProductTags(ctx, req.(*BindProductTagsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_ListTagProducts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_ListTagProducts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListTagProductsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).ListTagProducts(ctx, in)
+		return srv.(ProductAdminServiceServer).ListTagProducts(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_ListTagProducts_FullMethodName,
+		FullMethod: ProductAdminService_ListTagProducts_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).ListTagProducts(ctx, req.(*ListTagProductsRequest))
+		return srv.(ProductAdminServiceServer).ListTagProducts(ctx, req.(*ListTagProductsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_BindTagProducts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_BindTagProducts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(BindTagProductsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).BindTagProducts(ctx, in)
+		return srv.(ProductAdminServiceServer).BindTagProducts(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_BindTagProducts_FullMethodName,
+		FullMethod: ProductAdminService_BindTagProducts_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).BindTagProducts(ctx, req.(*BindTagProductsRequest))
+		return srv.(ProductAdminServiceServer).BindTagProducts(ctx, req.(*BindTagProductsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_UnbindTagProducts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_UnbindTagProducts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(BindTagProductsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).UnbindTagProducts(ctx, in)
+		return srv.(ProductAdminServiceServer).UnbindTagProducts(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_UnbindTagProducts_FullMethodName,
+		FullMethod: ProductAdminService_UnbindTagProducts_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).UnbindTagProducts(ctx, req.(*BindTagProductsRequest))
+		return srv.(ProductAdminServiceServer).UnbindTagProducts(ctx, req.(*BindTagProductsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_CreateIngredient_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_CreateIngredient_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateIngredientRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).CreateIngredient(ctx, in)
+		return srv.(ProductAdminServiceServer).CreateIngredient(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_CreateIngredient_FullMethodName,
+		FullMethod: ProductAdminService_CreateIngredient_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).CreateIngredient(ctx, req.(*CreateIngredientRequest))
+		return srv.(ProductAdminServiceServer).CreateIngredient(ctx, req.(*CreateIngredientRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_GetIngredient_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_GetIngredient_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetIngredientRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).GetIngredient(ctx, in)
+		return srv.(ProductAdminServiceServer).GetIngredient(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_GetIngredient_FullMethodName,
+		FullMethod: ProductAdminService_GetIngredient_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).GetIngredient(ctx, req.(*GetIngredientRequest))
+		return srv.(ProductAdminServiceServer).GetIngredient(ctx, req.(*GetIngredientRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_UpdateIngredient_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_UpdateIngredient_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateIngredientRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).UpdateIngredient(ctx, in)
+		return srv.(ProductAdminServiceServer).UpdateIngredient(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_UpdateIngredient_FullMethodName,
+		FullMethod: ProductAdminService_UpdateIngredient_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).UpdateIngredient(ctx, req.(*UpdateIngredientRequest))
+		return srv.(ProductAdminServiceServer).UpdateIngredient(ctx, req.(*UpdateIngredientRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_ListIngredients_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_ListIngredients_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListIngredientsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).ListIngredients(ctx, in)
+		return srv.(ProductAdminServiceServer).ListIngredients(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_ListIngredients_FullMethodName,
+		FullMethod: ProductAdminService_ListIngredients_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).ListIngredients(ctx, req.(*ListIngredientsRequest))
+		return srv.(ProductAdminServiceServer).ListIngredients(ctx, req.(*ListIngredientsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_ListIngredientSelect_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_ListIngredientSelect_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListIngredientSelectRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).ListIngredientSelect(ctx, in)
+		return srv.(ProductAdminServiceServer).ListIngredientSelect(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_ListIngredientSelect_FullMethodName,
+		FullMethod: ProductAdminService_ListIngredientSelect_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).ListIngredientSelect(ctx, req.(*ListIngredientSelectRequest))
+		return srv.(ProductAdminServiceServer).ListIngredientSelect(ctx, req.(*ListIngredientSelectRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_ListProductIngredients_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_ListProductIngredients_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListProductIngredientsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).ListProductIngredients(ctx, in)
+		return srv.(ProductAdminServiceServer).ListProductIngredients(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_ListProductIngredients_FullMethodName,
+		FullMethod: ProductAdminService_ListProductIngredients_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).ListProductIngredients(ctx, req.(*ListProductIngredientsRequest))
+		return srv.(ProductAdminServiceServer).ListProductIngredients(ctx, req.(*ListProductIngredientsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_BindProductIngredient_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_BindProductIngredient_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(BindProductIngredientRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).BindProductIngredient(ctx, in)
+		return srv.(ProductAdminServiceServer).BindProductIngredient(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_BindProductIngredient_FullMethodName,
+		FullMethod: ProductAdminService_BindProductIngredient_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).BindProductIngredient(ctx, req.(*BindProductIngredientRequest))
+		return srv.(ProductAdminServiceServer).BindProductIngredient(ctx, req.(*BindProductIngredientRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_UpdateProductIngredient_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_UpdateProductIngredient_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateProductIngredientRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).UpdateProductIngredient(ctx, in)
+		return srv.(ProductAdminServiceServer).UpdateProductIngredient(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_UpdateProductIngredient_FullMethodName,
+		FullMethod: ProductAdminService_UpdateProductIngredient_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).UpdateProductIngredient(ctx, req.(*UpdateProductIngredientRequest))
+		return srv.(ProductAdminServiceServer).UpdateProductIngredient(ctx, req.(*UpdateProductIngredientRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_DeleteProductIngredient_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_DeleteProductIngredient_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteProductIngredientRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).DeleteProductIngredient(ctx, in)
+		return srv.(ProductAdminServiceServer).DeleteProductIngredient(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_DeleteProductIngredient_FullMethodName,
+		FullMethod: ProductAdminService_DeleteProductIngredient_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).DeleteProductIngredient(ctx, req.(*DeleteProductIngredientRequest))
+		return srv.(ProductAdminServiceServer).DeleteProductIngredient(ctx, req.(*DeleteProductIngredientRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_ListIngredientProducts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_ListIngredientProducts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListIngredientRelationsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).ListIngredientProducts(ctx, in)
+		return srv.(ProductAdminServiceServer).ListIngredientProducts(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_ListIngredientProducts_FullMethodName,
+		FullMethod: ProductAdminService_ListIngredientProducts_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).ListIngredientProducts(ctx, req.(*ListIngredientRelationsRequest))
+		return srv.(ProductAdminServiceServer).ListIngredientProducts(ctx, req.(*ListIngredientRelationsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_ListIngredientOptions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_ListIngredientOptions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListIngredientRelationsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).ListIngredientOptions(ctx, in)
+		return srv.(ProductAdminServiceServer).ListIngredientOptions(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_ListIngredientOptions_FullMethodName,
+		FullMethod: ProductAdminService_ListIngredientOptions_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).ListIngredientOptions(ctx, req.(*ListIngredientRelationsRequest))
+		return srv.(ProductAdminServiceServer).ListIngredientOptions(ctx, req.(*ListIngredientRelationsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_ListStoreIngredients_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_ListStoreIngredients_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListStoreIngredientsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).ListStoreIngredients(ctx, in)
+		return srv.(ProductAdminServiceServer).ListStoreIngredients(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_ListStoreIngredients_FullMethodName,
+		FullMethod: ProductAdminService_ListStoreIngredients_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).ListStoreIngredients(ctx, req.(*ListStoreIngredientsRequest))
+		return srv.(ProductAdminServiceServer).ListStoreIngredients(ctx, req.(*ListStoreIngredientsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_ExportCustomization_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_ExportCustomization_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ExportCustomizationRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).ExportCustomization(ctx, in)
+		return srv.(ProductAdminServiceServer).ExportCustomization(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_ExportCustomization_FullMethodName,
+		FullMethod: ProductAdminService_ExportCustomization_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).ExportCustomization(ctx, req.(*ExportCustomizationRequest))
+		return srv.(ProductAdminServiceServer).ExportCustomization(ctx, req.(*ExportCustomizationRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_ImportCustomization_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_ImportCustomization_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ImportCustomizationRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).ImportCustomization(ctx, in)
+		return srv.(ProductAdminServiceServer).ImportCustomization(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_ImportCustomization_FullMethodName,
+		FullMethod: ProductAdminService_ImportCustomization_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).ImportCustomization(ctx, req.(*ImportCustomizationRequest))
+		return srv.(ProductAdminServiceServer).ImportCustomization(ctx, req.(*ImportCustomizationRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_ListMenuStores_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_ListMenuStores_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListMenuStoresRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).ListMenuStores(ctx, in)
+		return srv.(ProductAdminServiceServer).ListMenuStores(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_ListMenuStores_FullMethodName,
+		FullMethod: ProductAdminService_ListMenuStores_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).ListMenuStores(ctx, req.(*ListMenuStoresRequest))
+		return srv.(ProductAdminServiceServer).ListMenuStores(ctx, req.(*ListMenuStoresRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_DispatchMenuByStores_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_DispatchMenuByStores_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DispatchMenuByStoresRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).DispatchMenuByStores(ctx, in)
+		return srv.(ProductAdminServiceServer).DispatchMenuByStores(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_DispatchMenuByStores_FullMethodName,
+		FullMethod: ProductAdminService_DispatchMenuByStores_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).DispatchMenuByStores(ctx, req.(*DispatchMenuByStoresRequest))
+		return srv.(ProductAdminServiceServer).DispatchMenuByStores(ctx, req.(*DispatchMenuByStoresRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_DispatchMenuByArea_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductAdminService_DispatchMenuByArea_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DispatchMenuByAreaRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).DispatchMenuByArea(ctx, in)
+		return srv.(ProductAdminServiceServer).DispatchMenuByArea(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_DispatchMenuByArea_FullMethodName,
+		FullMethod: ProductAdminService_DispatchMenuByArea_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).DispatchMenuByArea(ctx, req.(*DispatchMenuByAreaRequest))
+		return srv.(ProductAdminServiceServer).DispatchMenuByArea(ctx, req.(*DispatchMenuByAreaRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// ProductService_ServiceDesc is the grpc.ServiceDesc for ProductService service.
+// ProductAdminService_ServiceDesc is the grpc.ServiceDesc for ProductAdminService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var ProductService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "dextea.product.v1.ProductService",
-	HandlerType: (*ProductServiceServer)(nil),
+var ProductAdminService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "dextea.product.v1.ProductAdminService",
+	HandlerType: (*ProductAdminServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "CreateProduct",
-			Handler:    _ProductService_CreateProduct_Handler,
+			Handler:    _ProductAdminService_CreateProduct_Handler,
 		},
 		{
 			MethodName: "UpdateProduct",
-			Handler:    _ProductService_UpdateProduct_Handler,
+			Handler:    _ProductAdminService_UpdateProduct_Handler,
 		},
 		{
 			MethodName: "ListProducts",
-			Handler:    _ProductService_ListProducts_Handler,
+			Handler:    _ProductAdminService_ListProducts_Handler,
 		},
 		{
 			MethodName: "GetProductStats",
-			Handler:    _ProductService_GetProductStats_Handler,
+			Handler:    _ProductAdminService_GetProductStats_Handler,
 		},
 		{
 			MethodName: "BatchUpdateProductStatus",
-			Handler:    _ProductService_BatchUpdateProductStatus_Handler,
+			Handler:    _ProductAdminService_BatchUpdateProductStatus_Handler,
 		},
 		{
 			MethodName: "BatchSetProductStoreStatus",
-			Handler:    _ProductService_BatchSetProductStoreStatus_Handler,
-		},
-		{
-			MethodName: "GetProductDetail",
-			Handler:    _ProductService_GetProductDetail_Handler,
-		},
-		{
-			MethodName: "GetProductStoreStatuses",
-			Handler:    _ProductService_GetProductStoreStatuses_Handler,
-		},
-		{
-			MethodName: "GetCustomizationOptionStoreStatuses",
-			Handler:    _ProductService_GetCustomizationOptionStoreStatuses_Handler,
+			Handler:    _ProductAdminService_BatchSetProductStoreStatus_Handler,
 		},
 		{
 			MethodName: "GetProductImages",
-			Handler:    _ProductService_GetProductImages_Handler,
+			Handler:    _ProductAdminService_GetProductImages_Handler,
 		},
 		{
 			MethodName: "SetProductImages",
-			Handler:    _ProductService_SetProductImages_Handler,
+			Handler:    _ProductAdminService_SetProductImages_Handler,
 		},
 		{
 			MethodName: "CreateCustomizationItem",
-			Handler:    _ProductService_CreateCustomizationItem_Handler,
+			Handler:    _ProductAdminService_CreateCustomizationItem_Handler,
 		},
 		{
 			MethodName: "UpdateCustomizationItem",
-			Handler:    _ProductService_UpdateCustomizationItem_Handler,
+			Handler:    _ProductAdminService_UpdateCustomizationItem_Handler,
 		},
 		{
 			MethodName: "ListCustomizationItems",
-			Handler:    _ProductService_ListCustomizationItems_Handler,
+			Handler:    _ProductAdminService_ListCustomizationItems_Handler,
 		},
 		{
 			MethodName: "BatchUpdateCustomizationItemStatus",
-			Handler:    _ProductService_BatchUpdateCustomizationItemStatus_Handler,
+			Handler:    _ProductAdminService_BatchUpdateCustomizationItemStatus_Handler,
 		},
 		{
 			MethodName: "CreateCustomizationOption",
-			Handler:    _ProductService_CreateCustomizationOption_Handler,
+			Handler:    _ProductAdminService_CreateCustomizationOption_Handler,
 		},
 		{
 			MethodName: "UpdateCustomizationOption",
-			Handler:    _ProductService_UpdateCustomizationOption_Handler,
+			Handler:    _ProductAdminService_UpdateCustomizationOption_Handler,
 		},
 		{
 			MethodName: "UpdateCustomizationOptionIngredient",
-			Handler:    _ProductService_UpdateCustomizationOptionIngredient_Handler,
+			Handler:    _ProductAdminService_UpdateCustomizationOptionIngredient_Handler,
 		},
 		{
 			MethodName: "ListCustomizationOptions",
-			Handler:    _ProductService_ListCustomizationOptions_Handler,
+			Handler:    _ProductAdminService_ListCustomizationOptions_Handler,
 		},
 		{
 			MethodName: "BatchUpdateCustomizationOptionStatus",
-			Handler:    _ProductService_BatchUpdateCustomizationOptionStatus_Handler,
+			Handler:    _ProductAdminService_BatchUpdateCustomizationOptionStatus_Handler,
 		},
 		{
 			MethodName: "BatchSetCustomizationOptionStoreStatus",
-			Handler:    _ProductService_BatchSetCustomizationOptionStoreStatus_Handler,
+			Handler:    _ProductAdminService_BatchSetCustomizationOptionStoreStatus_Handler,
 		},
 		{
 			MethodName: "CreateMenu",
-			Handler:    _ProductService_CreateMenu_Handler,
+			Handler:    _ProductAdminService_CreateMenu_Handler,
 		},
 		{
 			MethodName: "UpdateMenu",
-			Handler:    _ProductService_UpdateMenu_Handler,
+			Handler:    _ProductAdminService_UpdateMenu_Handler,
 		},
 		{
 			MethodName: "GetMenu",
-			Handler:    _ProductService_GetMenu_Handler,
+			Handler:    _ProductAdminService_GetMenu_Handler,
 		},
 		{
 			MethodName: "ListMenus",
-			Handler:    _ProductService_ListMenus_Handler,
+			Handler:    _ProductAdminService_ListMenus_Handler,
 		},
 		{
 			MethodName: "GetMenuTree",
-			Handler:    _ProductService_GetMenuTree_Handler,
+			Handler:    _ProductAdminService_GetMenuTree_Handler,
+		},
+		{
+			MethodName: "GetAdminStoreMenu",
+			Handler:    _ProductAdminService_GetAdminStoreMenu_Handler,
 		},
 		{
 			MethodName: "CreateMenuGroup",
-			Handler:    _ProductService_CreateMenuGroup_Handler,
+			Handler:    _ProductAdminService_CreateMenuGroup_Handler,
 		},
 		{
 			MethodName: "UpdateMenuGroup",
-			Handler:    _ProductService_UpdateMenuGroup_Handler,
+			Handler:    _ProductAdminService_UpdateMenuGroup_Handler,
 		},
 		{
 			MethodName: "ListMenuGroups",
-			Handler:    _ProductService_ListMenuGroups_Handler,
+			Handler:    _ProductAdminService_ListMenuGroups_Handler,
 		},
 		{
 			MethodName: "CreateMenuProduct",
-			Handler:    _ProductService_CreateMenuProduct_Handler,
+			Handler:    _ProductAdminService_CreateMenuProduct_Handler,
 		},
 		{
 			MethodName: "UpdateMenuProduct",
-			Handler:    _ProductService_UpdateMenuProduct_Handler,
+			Handler:    _ProductAdminService_UpdateMenuProduct_Handler,
 		},
 		{
 			MethodName: "DeleteMenuProduct",
-			Handler:    _ProductService_DeleteMenuProduct_Handler,
+			Handler:    _ProductAdminService_DeleteMenuProduct_Handler,
 		},
 		{
 			MethodName: "ListMenuProducts",
-			Handler:    _ProductService_ListMenuProducts_Handler,
+			Handler:    _ProductAdminService_ListMenuProducts_Handler,
 		},
 		{
 			MethodName: "DeleteMenu",
-			Handler:    _ProductService_DeleteMenu_Handler,
+			Handler:    _ProductAdminService_DeleteMenu_Handler,
 		},
 		{
 			MethodName: "DeleteMenuGroup",
-			Handler:    _ProductService_DeleteMenuGroup_Handler,
+			Handler:    _ProductAdminService_DeleteMenuGroup_Handler,
 		},
 		{
 			MethodName: "ListTags",
-			Handler:    _ProductService_ListTags_Handler,
+			Handler:    _ProductAdminService_ListTags_Handler,
 		},
 		{
 			MethodName: "CreateTag",
-			Handler:    _ProductService_CreateTag_Handler,
+			Handler:    _ProductAdminService_CreateTag_Handler,
 		},
 		{
 			MethodName: "UpdateTag",
-			Handler:    _ProductService_UpdateTag_Handler,
+			Handler:    _ProductAdminService_UpdateTag_Handler,
 		},
 		{
 			MethodName: "DeleteTag",
-			Handler:    _ProductService_DeleteTag_Handler,
+			Handler:    _ProductAdminService_DeleteTag_Handler,
 		},
 		{
 			MethodName: "ListProductTags",
-			Handler:    _ProductService_ListProductTags_Handler,
+			Handler:    _ProductAdminService_ListProductTags_Handler,
 		},
 		{
 			MethodName: "BindProductTags",
-			Handler:    _ProductService_BindProductTags_Handler,
+			Handler:    _ProductAdminService_BindProductTags_Handler,
 		},
 		{
 			MethodName: "UnbindProductTags",
-			Handler:    _ProductService_UnbindProductTags_Handler,
+			Handler:    _ProductAdminService_UnbindProductTags_Handler,
 		},
 		{
 			MethodName: "ListTagProducts",
-			Handler:    _ProductService_ListTagProducts_Handler,
+			Handler:    _ProductAdminService_ListTagProducts_Handler,
 		},
 		{
 			MethodName: "BindTagProducts",
-			Handler:    _ProductService_BindTagProducts_Handler,
+			Handler:    _ProductAdminService_BindTagProducts_Handler,
 		},
 		{
 			MethodName: "UnbindTagProducts",
-			Handler:    _ProductService_UnbindTagProducts_Handler,
+			Handler:    _ProductAdminService_UnbindTagProducts_Handler,
 		},
 		{
 			MethodName: "CreateIngredient",
-			Handler:    _ProductService_CreateIngredient_Handler,
+			Handler:    _ProductAdminService_CreateIngredient_Handler,
 		},
 		{
 			MethodName: "GetIngredient",
-			Handler:    _ProductService_GetIngredient_Handler,
+			Handler:    _ProductAdminService_GetIngredient_Handler,
 		},
 		{
 			MethodName: "UpdateIngredient",
-			Handler:    _ProductService_UpdateIngredient_Handler,
+			Handler:    _ProductAdminService_UpdateIngredient_Handler,
 		},
 		{
 			MethodName: "ListIngredients",
-			Handler:    _ProductService_ListIngredients_Handler,
+			Handler:    _ProductAdminService_ListIngredients_Handler,
 		},
 		{
 			MethodName: "ListIngredientSelect",
-			Handler:    _ProductService_ListIngredientSelect_Handler,
+			Handler:    _ProductAdminService_ListIngredientSelect_Handler,
 		},
 		{
 			MethodName: "ListProductIngredients",
-			Handler:    _ProductService_ListProductIngredients_Handler,
+			Handler:    _ProductAdminService_ListProductIngredients_Handler,
 		},
 		{
 			MethodName: "BindProductIngredient",
-			Handler:    _ProductService_BindProductIngredient_Handler,
+			Handler:    _ProductAdminService_BindProductIngredient_Handler,
 		},
 		{
 			MethodName: "UpdateProductIngredient",
-			Handler:    _ProductService_UpdateProductIngredient_Handler,
+			Handler:    _ProductAdminService_UpdateProductIngredient_Handler,
 		},
 		{
 			MethodName: "DeleteProductIngredient",
-			Handler:    _ProductService_DeleteProductIngredient_Handler,
+			Handler:    _ProductAdminService_DeleteProductIngredient_Handler,
 		},
 		{
 			MethodName: "ListIngredientProducts",
-			Handler:    _ProductService_ListIngredientProducts_Handler,
+			Handler:    _ProductAdminService_ListIngredientProducts_Handler,
 		},
 		{
 			MethodName: "ListIngredientOptions",
-			Handler:    _ProductService_ListIngredientOptions_Handler,
+			Handler:    _ProductAdminService_ListIngredientOptions_Handler,
 		},
 		{
 			MethodName: "ListStoreIngredients",
-			Handler:    _ProductService_ListStoreIngredients_Handler,
+			Handler:    _ProductAdminService_ListStoreIngredients_Handler,
 		},
 		{
 			MethodName: "ExportCustomization",
-			Handler:    _ProductService_ExportCustomization_Handler,
+			Handler:    _ProductAdminService_ExportCustomization_Handler,
 		},
 		{
 			MethodName: "ImportCustomization",
-			Handler:    _ProductService_ImportCustomization_Handler,
+			Handler:    _ProductAdminService_ImportCustomization_Handler,
 		},
 		{
 			MethodName: "ListMenuStores",
-			Handler:    _ProductService_ListMenuStores_Handler,
+			Handler:    _ProductAdminService_ListMenuStores_Handler,
 		},
 		{
 			MethodName: "DispatchMenuByStores",
-			Handler:    _ProductService_DispatchMenuByStores_Handler,
+			Handler:    _ProductAdminService_DispatchMenuByStores_Handler,
 		},
 		{
 			MethodName: "DispatchMenuByArea",
-			Handler:    _ProductService_DispatchMenuByArea_Handler,
+			Handler:    _ProductAdminService_DispatchMenuByArea_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "product/v1/product.proto",
+}
+
+const (
+	ProductBusinessService_GetProductDetail_FullMethodName                    = "/dextea.product.v1.ProductBusinessService/GetProductDetail"
+	ProductBusinessService_GetProductStoreStatuses_FullMethodName             = "/dextea.product.v1.ProductBusinessService/GetProductStoreStatuses"
+	ProductBusinessService_GetCustomizationOptionStoreStatuses_FullMethodName = "/dextea.product.v1.ProductBusinessService/GetCustomizationOptionStoreStatuses"
+	ProductBusinessService_GetStoreMenu_FullMethodName                        = "/dextea.product.v1.ProductBusinessService/GetStoreMenu"
+	ProductBusinessService_GetMenuTree_FullMethodName                         = "/dextea.product.v1.ProductBusinessService/GetMenuTree"
+)
+
+// ProductBusinessServiceClient is the client API for ProductBusinessService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+//
+// ProductBusinessService is the customer/order-facing read plane. It only
+// exposes business-visible product and menu reads.
+type ProductBusinessServiceClient interface {
+	GetProductDetail(ctx context.Context, in *GetProductDetailRequest, opts ...grpc.CallOption) (*ProductDetail, error)
+	GetProductStoreStatuses(ctx context.Context, in *GetProductStoreStatusesRequest, opts ...grpc.CallOption) (*ProductStoreStatusesResponse, error)
+	GetCustomizationOptionStoreStatuses(ctx context.Context, in *GetCustomizationOptionStoreStatusesRequest, opts ...grpc.CallOption) (*CustomizationOptionStoreStatusesResponse, error)
+	GetStoreMenu(ctx context.Context, in *GetStoreMenuRequest, opts ...grpc.CallOption) (*StoreMenuResponse, error)
+	GetMenuTree(ctx context.Context, in *GetMenuTreeRequest, opts ...grpc.CallOption) (*MenuTreeResponse, error)
+}
+
+type productBusinessServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewProductBusinessServiceClient(cc grpc.ClientConnInterface) ProductBusinessServiceClient {
+	return &productBusinessServiceClient{cc}
+}
+
+func (c *productBusinessServiceClient) GetProductDetail(ctx context.Context, in *GetProductDetailRequest, opts ...grpc.CallOption) (*ProductDetail, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ProductDetail)
+	err := c.cc.Invoke(ctx, ProductBusinessService_GetProductDetail_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *productBusinessServiceClient) GetProductStoreStatuses(ctx context.Context, in *GetProductStoreStatusesRequest, opts ...grpc.CallOption) (*ProductStoreStatusesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ProductStoreStatusesResponse)
+	err := c.cc.Invoke(ctx, ProductBusinessService_GetProductStoreStatuses_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *productBusinessServiceClient) GetCustomizationOptionStoreStatuses(ctx context.Context, in *GetCustomizationOptionStoreStatusesRequest, opts ...grpc.CallOption) (*CustomizationOptionStoreStatusesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CustomizationOptionStoreStatusesResponse)
+	err := c.cc.Invoke(ctx, ProductBusinessService_GetCustomizationOptionStoreStatuses_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *productBusinessServiceClient) GetStoreMenu(ctx context.Context, in *GetStoreMenuRequest, opts ...grpc.CallOption) (*StoreMenuResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(StoreMenuResponse)
+	err := c.cc.Invoke(ctx, ProductBusinessService_GetStoreMenu_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *productBusinessServiceClient) GetMenuTree(ctx context.Context, in *GetMenuTreeRequest, opts ...grpc.CallOption) (*MenuTreeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(MenuTreeResponse)
+	err := c.cc.Invoke(ctx, ProductBusinessService_GetMenuTree_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// ProductBusinessServiceServer is the server API for ProductBusinessService service.
+// All implementations must embed UnimplementedProductBusinessServiceServer
+// for forward compatibility.
+//
+// ProductBusinessService is the customer/order-facing read plane. It only
+// exposes business-visible product and menu reads.
+type ProductBusinessServiceServer interface {
+	GetProductDetail(context.Context, *GetProductDetailRequest) (*ProductDetail, error)
+	GetProductStoreStatuses(context.Context, *GetProductStoreStatusesRequest) (*ProductStoreStatusesResponse, error)
+	GetCustomizationOptionStoreStatuses(context.Context, *GetCustomizationOptionStoreStatusesRequest) (*CustomizationOptionStoreStatusesResponse, error)
+	GetStoreMenu(context.Context, *GetStoreMenuRequest) (*StoreMenuResponse, error)
+	GetMenuTree(context.Context, *GetMenuTreeRequest) (*MenuTreeResponse, error)
+	mustEmbedUnimplementedProductBusinessServiceServer()
+}
+
+// UnimplementedProductBusinessServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedProductBusinessServiceServer struct{}
+
+func (UnimplementedProductBusinessServiceServer) GetProductDetail(context.Context, *GetProductDetailRequest) (*ProductDetail, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetProductDetail not implemented")
+}
+func (UnimplementedProductBusinessServiceServer) GetProductStoreStatuses(context.Context, *GetProductStoreStatusesRequest) (*ProductStoreStatusesResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetProductStoreStatuses not implemented")
+}
+func (UnimplementedProductBusinessServiceServer) GetCustomizationOptionStoreStatuses(context.Context, *GetCustomizationOptionStoreStatusesRequest) (*CustomizationOptionStoreStatusesResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetCustomizationOptionStoreStatuses not implemented")
+}
+func (UnimplementedProductBusinessServiceServer) GetStoreMenu(context.Context, *GetStoreMenuRequest) (*StoreMenuResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetStoreMenu not implemented")
+}
+func (UnimplementedProductBusinessServiceServer) GetMenuTree(context.Context, *GetMenuTreeRequest) (*MenuTreeResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetMenuTree not implemented")
+}
+func (UnimplementedProductBusinessServiceServer) mustEmbedUnimplementedProductBusinessServiceServer() {
+}
+func (UnimplementedProductBusinessServiceServer) testEmbeddedByValue() {}
+
+// UnsafeProductBusinessServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to ProductBusinessServiceServer will
+// result in compilation errors.
+type UnsafeProductBusinessServiceServer interface {
+	mustEmbedUnimplementedProductBusinessServiceServer()
+}
+
+func RegisterProductBusinessServiceServer(s grpc.ServiceRegistrar, srv ProductBusinessServiceServer) {
+	// If the following call panics, it indicates UnimplementedProductBusinessServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&ProductBusinessService_ServiceDesc, srv)
+}
+
+func _ProductBusinessService_GetProductDetail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetProductDetailRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProductBusinessServiceServer).GetProductDetail(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProductBusinessService_GetProductDetail_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProductBusinessServiceServer).GetProductDetail(ctx, req.(*GetProductDetailRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ProductBusinessService_GetProductStoreStatuses_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetProductStoreStatusesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProductBusinessServiceServer).GetProductStoreStatuses(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProductBusinessService_GetProductStoreStatuses_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProductBusinessServiceServer).GetProductStoreStatuses(ctx, req.(*GetProductStoreStatusesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ProductBusinessService_GetCustomizationOptionStoreStatuses_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCustomizationOptionStoreStatusesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProductBusinessServiceServer).GetCustomizationOptionStoreStatuses(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProductBusinessService_GetCustomizationOptionStoreStatuses_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProductBusinessServiceServer).GetCustomizationOptionStoreStatuses(ctx, req.(*GetCustomizationOptionStoreStatusesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ProductBusinessService_GetStoreMenu_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetStoreMenuRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProductBusinessServiceServer).GetStoreMenu(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProductBusinessService_GetStoreMenu_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProductBusinessServiceServer).GetStoreMenu(ctx, req.(*GetStoreMenuRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ProductBusinessService_GetMenuTree_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetMenuTreeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProductBusinessServiceServer).GetMenuTree(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProductBusinessService_GetMenuTree_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProductBusinessServiceServer).GetMenuTree(ctx, req.(*GetMenuTreeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// ProductBusinessService_ServiceDesc is the grpc.ServiceDesc for ProductBusinessService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var ProductBusinessService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "dextea.product.v1.ProductBusinessService",
+	HandlerType: (*ProductBusinessServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "GetProductDetail",
+			Handler:    _ProductBusinessService_GetProductDetail_Handler,
+		},
+		{
+			MethodName: "GetProductStoreStatuses",
+			Handler:    _ProductBusinessService_GetProductStoreStatuses_Handler,
+		},
+		{
+			MethodName: "GetCustomizationOptionStoreStatuses",
+			Handler:    _ProductBusinessService_GetCustomizationOptionStoreStatuses_Handler,
+		},
+		{
+			MethodName: "GetStoreMenu",
+			Handler:    _ProductBusinessService_GetStoreMenu_Handler,
+		},
+		{
+			MethodName: "GetMenuTree",
+			Handler:    _ProductBusinessService_GetMenuTree_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
